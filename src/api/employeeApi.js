@@ -1,4 +1,5 @@
 import delay from './delay';
+import axios from 'axios';
 
 const employees = [
   {
@@ -20,7 +21,7 @@ const employees = [
   }
 ];
 
-const technical = ['AWS', 'Java', 'Ansible', 'C#', 'C++'];
+const technical = ['AWS', 'Java', 'Ansible', 'Css', 'Closure'];
 
 const homeOffices = ["Hyderabad-India", "Bangalore-India", "Chennai-India", "Pune-India", "Gurgaon-India"];
 const gender = ['Man', 'Woman'];
@@ -51,7 +52,11 @@ class EmployeeApi {
         if (employee.name.length < minEmployeeTitleLength) {
           reject(`Title must be at least ${minEmployeeTitleLength} characters.`);
         }
-        resolve(employee);
+        axios.post('http://localhost:8080/employee', employee).then(res => {
+          resolve(employee);
+        }).catch(error => {
+          console.log(error);
+        });
       }, delay);
     });
   }
