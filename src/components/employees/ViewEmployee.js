@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import Avatar from '../avtar/Avatar';
-import Technical from '../skillAndAbility/components/technical/Technical';
+import SkillsAndAbilities from '../skillAndAbility/components/common/SkillsAndAbilities';
 
 class ViewEmployee extends React.Component {
   constructor(props, context) {
@@ -25,7 +25,9 @@ class ViewEmployee extends React.Component {
         <div>{employee.role}</div>
         <div>{employee.currentProject}</div>
         <div>{employee.homeOffice}</div>
-        <Technical technical={this.props.technical}/>
+        <div>
+          <SkillsAndAbilities/>
+        </div>
       </div>
     );
   }

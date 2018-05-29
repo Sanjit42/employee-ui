@@ -11,6 +11,8 @@ const Header = () => {
       <Link to="employees" activeClassName> Employees </Link>
       {" | "}
       <Link to="employee" activeClassName> Add Employee </Link>
+      {" | "}
+      <Link to="skillsAndAbilities" activeClassName> Skills And Abilities </Link>
     </nav>
   );
 };

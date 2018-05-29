@@ -1,29 +1,32 @@
-import React from 'react';
+/* eslint-disable import/default */
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
 import StarRatingComponent from 'react-star-rating-component';
+import {bindActionCreators} from 'redux';
+import * as ratingActions from '../../../../actions/ratingActions';
 
 class Rating extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      rating: 0
+      rating: this.props.rating
     };
     this.onStarClick = this.onStarClick.bind(this);
   }
 
   onStarClick(nextValue) {
+    this.props.actions.saveRating(nextValue, this.props.title);
     this.setState({rating: nextValue});
   }
 
   render() {
-    const {rating} = this.state;
-
     return (
       <div>
         <StarRatingComponent
           name="rate1"
           starCount={5}
-          value={rating}
+          value={this.state.rating}
           onStarClick={this.onStarClick}
         />
       </div>
@@ -31,4 +34,21 @@ class Rating extends React.Component {
   }
 }
 
-export default Rating;
+Rating.propTypes = {
+  rating: PropTypes.number.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  let {rating} = ownProps.rating;
+  return {
+    rating: rating
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ratingActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Rating);

@@ -2,14 +2,23 @@ import React, {PropTypes} from 'react';
 
 import Rating from '../common/Rating';
 
-const Technical = ({technical}) => {
+const Technical = ({technical, rating}) => {
+
+  function getElementByTech(tech, ratingTech) {
+    let filterTech = ratingTech.filter(ratedTech => ratedTech.technical === tech);
+    return filterTech[0];
+  }
+
   return (
     <div>
       <h2>Technical</h2>
       {technical.map(tech =>
         <div>
           {tech}
-          <Rating/>
+          <Rating
+            title={tech}
+          rating={getElementByTech(tech, rating)}
+          />
         </div>
       )}
     </div>
@@ -17,7 +26,8 @@ const Technical = ({technical}) => {
 };
 
 Technical.propTypes = {
-  technical: PropTypes.array.isRequired
+  technical: PropTypes.array.isRequired,
+  rating: PropTypes.number.isRequired
 };
 
 export default Technical;

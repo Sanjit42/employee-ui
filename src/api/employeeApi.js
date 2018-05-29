@@ -21,16 +21,33 @@ const employees = [
   }
 ];
 
-const technical = ['AWS', 'Java', 'Ansible', 'Css', 'Closure'];
-
 const homeOffices = ["Hyderabad-India", "Bangalore-India", "Chennai-India", "Pune-India", "Gurgaon-India"];
 const gender = ['Man', 'Woman'];
+const technical = ['AWS', 'Java'];
+const consulting = ['Communication', 'Executive Advisory', 'Facilitation'];
+const domain = ['Business Services', 'Computers & Electronics', 'Consumer Services', 'Education'];
+const testing = ['Capybara', 'Cucumber', 'Fitnesse'];
+
+const rating = [
+  {technical: 'AWS', rating: 3},
+  {technical: 'Java', rating: 4},
+  {consulting: 'Communication', rating: 3},
+  {consulting: 'Executive Advisory', rating: 2},
+  {consulting: 'Facilitation', rating: 3},
+  {domain: 'Business Services', rating: 1},
+  {domain: 'Computers & Electronics', rating: 3},
+  {domain: 'Consumer Services', rating: 5},
+  {domain: 'Education', rating: 4},
+  {testing: 'Capybara', rating: 2},
+  {testing: 'Cucumber', rating: 5},
+  {testing: 'Fitnesse', rating: 4}
+
+];
 
 function replaceAll(str, find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
 }
 
-//This would be performed on the server in a real app. Just stubbing in.
 const generateId = (employee) => {
   return replaceAll(employee.title, ' ', '-');
 };
@@ -55,8 +72,23 @@ class EmployeeApi {
         axios.post('http://localhost:8080/employee', employee).then(res => {
           resolve(employee);
         }).catch(error => {
-          console.log(error);
         });
+      }, delay);
+    });
+  }
+
+  static saveRating(rating, title) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({rating: rating, title: title});
+      }, delay);
+    });
+  }
+
+  static getRatingList() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], rating));
       }, delay);
     });
   }
@@ -90,6 +122,30 @@ class EmployeeApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], technical));
+      }, delay);
+    });
+  }
+
+  static getConsulting() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], consulting));
+      }, delay);
+    });
+  }
+
+  static getDomain() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], domain));
+      }, delay);
+    });
+  }
+
+  static getTesting() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], testing));
       }, delay);
     });
   }
