@@ -1,4 +1,3 @@
-/* eslint-disable import/namespace */
 import * as types from "../constants/constant";
 import {beginAjaxCall} from "./ajaxStatueActions";
 import employeeApi from "../api/employeeApi";

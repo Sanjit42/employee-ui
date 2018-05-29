@@ -1,22 +1,15 @@
-/* eslint-disable no-undef */
 import React, {PropTypes} from 'react';
-import Technical from '../technical/Technical';
-import Consulting from '../consulting/Consulting';
-import Domain from '../domain/Domain';
-import Testing from '../testing/Testing';
 import {connect} from "react-redux";
+
+import SkillsAndAbilitiesTemplate from './SkillsAndAbilitiesTemplate';
 
 class SkillsAndAbilities extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      technical: '',
-      consulting: '',
-      domain: '',
-      testing: '',
       saving: false,
-      rating: []
+      skillsAndAbilities: []
     };
 
     this.onSave = this.onSave.bind(this);
@@ -34,34 +27,11 @@ class SkillsAndAbilities extends React.Component {
   render() {
     return (
       <form>
-        <div>
-          <Technical
-            technical={this.props.technical}
-            rating={this.props.rating}
-          />
-        </div>
-
-        <div>
-          <Consulting
-            consulting={this.props.consulting}
-            rating={this.props.rating}
-          />
-        </div>
-
-        <div>
-          <Domain
-            domain={this.props.domain}
-            rating={this.props.rating}
-          />
-        </div>
-
-        <div>
-          <Testing
-            testing={this.props.testing}
-            rating={this.props.rating}
-          />
-        </div>
-
+        {this.props.skillsAndAbilities.map(each =>
+          <div>
+            <SkillsAndAbilitiesTemplate skillsAndAbilities={each}/>
+          </div>
+        )}
         <input
           name="submit"
           disabled={this.state.saving}
@@ -76,21 +46,14 @@ class SkillsAndAbilities extends React.Component {
 }
 
 SkillsAndAbilities.propTypes = {
-  technical: PropTypes.array.isRequired,
-  consulting: PropTypes.array.isRequired,
-  domain: PropTypes.array.isRequired,
-  testing: PropTypes.array.isRequired,
-  rating: PropTypes.array.isRequired
+  rating: PropTypes.array.isRequired,
+  skillsAndAbilities: PropTypes.array.isRequired
 };
 
 
 function mapStateToProps(state, ownProps) {
   return {
-    technical: state.technical,
-    consulting: state.consulting,
-    domain: state.domain,
-    testing: state.testing,
-    rating: state.rating
+    skillsAndAbilities: state.skillsAndAbilities
   };
 }
 

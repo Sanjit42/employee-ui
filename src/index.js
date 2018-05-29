@@ -1,4 +1,3 @@
-/* eslint-disable import/named */
 import 'babel-polyfill';
 import React from 'react';
 import {render} from 'react-dom';
@@ -9,11 +8,8 @@ import routes from './routes';
 import {loadHomeOffices} from "./actions/homeOfficesActions";
 import {loadEmployees} from "./actions/employeeActions";
 import {loadGender} from "./actions/genderActions";
-import {loadTechnical} from "./actions/technicalActions";
-import {loadRating} from "./actions/ratingActions";
-import {loadConsulting} from "./actions/consultingActions";
-import {loadTesting} from "./actions/testingActions";
-import {loadDomain} from "./actions/domainActions";
+// import {loadRating} from "./actions/ratingActions";
+import {loadSkillsAndAbilities} from "./actions/skillsAndAbilitiesActions";
 import './styles/styles.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -21,11 +17,8 @@ const store = configureStore();
 store.dispatch(loadHomeOffices());
 store.dispatch(loadEmployees());
 store.dispatch(loadGender());
-store.dispatch(loadTechnical());
-store.dispatch(loadRating());
-store.dispatch(loadConsulting());
-store.dispatch(loadTesting());
-store.dispatch(loadDomain());
+// store.dispatch(loadRating());
+store.dispatch(loadSkillsAndAbilities());
 
 render(
   <Provider store={store}>

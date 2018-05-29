@@ -22,26 +22,13 @@ const employees = [
 ];
 
 const homeOffices = ["Hyderabad-India", "Bangalore-India", "Chennai-India", "Pune-India", "Gurgaon-India"];
-const gender = ['Man', 'Woman'];
-const technical = ['AWS', 'Java'];
-const consulting = ['Communication', 'Executive Advisory', 'Facilitation'];
-const domain = ['Business Services', 'Computers & Electronics', 'Consumer Services', 'Education'];
-const testing = ['Capybara', 'Cucumber', 'Fitnesse'];
+const gender = ['Male', 'Female'];
 
-const rating = [
-  {technical: 'AWS', rating: 3},
-  {technical: 'Java', rating: 4},
-  {consulting: 'Communication', rating: 3},
-  {consulting: 'Executive Advisory', rating: 2},
-  {consulting: 'Facilitation', rating: 3},
-  {domain: 'Business Services', rating: 1},
-  {domain: 'Computers & Electronics', rating: 3},
-  {domain: 'Consumer Services', rating: 5},
-  {domain: 'Education', rating: 4},
-  {testing: 'Capybara', rating: 2},
-  {testing: 'Cucumber', rating: 5},
-  {testing: 'Fitnesse', rating: 4}
-
+const skillsAndAbilities = [
+  {Technical: [{'AWS': 3}, {'Java': 4}]},
+  {Consulting: [{'Communication': 3}, {'Executive Advisory': 2}, {'Facilitation': 3}]},
+  {Domain: [{'Business Services': 1}, {'Computers & Electronics': 3}, {'Consumer Services': 5, 'Education': 4}]},
+  {Testing: [{'Capybara': 2}, {'Cucumber': 5}, {'Fitnesse': 4}]}
 ];
 
 function replaceAll(str, find, replace) {
@@ -88,7 +75,15 @@ class EmployeeApi {
   static getRatingList() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(Object.assign([], rating));
+        // resolve(Object.assign([], rating));
+      }, delay);
+    });
+  }
+
+  static getSkillsAndAbilities() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], skillsAndAbilities));
       }, delay);
     });
   }
@@ -114,38 +109,6 @@ class EmployeeApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], gender));
-      }, delay);
-    });
-  }
-
-  static getTechnical() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(Object.assign([], technical));
-      }, delay);
-    });
-  }
-
-  static getConsulting() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(Object.assign([], consulting));
-      }, delay);
-    });
-  }
-
-  static getDomain() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(Object.assign([], domain));
-      }, delay);
-    });
-  }
-
-  static getTesting() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(Object.assign([], testing));
       }, delay);
     });
   }
