@@ -58,13 +58,15 @@ class EmployeeApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const minEmployeeTitleLength = 1;
-        if (employee.name.length < minEmployeeTitleLength) {
+        if (employee.basicDetails.name.length < minEmployeeTitleLength) {
           reject(`Title must be at least ${minEmployeeTitleLength} characters.`);
         }
-        axios.post('http://localhost:8080/employee', employee).then(res => {
-          resolve(employee);
-        }).catch(error => {
-        });
+        // axios.post('http://localhost:8080/employee', employee).then(res => {
+        //   resolve(employee);
+        // })
+        //   .catch(error => {
+        // });
+        resolve(employee);
       }, delay);
     });
   }

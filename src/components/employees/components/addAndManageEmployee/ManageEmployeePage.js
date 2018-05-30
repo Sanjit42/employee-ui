@@ -25,10 +25,16 @@ class ManageEmployeePage extends React.Component {
     return this.setState({employee: employee});
   }
 
+  redirect(){
+    this.setState({saving: false});
+    this.context.router.push('/employees');
+  }
+
   saveEmployee(event) {
     event.preventDefault();
-    this.props.actions.saveEmployee(this.state.employee);
-    this.context.router.push('/employees');
+    this.setState({saving: true});
+    this.props.actions.saveEmployee({basicDetails: this.state.employee})
+    .then(() => this.redirect());
   }
 
   render() {
