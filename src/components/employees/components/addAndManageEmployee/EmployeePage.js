@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as employeeActions from '../../../../actions/employeeActions';
 import EmployeeList from './EmployeeList';
 
-class EmployeePage extends React.Component {
+export class EmployeePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 

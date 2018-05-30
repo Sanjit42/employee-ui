@@ -9,7 +9,7 @@
     "open:src": "babel-node tools/srcServer.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
-    "test": "mocha --repoter progress tools/testSetup.js \"src/**/*.test.js\"",
+    "test": "mocha --repoter progress tools/testSetup.js \"src/**/*.spec.js\"",
     "test:watch": "npm run test -- --watch"
   },
   "author": "",
