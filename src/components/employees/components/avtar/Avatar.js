@@ -2,9 +2,9 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-import DefaultAvatar from '../../resources/images/avatar.svg';
+import DefaultAvatar from '../../../../resources/images/avatar.svg';
 import {bindActionCreators} from 'redux';
-import * as avatarActions from "../../actions/avatarActions";
+import * as avatarActions from "../../../../actions/avatarActions";
 
 
 class Avatar extends React.Component {

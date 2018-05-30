@@ -8,7 +8,6 @@ import routes from './routes';
 import {loadHomeOffices} from "./actions/homeOfficesActions";
 import {loadEmployees} from "./actions/employeeActions";
 import {loadGender} from "./actions/genderActions";
-import {loadTechnical} from "./actions/technicalActions";
 import './styles/styles.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,7 +15,6 @@ const store = configureStore();
 store.dispatch(loadHomeOffices());
 store.dispatch(loadEmployees());
 store.dispatch(loadGender());
-store.dispatch(loadTechnical());
 
 render(
   <Provider store={store}>

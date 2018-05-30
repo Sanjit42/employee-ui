@@ -22,9 +22,9 @@ export function loadEmployeesSuccess(employees) {
 export function loadEmployees() {
   return function (dispatch) {
     dispatch(beginAjaxCall());
-    // return employeeApi.getAllEmployees().then(employees => {
-    return axios.get("http://localhost:8080/employees").then(employees => {
-      dispatch(loadEmployeesSuccess(employees.data));
+    return employeeApi.getAllEmployees().then(employees => {
+    // return axios.get("http://localhost:8080/employees").then(employees => {
+      dispatch(loadEmployeesSuccess(employees));
     }).catch(error => {
       throw (error);
     });

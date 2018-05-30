@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
 import {bindActionCreators} from 'redux';
-import * as employeeActions from '../../actions/employeeActions';
+import * as employeeActions from '../../../../actions/employeeActions';
 import EmployeeList from './EmployeeList';
 
 class EmployeePage extends React.Component {
@@ -10,7 +10,7 @@ class EmployeePage extends React.Component {
     super(props, context);
 
     this.state = {
-      employee: {name: ""}
+      employee: {}
     };
 
     this.onClickSave = this.onClickSave.bind(this);

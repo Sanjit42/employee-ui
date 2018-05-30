@@ -3,9 +3,9 @@ import {Route, IndexRoute} from 'react-router';
 import App from './components/App';
 import AboutApp from './components/aboutApp/AboutPage';
 import HomePage from './components/homePage/HomePage';
-import ManageEmployeePage from './components/employees/ManageEmployeePage';
-import EmployeePage from './components/employees/EmployeePage';
-import ViewEmployee from './components/employees/ViewEmployee';
+import ManageEmployeePage from './components/employees/components/addAndManageEmployee/ManageEmployeePage';
+import EmployeePage from './components/employees/components/addAndManageEmployee/EmployeePage';
+import ViewEmployee from './components/employees/components/addAndManageEmployee/ViewEmployee';
 
 
 export default (

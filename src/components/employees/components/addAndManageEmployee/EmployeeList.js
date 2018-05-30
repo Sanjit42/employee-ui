@@ -17,7 +17,7 @@ const EmployeeList = ({employees}) => {
         </thead>
         <tbody>
         {employees.map((employee, i) =>
-          <EmployeeListRow key={i} employee={employee}/>
+          <EmployeeListRow key={i} employee={employee.basicDetails}/>
         )}
         </tbody>
       </table>

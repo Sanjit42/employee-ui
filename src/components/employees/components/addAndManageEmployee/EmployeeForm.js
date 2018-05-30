@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
-import TextInput from '../common/TextInput';
-import SelectInput from '../common/SelectInput';
+import TextInput from '../../../common/TextInput';
+import SelectInput from '../../../common/SelectInput';
 
 const EmployeeForm = ({employee, homeOffices, gender, errors, onChange, saving, onSave}) => {
   return (

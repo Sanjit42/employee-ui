@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import EmployeeForm from './EmployeeForm';
-import * as employeeActions from '../../actions/employeeActions';
+import * as employeeActions from '../../../../actions/employeeActions';
 
 class ManageEmployeePage extends React.Component {
   constructor(props, context) {

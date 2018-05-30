@@ -3,25 +3,34 @@ import axios from 'axios';
 
 const employees = [
   {
-    name: 'Abhik Roy',
-    gender: 'Man',
-    employeeId: 20312,
-    currentProject: 'Beach',
-    homeOffice: 'Hyderabad',
-    role: 'Developer',
-    avtarData: ''
-  }, {
-    name: 'Amrita Roy',
-    employeeId: 20314,
-    gender: 'Woman',
-    currentProject: 'Core',
-    homeOffice: 'Hyderabad',
-    role: 'Developer',
-    avtarData: ''
-  }
-];
-
-const technical = ['AWS', 'Java', 'Ansible', 'Css', 'Closure'];
+    basicDetails:
+      {
+        name: 'Abhik Roy',
+        gender: 'Male',
+        employeeId: 20312,
+        currentProject: 'Beach',
+        homeOffice: 'Hyderabad',
+        role: 'Developer'
+      },
+    avatar: '',
+    skillsAndAbilities: [{technical: [{'AWS': 4}, {'Java': 2}]}],
+    projectExperience: [{project: 'ThoughtWorks', subProject: 'step', from: "10-02-2017", to: '02-03-2018'}]
+  },
+  {
+    basicDetails:
+      {
+        name: 'Ritesh D',
+        gender: 'Man',
+        employeeId: 20332,
+        currentProject: 'Bahmni',
+        homeOffice: 'Hyderabad',
+        role: 'Developer'
+      },
+    avatar: '',
+    skillsAndAbilities: [{technical: [{'AWS': 3}, {'Java': 5}]}],
+    projectExperience: [{project: 'TrainLine', subProject: 'train', from: "10-12-2016", to: '22-03-2017'}],
+    leaveHistory: [{leaveType: 'Annual Leave', from: '10-02-2018', to: '11-02-2018'}]
+  }];
 
 const homeOffices = ["Hyderabad-India", "Bangalore-India", "Chennai-India", "Pune-India", "Gurgaon-India"];
 const gender = ['Man', 'Woman'];
@@ -30,7 +39,6 @@ function replaceAll(str, find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
 }
 
-//This would be performed on the server in a real app. Just stubbing in.
 const generateId = (employee) => {
   return replaceAll(employee.title, ' ', '-');
 };
@@ -82,14 +90,6 @@ class EmployeeApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], gender));
-      }, delay);
-    });
-  }
-
-  static getTechnical() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(Object.assign([], technical));
       }, delay);
     });
   }

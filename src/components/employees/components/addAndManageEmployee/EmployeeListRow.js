@@ -5,7 +5,7 @@ const EmployeeListRow = ({employee}) => {
   return (
     <tr>
       <td>
-        <Link to={'/employee/' +employee.name}> {employee.name}</Link>
+        <Link to={'/employee/' +employee.employeeId}> {employee.name}</Link>
     </td>
       <td>{employee.gender}</td>
       <td>{employee.employeeId}</td>
