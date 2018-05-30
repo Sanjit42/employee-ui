@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 const ProjectExperience = ({projectExperience}) => {
 
@@ -15,6 +15,10 @@ const ProjectExperience = ({projectExperience}) => {
       )}
     </div>
   );
+};
+
+ProjectExperience.propTypes = {
+  projectExperience: PropTypes.array
 };
 
 export default ProjectExperience;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 const BasicDetails = ({basicDetails}) => {
   return (
@@ -12,6 +12,10 @@ const BasicDetails = ({basicDetails}) => {
       <div>{basicDetails.homeOffice}</div>
     </div>
   );
+};
+
+BasicDetails.propTypes = {
+  basicDetails: PropTypes.object.isRequired
 };
 
 export default BasicDetails;

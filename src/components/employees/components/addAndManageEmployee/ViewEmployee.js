@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import Avatar from '../avtar/Avatar';
 import ProjectExperience from '../projectExperience/ProjectExperience';
 import BasicDetails from '../basic/BasicDetails';
+import LeaveHistory from '../leaveHistory/LeaveHistory';
 
 class ViewEmployee extends React.Component {
   constructor(props, context) {
@@ -16,11 +17,13 @@ class ViewEmployee extends React.Component {
   }
 
   render() {
+    let {employee} = this.state;
     return (
       <div>
         <Avatar/>
-        <BasicDetails basicDetails={this.state.employee.basicDetails}/>
-        <ProjectExperience projectExperience={this.state.employee.projectExperience}/>
+        <BasicDetails basicDetails={employee.basicDetails}/>
+        <ProjectExperience projectExperience={employee.projectExperience}/>
+        <LeaveHistory leaveHistory={employee.leaveHistory}/>
       </div>
     );
   }
