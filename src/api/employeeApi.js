@@ -7,13 +7,18 @@ const employees = [
       {
         name: 'Abhik Roy',
         gender: 'Male',
-        employeeId: 20312,
+        employeeId: 20322,
         currentProject: 'Beach',
         homeOffice: 'Hyderabad',
         role: 'Developer'
       },
     avatar: '',
-    skillsAndAbilities: [{technical: [{'AWS': 4}, {'Java': 2}]}],
+    skillsAndAbilities: [
+      {technical: [{'AWS': 2}, {'Java': 3}]},
+      {consulting: [{'Communication': 4}, {'Executive Advisory': 2}, {'Facilitation': 1}]},
+      {domain: [{'Business Services': 1}, {'Computers & Electronics': 3}, {'Consumer Services': 3, 'Education': 2}]},
+      {testing: [{'Capybara': 2}, {'Cucumber': 0}, {'Fitnesse': 1}]}
+    ],
     projectExperience: [{project: 'ThoughtWorks', subProject: 'step', from: "10-02-2017", to: '02-03-2018'}],
     leaveHistory: [{type: 'Annual Leave', from: '1-03-2018', to: '14-03-2018'}]
   },
@@ -21,20 +26,25 @@ const employees = [
     basicDetails:
       {
         name: 'Ritesh D',
-        gender: 'Man',
-        employeeId: 20332,
+        gender: 'Male',
+        employeeId: 20132,
         currentProject: 'Bahmni',
         homeOffice: 'Hyderabad',
         role: 'Developer'
       },
     avatar: '',
-    skillsAndAbilities: [{technical: [{'AWS': 3}, {'Java': 5}]}],
+    skillsAndAbilities: [
+      {technical: [{'AWS': 3}, {'Java': 4}]},
+      {consulting: [{'Communication': 3}, {'Executive Advisory': 2}, {'Facilitation': 3}]},
+      {domain: [{'Business Services': 1}, {'Computers & Electronics': 3}, {'Consumer Services': 5, 'Education': 4}]},
+      {testing: [{'Capybara': 2}, {'Cucumber': 5}, {'Fitnesse': 4}]}
+    ],
     projectExperience: [{project: 'TrainLine', subProject: 'train', from: "10-12-2016", to: '22-03-2017'}],
     leaveHistory: [{type: 'Annual Leave', from: '10-02-2018', to: '11-02-2018'}]
   }];
 
 const homeOffices = ["Hyderabad-India", "Bangalore-India", "Chennai-India", "Pune-India", "Gurgaon-India"];
-const gender = ['Man', 'Woman'];
+const gender = ['Male', 'Female'];
 
 function replaceAll(str, find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
@@ -71,8 +81,19 @@ class EmployeeApi {
     });
   }
 
+  static updateRating(rating, title) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let key = Object.keys(title)[0];
+        let obj = {};
+        obj[key] = rating;
+        title = Object.assign({}, title, obj);
+        resolve(title);
+      }, delay);
+    });
+  }
+
   static saveAvatar(avatar) {
-    // avatar = Object.assign({}, avatar);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(avatar);

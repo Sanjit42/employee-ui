@@ -6,6 +6,7 @@ import Avatar from '../avtar/Avatar';
 import ProjectExperience from '../projectExperience/ProjectExperience';
 import BasicDetails from '../basic/BasicDetails';
 import LeaveHistory from '../leaveHistory/LeaveHistory';
+import SkillsAndAbilities from '../skillAndAbility/SkillsAndAbilities';
 
 class ViewEmployee extends React.Component {
   constructor(props, context) {
@@ -22,6 +23,7 @@ class ViewEmployee extends React.Component {
       <div>
         <Avatar/>
         <BasicDetails basicDetails={employee.basicDetails}/>
+        <SkillsAndAbilities skillsAndAbilities={employee.skillsAndAbilities}/>
         <ProjectExperience projectExperience={employee.projectExperience}/>
         <LeaveHistory leaveHistory={employee.leaveHistory}/>
       </div>
