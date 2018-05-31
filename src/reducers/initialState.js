@@ -3,5 +3,6 @@ export default {
   homeOffices: [],
   gender: [],
   ajaxCallsInProgress: 0,
-  rating: []
+  rating: [],
+  skillsAndAbilities: []
 };
