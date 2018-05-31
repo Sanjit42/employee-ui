@@ -36,7 +36,7 @@ const employees = [
     skillsAndAbilities: [
       {technical: [{'AWS': 3}, {'Java': 4}]},
       {consulting: [{'Communication': 3}, {'Executive Advisory': 2}, {'Facilitation': 3}]},
-      {domain: [{'Business Services': 1}, {'Computers & Electronics': 3}, {'Consumer Services': 5, 'Education': 4}]},
+      {domain: [{'Business Services': 1}, {'Computers & Electronics': 3}, {'Consumer Services': 5}, {'Education': 4}]},
       {testing: [{'Capybara': 2}, {'Cucumber': 5}, {'Fitnesse': 4}]}
     ],
     projectExperience: [{project: 'TrainLine', subProject: 'train', from: "10-12-2016", to: '22-03-2017'}],
@@ -77,6 +77,15 @@ class EmployeeApi {
         //   .catch(error => {
         // });
         resolve(employee);
+      }, delay);
+    });
+  }
+
+  static saveSkillsAndAbilities(skillsAndAbilities, id) {
+    // skillsAndAbilities = Object.assign({}, skillsAndAbilities);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(skillsAndAbilities);
       }, delay);
     });
   }

@@ -1,7 +1,9 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
+import {bindActionCreators} from 'redux';
 
 import SkillsAndAbilitiesTemplate from './SkillsAndAbilitiesTemplate';
+import * as skillsAndAbilitiesActions from '../../../../actions/skillsAndAbilitiesActions';
 
 class SkillsAndAbilities extends React.Component {
   constructor(props, context) {
@@ -21,6 +23,7 @@ class SkillsAndAbilities extends React.Component {
 
   onSave(event) {
     event.preventDefault();
+    this.props.actions.saveSkillsAndAbilities(this.props.rating, this.props.id);
   }
 
   render() {
@@ -46,18 +49,25 @@ class SkillsAndAbilities extends React.Component {
 
 SkillsAndAbilities.propTypes = {
   rating: PropTypes.array.isRequired,
-  skillsAndAbilities: PropTypes.array.isRequired
+  skillsAndAbilities: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 
 function mapStateToProps(state, ownProps) {
+  let id = ownProps.params.id;
   return {
-    skillsAndAbilities: ownProps.skillsAndAbilities
+    skillsAndAbilities: ownProps.skillsAndAbilities,
+    rating: state.rating,
+    id: id
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    actions: bindActionCreators(skillsAndAbilitiesActions, dispatch)
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SkillsAndAbilities);

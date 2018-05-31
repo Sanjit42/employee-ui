@@ -13,7 +13,8 @@ class ViewEmployee extends React.Component {
     super(props, context);
 
     this.state = {
-      employee: Object.assign({}, this.props.employee)
+      employee: Object.assign({}, this.props.employee),
+      id: this.props.id
     };
   }
 
@@ -23,7 +24,7 @@ class ViewEmployee extends React.Component {
       <div>
         <Avatar/>
         <BasicDetails basicDetails={employee.basicDetails}/>
-        <SkillsAndAbilities skillsAndAbilities={employee.skillsAndAbilities}/>
+        <SkillsAndAbilities skillsAndAbilities={employee.skillsAndAbilities} id={this.state.id}/>
         <ProjectExperience projectExperience={employee.projectExperience}/>
         <LeaveHistory leaveHistory={employee.leaveHistory}/>
       </div>
@@ -32,7 +33,8 @@ class ViewEmployee extends React.Component {
 }
 
 ViewEmployee.propTypes = {
-  employee: PropTypes.array.isRequired
+  employee: PropTypes.array.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 function getEmployeeById(employees, id) {
@@ -47,7 +49,8 @@ function mapStateToProps(state, ownProps) {
     employee = getEmployeeById(state.employees, id);
   }
   return {
-    employee: employee
+    employee: employee,
+    id: id
   };
 }
 
