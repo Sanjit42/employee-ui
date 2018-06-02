@@ -4,5 +4,10 @@ export default {
   gender: [],
   ajaxCallsInProgress: 0,
   rating: [],
-  skillsAndAbilities: []
+  skillsAndAbilities: [],
+  technical: [],
+  testing: [],
+  domain: [],
+  consulting: [],
+  avatar: []
 };

@@ -41,11 +41,10 @@ Rating.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  let {template} = ownProps;
-  let {title} = ownProps;
-  let rating = Object.values(title);
+  let {rating} = ownProps;
+  let noOfRating = Object.values(rating);
   return {
-    rating: rating[0]
+    rating: noOfRating[0]
   };
 }
 

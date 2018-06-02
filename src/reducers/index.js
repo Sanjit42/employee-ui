@@ -7,7 +7,10 @@ import homeOffices from './homeOfficesReducer';
 import gender from './genderReducer';
 import avatar from './avatarReducer';
 import rating from './ratingReducer';
-import skillsAndAbilities from './skillsAndAbilitiesReducer';
+import technical from './technicalReducer';
+import testing from './testingReducer';
+import consulting from './consultingReducer';
+import domain from './domainReducer';
 
 const rootReducer = combineReducers({
   ajaxCallsInProgress,
@@ -16,7 +19,10 @@ const rootReducer = combineReducers({
   gender,
   avatar,
   rating,
-  skillsAndAbilities
+  technical,
+  testing,
+  domain,
+  consulting
 });
 
 export default rootReducer;

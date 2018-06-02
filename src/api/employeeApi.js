@@ -1,6 +1,8 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-undef,import/namespace,import/default */
 import delay from './delay';
 import axios from 'axios';
+
+import avatar from '../resources/images/avatar.svg';
 
 const employees = [
   {
@@ -13,13 +15,6 @@ const employees = [
         homeOffice: 'Hyderabad',
         role: 'Developer'
       },
-    avatar: '',
-    skillsAndAbilities: [
-      {technical: [{'AWS': 2}, {'Java': 3}]},
-      {consulting: [{'Communication': 4}, {'Executive Advisory': 2}, {'Facilitation': 1}]},
-      {domain: [{'Business Services': 1}, {'Computers & Electronics': 3}, {'Consumer Services': 3, 'Education': 2}]},
-      {testing: [{'Capybara': 2}, {'Cucumber': 0}, {'Fitnesse': 1}]}
-    ],
     projectExperience: [{project: 'ThoughtWorks', subProject: 'step', from: "10-02-2017", to: '02-03-2018'}],
     leaveHistory: [{type: 'Annual Leave', from: '1-03-2018', to: '14-03-2018'}]
   },
@@ -33,16 +28,20 @@ const employees = [
         homeOffice: 'Hyderabad',
         role: 'Developer'
       },
-    avatar: '',
-    skillsAndAbilities: [
-      {technical: [{'AWS': 3}, {'Java': 4}]},
-      {consulting: [{'Communication': 3}, {'Executive Advisory': 2}, {'Facilitation': 3}]},
-      {domain: [{'Business Services': 1}, {'Computers & Electronics': 3}, {'Consumer Services': 5}, {'Education': 4}]},
-      {testing: [{'Capybara': 2}, {'Cucumber': 5}, {'Fitnesse': 4}]}
-    ],
     projectExperience: [{project: 'TrainLine', subProject: 'train', from: "10-12-2016", to: '22-03-2017'}],
     leaveHistory: [{type: 'Annual Leave', from: '10-02-2018', to: '11-02-2018'}]
   }];
+
+const technical = [{employeeId: 20132, skills: [{'AWS': 2}, {'Java': 3}]}];
+const consulting = [{
+  employeeId: 20322,
+  skills: [{'Communication': 4}, {'Executive Advisory': 2}, {'Facilitation': 1}]
+}];
+const domain = [{
+  employeeId: 20132,
+  skills: [{'Business Services': 1}, {'Computers & Electronics': 3}, {'Consumer Services': 3, 'Education': 2}]
+}];
+const testing = [{employeeId: 20322, skills: [{'Capybara': 2}, {'Cucumber': 0}, {'Fitnesse': 1}]}];
 
 const homeOffices = ["Hyderabad-India", "Bangalore-India", "Chennai-India", "Pune-India", "Gurgaon-India"];
 const gender = ['Male', 'Female'];
@@ -72,11 +71,6 @@ class EmployeeApi {
         if (employee.basicDetails.name.length < minEmployeeTitleLength) {
           reject(`Title must be at least ${minEmployeeTitleLength} characters.`);
         }
-        // axios.post('http://localhost:8080/employee', employee).then(res => {
-        //   resolve(employee);
-        // })
-        //   .catch(error => {
-        // });
         resolve(employee);
       }, delay);
     });
@@ -118,12 +112,7 @@ class EmployeeApi {
   static loadAvatar() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        axios.get('http://localhost:8080/employee/avatar').then(res => {
-          resolve(res.data);
-        })
-          .catch(error => {
-            throws(error);
-          });
+        resolve([{employeeId: 20322, image: avatar}]);
       }, delay);
     });
   }
@@ -140,6 +129,38 @@ class EmployeeApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], gender));
+      }, delay);
+    });
+  }
+
+  static loadTechnicalSkills() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], technical));
+      }, delay);
+    });
+  }
+
+  static loadConsultingSkills() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], consulting));
+      }, delay);
+    });
+  }
+
+  static loadTestingSkills() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], testing));
+      }, delay);
+    });
+  }
+
+  static loadDomainSkills() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], domain));
       }, delay);
     });
   }

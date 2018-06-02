@@ -3,7 +3,8 @@ import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 
 import SkillsAndAbilitiesTemplate from './SkillsAndAbilitiesTemplate';
-import * as skillsAndAbilitiesActions from '../../../../actions/skillsAndAbilitiesActions';
+import * as technicalActions from '../../../../actions/testingActions';
+import Rating from './Rating';
 
 class SkillsAndAbilities extends React.Component {
   constructor(props, context) {
@@ -11,7 +12,8 @@ class SkillsAndAbilities extends React.Component {
 
     this.state = {
       saving: false,
-      skillsAndAbilities: Object.assign([], this.props.skillsAndAbilities)
+      skillsAndAbilities: Object.assign([], this.props.skillsAndAbilities),
+      template: this.props.template
     };
 
     this.onSave = this.onSave.bind(this);
@@ -31,9 +33,11 @@ class SkillsAndAbilities extends React.Component {
       <div className="col-md-12">
         <form>
           <div className="container-fluid">
+            <h2>{this.props.template}</h2>
             {this.state.skillsAndAbilities.map(each =>
-              <div className="col-md-6">
-                <SkillsAndAbilitiesTemplate skillsAndAbilities={each}/>
+              <div>
+                {Object.keys(each)}
+                <Rating rating={each}/>
               </div>
             )}
           </div>
@@ -56,7 +60,8 @@ SkillsAndAbilities.propTypes = {
   rating: PropTypes.array.isRequired,
   skillsAndAbilities: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  template: PropTypes.string.isRequired
 };
 
 
@@ -65,13 +70,14 @@ function mapStateToProps(state, ownProps) {
   return {
     skillsAndAbilities: ownProps.skillsAndAbilities,
     rating: state.rating,
-    id: id
+    id: id,
+    template: ownProps.template
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(skillsAndAbilitiesActions, dispatch)
+    // technicalActions: bindActionCreators(technicalActions, dispatch)
   };
 }
 

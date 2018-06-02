@@ -1,7 +1,8 @@
 /* eslint-disable import/namespace */
 import * as types from '../constants/constant';
+import initialState from './initialState';
 
-export default function avatarReducer(state = [], action) {
+export default function avatarReducer(state = initialState.avatar, action) {
   switch (action.type) {
     case types.UPDATE_AVATAR_SUCCESS:
       return action.avatar;

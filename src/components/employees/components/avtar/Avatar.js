@@ -13,7 +13,7 @@ class Avatar extends React.Component {
 
     this.state = {
       file: '',
-      avatar: this.props.avatar? this.props.avatar :DefaultAvatar,
+      avatar: this.props.avatar != '' ? this.props.avatar : DefaultAvatar,
       id: this.props.id
     };
     this.saveAvatar = this.saveAvatar.bind(this);
@@ -70,17 +70,20 @@ Avatar.propTypes = {
   actions: PropTypes.object.isRequired
 };
 
-function findAvatarById(avatar, id){
+function findAvatarById(avatar, id) {
   let avatarArray = avatar.filter(avatar => avatar.id == id);
-  if(avatarArray) return avatar[0];
+  if (avatarArray) return avatar[0].image;
 }
 
 function mapStateToProps(state, ownProps) {
   let id = ownProps.id;
-  let avatar = findAvatarById(state.avatar, id);
+  let avatar = '';
+  if (state.avatar.length > 0) {
+    avatar = findAvatarById(state.avatar, id);
+  }
   return {
     id: ownProps.id,
-    avatar: avatar.image
+    avatar: avatar
   };
 }
 
