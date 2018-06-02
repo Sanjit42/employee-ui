@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import delay from './delay';
 import axios from 'axios';
 
@@ -82,7 +83,6 @@ class EmployeeApi {
   }
 
   static saveSkillsAndAbilities(skillsAndAbilities, id) {
-    // skillsAndAbilities = Object.assign({}, skillsAndAbilities);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(skillsAndAbilities);
@@ -105,7 +105,25 @@ class EmployeeApi {
   static saveAvatar(avatar) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(avatar);
+        axios.post('http://localhost:8080/employee/avatar/employeeId', avatar).then(res => {
+          resolve(avatar);
+        })
+          .catch(error => {
+            throws(error);
+          });
+      }, delay);
+    });
+  }
+
+  static loadAvatar() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        axios.get('http://localhost:8080/employee/avatar').then(res => {
+          resolve(res.data);
+        })
+          .catch(error => {
+            throws(error);
+          });
       }, delay);
     });
   }

@@ -22,7 +22,7 @@ class ViewEmployee extends React.Component {
     let {employee} = this.state;
     return (
       <div>
-        <Avatar/>
+        <Avatar id={this.state.id}/>
         <BasicDetails basicDetails={employee.basicDetails}/>
         <SkillsAndAbilities skillsAndAbilities={employee.skillsAndAbilities} id={this.state.id}/>
         <ProjectExperience projectExperience={employee.projectExperience}/>

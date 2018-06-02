@@ -1,9 +1,9 @@
-/* eslint-disable import/namespace */
+/* eslint-disable import/namespace,import/default */
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import DefaultAvatar from '../../../../resources/images/avatar.svg';
-import {bindActionCreators} from 'redux';
 import * as avatarActions from "../../../../actions/avatarActions";
 
 
@@ -11,7 +11,11 @@ class Avatar extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.state = {file: '', imagePreviewUrl: DefaultAvatar};
+    this.state = {
+      file: '',
+      avatar: this.props.avatar? this.props.avatar :DefaultAvatar,
+      id: this.props.id
+    };
     this.saveAvatar = this.saveAvatar.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
   }
@@ -28,22 +32,21 @@ class Avatar extends React.Component {
     e.preventDefault();
 
     let reader = new FileReader();
-
     reader.onloadend = () => {
       this.setState({
-        imagePreviewUrl: reader.result
+        avatar: reader.result
       });
     };
 
     reader.readAsDataURL(this.state.file);
-    this.props.actions.saveAvatar(this.state.avatar);
+    this.props.actions.saveAvatar({employeeId: this.state.id, image: this.state.avatar});
   }
 
   render() {
-    let {imagePreviewUrl} = this.state;
+    let {avatar} = this.state;
     let $imagePreview = null;
-    if (imagePreviewUrl) {
-      $imagePreview = (<img src={imagePreviewUrl}/>);
+    if (avatar) {
+      $imagePreview = (<img src={avatar}/>);
     }
     return (
       <div className="previewComponent">
@@ -67,9 +70,17 @@ Avatar.propTypes = {
   actions: PropTypes.object.isRequired
 };
 
+function findAvatarById(avatar, id){
+  let avatarArray = avatar.filter(avatar => avatar.id == id);
+  if(avatarArray) return avatar[0];
+}
+
 function mapStateToProps(state, ownProps) {
+  let id = ownProps.id;
+  let avatar = findAvatarById(state.avatar, id);
   return {
-    avatar: state.avatar
+    id: ownProps.id,
+    avatar: avatar.image
   };
 }
 
