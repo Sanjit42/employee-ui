@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import Rating from './Rating';
 
-const SkillsAndAbilities = ({skillsAndAbilities}) => {
+const SkillsAndAbilities = ({skillsAndAbilities, id}) => {
   let template = Object.keys(skillsAndAbilities)[0];
   let values = Object.values(skillsAndAbilities)[0];
   return (
@@ -11,8 +11,9 @@ const SkillsAndAbilities = ({skillsAndAbilities}) => {
           <div>
             {Object.keys(element)}
             <Rating
-              title={element}
-              template={skillsAndAbilities}
+              rating={element}
+              template={template}
+              id={id}
             />
           </div>
         )}
@@ -22,7 +23,7 @@ const SkillsAndAbilities = ({skillsAndAbilities}) => {
 
 SkillsAndAbilities.propTypes = {
   skillsAndAbilities: PropTypes.object.isRequired,
-  rating: PropTypes.number
+  id: PropTypes.string.isRequired
 };
 
 export default SkillsAndAbilities;

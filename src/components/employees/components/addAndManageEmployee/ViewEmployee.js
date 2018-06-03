@@ -30,16 +30,7 @@ class ViewEmployee extends React.Component {
         <Avatar id={this.state.id}/>
         <BasicDetails basicDetails={employee.basicDetails}/>
         <div>
-          <form>
-            {this.state.technical.length > 0 &&
-            <SkillsAndAbilities skillsAndAbilities={this.state.technical} template={"Technical"} id={this.state.id}/>}
-            {this.state.testing.length > 0 &&
-            <SkillsAndAbilities skillsAndAbilities={this.state.testing} template={"Testing"} id={this.state.id}/>}
-            {this.state.consulting.length > 0 &&
-            <SkillsAndAbilities skillsAndAbilities={this.state.consulting} template={"Consulting"} id={this.state.id}/>}
-            {this.state.domain.length > 0 &&
-            <SkillsAndAbilities skillsAndAbilities={this.state.domain} template={"Domain"} id={this.state.id}/>}
-          </form>
+          <SkillsAndAbilities skillsAndAbilities={employee.skillsAndAbilities} id={this.state.id}/>
         </div>
         <ProjectExperience projectExperience={employee.projectExperience}/>
         <LeaveHistory leaveHistory={employee.leaveHistory}/>

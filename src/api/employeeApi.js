@@ -3,19 +3,25 @@ import delay from './delay';
 import axios from 'axios';
 import _ from 'lodash';
 
-// import avatar from '../resources/images/avatar.svg';
-let avatar = '';
+import avatar from '../resources/images/avatar.svg';
 const employees = [
   {
     basicDetails:
       {
         name: 'Abhik Roy',
         gender: 'Male',
-        employeeId: 20322,
+        employeeId: 21322,
         currentProject: 'Beach',
         homeOffice: 'Hyderabad',
         role: 'Developer'
       },
+    avatar: '',
+    skillsAndAbilities: [
+      {technical: [{'AWS': 2}, {'Java': 3}]},
+      {consulting: [{'communication': 4}, {'planning': 2}, {'questioning': 1}]},
+      {domain: [{'government': 1}, {'education': 2}]},
+      {testing: [{'capybara': 2}, {'cucumber': 0}, {'fitnesse': 1}]}
+    ],
     projectExperience: [{project: 'ThoughtWorks', subProject: 'step', from: "10-02-2017", to: '02-03-2018'}],
     leaveHistory: [{type: 'Annual Leave', from: '1-03-2018', to: '14-03-2018'}]
   },
@@ -24,11 +30,18 @@ const employees = [
       {
         name: 'Ritesh D',
         gender: 'Male',
-        employeeId: 20132,
+        employeeId: 21132,
         currentProject: 'Bahmni',
         homeOffice: 'Hyderabad',
         role: 'Developer'
       },
+    avatar: '',
+    skillsAndAbilities: [
+      {technical: [{'AWS': 3}, {'Java': 4}]},
+      {consulting: [{'communication': 4}, {'planning': 3}, {'questioning': 2}]},
+      {domain: [{'government': 1}, {'education': 3}]},
+      {testing: [{'capybara': 2}, {'cucumber': 0}, {'fitnesse': 2}]}
+    ],
     projectExperience: [{project: 'TrainLine', subProject: 'train', from: "10-12-2016", to: '22-03-2017'}],
     leaveHistory: [{type: 'Annual Leave', from: '10-02-2018', to: '11-02-2018'}]
   }];

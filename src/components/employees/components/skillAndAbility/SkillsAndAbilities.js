@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 
 import * as skillsAndAbilitiesActions from '../../../../actions/skillsAndAbilitiesActions';
+import SkillsAndAbilitiesTemplate from './SkillsAndAbilitiesTemplate';
 import Rating from './Rating';
 
 class SkillsAndAbilities extends React.Component {
@@ -31,13 +32,14 @@ class SkillsAndAbilities extends React.Component {
       <div className="col-md-12">
         <form>
           <div className="container-fluid">
-            <h2>{this.props.template}</h2>
-            {this.state.skillsAndAbilities.map(each =>
-              <div>
-                {Object.keys(each)}
-                <Rating rating={each} id={this.props.id} template={this.props.template}/>
-              </div>
-            )}
+
+            <div className="container-fluid">
+              {this.state.skillsAndAbilities.map(each =>
+                <div className="col-md-6">
+                  <SkillsAndAbilitiesTemplate skillsAndAbilities={each} id={this.props.id}/>
+                </div>
+              )}
+            </div>
           </div>
 
           <input
