@@ -7,7 +7,6 @@ import ProjectExperience from '../projectExperience/ProjectExperience';
 import BasicDetails from '../basic/BasicDetails';
 import LeaveHistory from '../leaveHistory/LeaveHistory';
 import SkillsAndAbilities from '../skillAndAbility/SkillsAndAbilities';
-import TechnicalSkills from '../skillAndAbility/TechnicalSkills';
 
 class ViewEmployee extends React.Component {
   constructor(props, context) {
@@ -15,11 +14,7 @@ class ViewEmployee extends React.Component {
 
     this.state = {
       employee: Object.assign({}, this.props.employee),
-      id: this.props.id,
-      consulting: Object.assign([], this.props.consulting),
-      domain: Object.assign([], this.props.domain),
-      testing: Object.assign([], this.props.testing),
-      technical: Object.assign([], this.props.technical)
+      id: this.props.id
     };
   }
 
@@ -41,21 +36,12 @@ class ViewEmployee extends React.Component {
 
 ViewEmployee.propTypes = {
   employee: PropTypes.array.isRequired,
-  id: PropTypes.string.isRequired,
-  testing: PropTypes.array,
-  technical: PropTypes.array,
-  domain: PropTypes.array,
-  consulting: PropTypes.array
+  id: PropTypes.string.isRequired
 };
 
 function getEmployeeById(employees, id) {
   let filterEmployees = employees.filter(employee => employee.basicDetails.employeeId == id);
   if (filterEmployees) return filterEmployees[0];
-}
-
-function getSkillsById(skills, id) {
-  let filterSkills = skills.filter(skill => skill.employeeId == id);
-  if (filterSkills.length > 0) return filterSkills[0].skills;
 }
 
 function mapStateToProps(state, ownProps) {
@@ -65,18 +51,9 @@ function mapStateToProps(state, ownProps) {
     employee = getEmployeeById(state.employees, id);
   }
 
-  let technical = getSkillsById(state.technical, id);
-  let testing = getSkillsById(state.testing, id);
-  let domain = getSkillsById(state.domain, id);
-  let consulting = getSkillsById(state.consulting, id);
-
   return {
     employee: employee,
-    id: id,
-    consulting: consulting,
-    domain: domain,
-    testing: testing,
-    technical: technical
+    id: id
   };
 }
 
