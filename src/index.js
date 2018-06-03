@@ -6,6 +6,7 @@ import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import {browserHistory, Router} from 'react-router';
 import routes from './routes';
+
 import {loadHomeOffices} from "./actions/homeOfficesActions";
 import {loadEmployees} from "./actions/employeeActions";
 import {loadGender} from "./actions/genderActions";

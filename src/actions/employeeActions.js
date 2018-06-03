@@ -7,14 +7,6 @@ export function createEmployeeSuccess(employee) {
   return {type: types.CREATE_EMPLOYEE_SUCCESS, employee};
 }
 
-export function createEmployee(employee) {
-  return {type: types.CREATE_EMPLOYEE_SUCCESS, employee};
-}
-
-export function updateEmployeeSuccess(employee) {
-  return {type: types.UPDATE_EMPLOYEE_SUCCESS, employee};
-}
-
 export function loadEmployeesSuccess(employees) {
   return {type: types.LOAD_EMPLOYEES_SUCCESS, employees};
 }

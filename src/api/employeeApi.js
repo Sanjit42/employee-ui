@@ -103,24 +103,13 @@ class EmployeeApi {
       });
       return result;
     }
-
-    //
-    // let technical = splitSkillsValues.Technical.length >0 && getSkillsRatingObjet(splitSkillsValues.Technical);
-    // let testing = splitSkillsValues.Testing.length > 0 && getSkillsRatingObjet(splitSkillsValues.Testing);
-    // let consulting =splitSkillsValues.Consulting.length > 0 && getSkillsRatingObjet(splitSkillsValues.Consulting);
-    // let domain =splitSkillsValues.Domain.length > 0 && getSkillsRatingObjet(splitSkillsValues.Domain);
-
-
-    // return getOnlychild(domain);
-
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         _.each(subset, (eachSubset) => {
           let presubsetData = getSkillsRatingObjet(splitSkillsValues[eachSubset]);
           let subsetData = Object.assign(presubsetData, {employeeId: id});
           axios.post('http://localhost:8080/employee/' + eachSubset, subsetData).then(res => {
-            console.log(res);
-          })
+          });
         });
         resolve(skillsAndAbilities);
       }, delay);
