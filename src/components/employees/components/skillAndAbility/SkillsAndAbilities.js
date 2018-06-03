@@ -32,16 +32,12 @@ class SkillsAndAbilities extends React.Component {
       <div className="col-md-12">
         <form>
           <div className="container-fluid">
-
-            <div className="container-fluid">
-              {this.state.skillsAndAbilities.map(each =>
-                <div className="col-md-6">
-                  <SkillsAndAbilitiesTemplate skillsAndAbilities={each} id={this.props.id}/>
-                </div>
-              )}
-            </div>
+            {this.state.skillsAndAbilities.map(each =>
+              <div className="col-md-6">
+                <SkillsAndAbilitiesTemplate skillsAndAbilities={each} id={this.props.id}/>
+              </div>
+            )}
           </div>
-
           <input
             name="submit"
             disabled={this.state.saving}
