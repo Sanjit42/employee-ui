@@ -67,7 +67,9 @@ class Avatar extends React.Component {
 }
 
 Avatar.propTypes = {
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  avatar: PropTypes.string,
+  id: PropTypes.string
 };
 
 function findAvatarById(avatar, id) {
