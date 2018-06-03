@@ -2,8 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 
-import SkillsAndAbilitiesTemplate from './SkillsAndAbilitiesTemplate';
-import * as technicalActions from '../../../../actions/testingActions';
+import * as skillsAndAbilitiesActions from '../../../../actions/skillsAndAbilitiesActions';
 import Rating from './Rating';
 
 class SkillsAndAbilities extends React.Component {
@@ -12,8 +11,7 @@ class SkillsAndAbilities extends React.Component {
 
     this.state = {
       saving: false,
-      skillsAndAbilities: Object.assign([], this.props.skillsAndAbilities),
-      template: this.props.template
+      skillsAndAbilities: Object.assign([], this.props.skillsAndAbilities)
     };
 
     this.onSave = this.onSave.bind(this);
@@ -37,7 +35,7 @@ class SkillsAndAbilities extends React.Component {
             {this.state.skillsAndAbilities.map(each =>
               <div>
                 {Object.keys(each)}
-                <Rating rating={each}/>
+                <Rating rating={each} id={this.props.id} template={this.props.template}/>
               </div>
             )}
           </div>
@@ -77,7 +75,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // technicalActions: bindActionCreators(technicalActions, dispatch)
+    actions: bindActionCreators(skillsAndAbilitiesActions, dispatch)
   };
 }
 

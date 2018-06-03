@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import StarRatingComponent from 'react-star-rating-component';
-import * as ratingActions from '../../../../actions/ratingActions';
+import * as technicalActions from '../../../../actions/technicalActions';
 
-class Rating extends React.Component {
+class TechnicalRating extends React.Component {
   constructor(props) {
     super(props);
 
@@ -17,7 +17,7 @@ class Rating extends React.Component {
   }
 
   onStarClick(nextValue) {
-    this.props.actions.updateRatingValue(nextValue, this.props.ratingWithType, this.props.id, this.props.template);
+    this.props.actions.updateTechnicalSkills(nextValue, this.props.ratingWithType, this.props.id);
     this.setState({rating: nextValue});
   }
 
@@ -35,12 +35,11 @@ class Rating extends React.Component {
   }
 }
 
-Rating.propTypes = {
+TechnicalRating.propTypes = {
   rating: PropTypes.number.isRequired,
-  actions: PropTypes.func.isRequired,
+  actions: PropTypes.object.isRequired,
   ratingWithType: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired,
-  template: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -50,14 +49,14 @@ function mapStateToProps(state, ownProps) {
   return {
     rating: noOfRating[0],
     ratingWithType: rating,
-    template: ownProps.template
+    id: id
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ratingActions, dispatch)
+    actions: bindActionCreators(technicalActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Rating);
+export default connect(mapStateToProps, mapDispatchToProps)(TechnicalRating);

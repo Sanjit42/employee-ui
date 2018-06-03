@@ -7,6 +7,7 @@ import homeOffices from './homeOfficesReducer';
 import gender from './genderReducer';
 import avatar from './avatarReducer';
 import rating from './ratingReducer';
+import technicalRating from './technicalRatingReducer';
 import technical from './technicalReducer';
 import testing from './testingReducer';
 import consulting from './consultingReducer';
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   technical,
   testing,
   domain,
-  consulting
+  consulting,
+  technicalRating
 });
 
 export default rootReducer;

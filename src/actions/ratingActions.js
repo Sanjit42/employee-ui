@@ -7,10 +7,10 @@ export function updateRatingSuccess(rating) {
   return {type: types.UPDATE_RATING_SUCCESS, rating};
 }
 
-export function updateRating(rating, title, template) {
+export function updateRatingValue(rating, title,id, template) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
-    return employeeApi.updateRating(rating, title, template).then(updateRating => {
+    return employeeApi.updateRatingValue(rating, title, id, template).then(updateRating => {
       dispatch(updateRatingSuccess(updateRating));
     }).catch(error => {
       throw (error);

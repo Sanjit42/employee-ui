@@ -7,6 +7,7 @@ import ProjectExperience from '../projectExperience/ProjectExperience';
 import BasicDetails from '../basic/BasicDetails';
 import LeaveHistory from '../leaveHistory/LeaveHistory';
 import SkillsAndAbilities from '../skillAndAbility/SkillsAndAbilities';
+import TechnicalSkills from '../skillAndAbility/TechnicalSkills';
 
 class ViewEmployee extends React.Component {
   constructor(props, context) {

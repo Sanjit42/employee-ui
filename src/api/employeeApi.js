@@ -1,9 +1,10 @@
-/* eslint-disable no-undef,import/namespace,import/default */
+/* eslint-disable no-undef,import/namespace,import/default,no-unreachable */
 import delay from './delay';
 import axios from 'axios';
+import _ from 'lodash';
 
-import avatar from '../resources/images/avatar.svg';
-
+// import avatar from '../resources/images/avatar.svg';
+let avatar = '';
 const employees = [
   {
     basicDetails:
@@ -32,16 +33,16 @@ const employees = [
     leaveHistory: [{type: 'Annual Leave', from: '10-02-2018', to: '11-02-2018'}]
   }];
 
-const technical = [{employeeId: 20132, skills: [{'AWS': 2}, {'Java': 3}]}];
+const technical = [{employeeId: 20132, skills: [{'AWS': 2}, {'java': 3}]}];
 const consulting = [{
   employeeId: 20322,
-  skills: [{'Communication': 4}, {'Executive Advisory': 2}, {'Facilitation': 1}]
+  skills: [{'communication': 4}, {'planning': 2}, {'questioning': 1}]
 }];
 const domain = [{
   employeeId: 20132,
-  skills: [{'Business Services': 1}, {'Computers & Electronics': 3}, {'Consumer Services': 3, 'Education': 2}]
+  skills: [{'government': 1}, {'education': 2}]
 }];
-const testing = [{employeeId: 20322, skills: [{'Capybara': 2}, {'Cucumber': 0}, {'Fitnesse': 1}]}];
+const testing = [{employeeId: 20322, skills: [{'capybara': 2}, {'cucumber': 0}, {'fitnesse': 1}]}];
 
 const homeOffices = ["Hyderabad-India", "Bangalore-India", "Chennai-India", "Pune-India", "Gurgaon-India"];
 const gender = ['Male', 'Female'];
@@ -77,19 +78,50 @@ class EmployeeApi {
   }
 
   static saveSkillsAndAbilities(skillsAndAbilities, id) {
+    let filterSkills = skillsAndAbilities.filter(skills => skills.employeeId === id);
+    let splitSkillsValues = _.groupBy(filterSkills, 'subset');
+
+    let subset = Object.keys(splitSkillsValues);
+
+    function getSkillsRatingObjet(skills) {
+      let result = {};
+      _.each(skills, function (each) {
+        result = Object.assign({}, result, _.omit(each, 'subset', 'employeeId'));
+      });
+      return result;
+    }
+
+    //
+    // let technical = splitSkillsValues.Technical.length >0 && getSkillsRatingObjet(splitSkillsValues.Technical);
+    // let testing = splitSkillsValues.Testing.length > 0 && getSkillsRatingObjet(splitSkillsValues.Testing);
+    // let consulting =splitSkillsValues.Consulting.length > 0 && getSkillsRatingObjet(splitSkillsValues.Consulting);
+    // let domain =splitSkillsValues.Domain.length > 0 && getSkillsRatingObjet(splitSkillsValues.Domain);
+
+
+    // return getOnlychild(domain);
+
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        _.each(subset, (eachSubset) => {
+          let presubsetData = getSkillsRatingObjet(splitSkillsValues[eachSubset]);
+          let subsetData = Object.assign(presubsetData, {employeeId: id});
+          axios.post('http://localhost:8080/employee/' + eachSubset, subsetData).then(res => {
+            console.log(res);
+          })
+        });
         resolve(skillsAndAbilities);
       }, delay);
     });
   }
 
-  static updateRating(rating, title) {
+  static updateRatingValue(rating, title, id, template) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         let key = Object.keys(title)[0];
         let obj = {};
         obj[key] = rating;
+        obj['subset'] = template;
+        obj['employeeId'] = id;
         title = Object.assign({}, title, obj);
         resolve(title);
       }, delay);
@@ -137,6 +169,17 @@ class EmployeeApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], technical));
+      }, delay);
+    });
+  }
+
+  static updateTechnicalSkills(newRating, technicalSkillsObj, id) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let key = Object.keys(technicalSkillsObj)[0];
+        let obj = {};
+        obj[key] = newRating;
+        resolve(Object.assign([], [{employeeId: id, rating: obj}]));
       }, delay);
     });
   }

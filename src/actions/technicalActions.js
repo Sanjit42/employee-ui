@@ -16,3 +16,18 @@ export function loadTechnicalSkills(technicalSkills, id) {
     });
   };
 }
+
+export function updateTechnicalRatingSuccess(updateRating) {
+  return {type: types.UPDATE_TECHNICAL_SKILLS_SUCCESS, updateRating};
+}
+
+export function updateTechnicalSkills(rating, titleratingObj, id) {
+  return function (dispatch, getState) {
+    dispatch(beginAjaxCall());
+    return employeeApi.updateTechnicalSkills(rating, titleratingObj, id).then(updateRating => {
+      dispatch(updateTechnicalRatingSuccess(updateRating));
+    }).catch(error => {
+      throw (error);
+    });
+  };
+}
