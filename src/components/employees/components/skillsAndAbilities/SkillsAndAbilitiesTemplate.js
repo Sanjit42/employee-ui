@@ -1,18 +1,18 @@
 import React, {PropTypes} from 'react';
 import Rating from './Rating';
 
-const SkillsAndAbilities = ({skillsAndAbilities, id}) => {
-  let template = Object.keys(skillsAndAbilities)[0];
-  let values = Object.values(skillsAndAbilities)[0];
+const SkillsAndAbilities = ({skillsAndAbilities, subset, id}) => {
+  let keys = Object.keys(skillsAndAbilities);
   return (
     <div>
-      <h2>{template}</h2>
-        {values.map(element =>
+      <h2>{subset}</h2>
+        {keys.map(element =>
           <div>
-            {Object.keys(element)}
+            {element}
             <Rating
-              rating={element}
-              template={template}
+              rating={skillsAndAbilities[element]}
+              topic={element}
+              template={subset}
               id={id}
             />
           </div>
@@ -23,6 +23,7 @@ const SkillsAndAbilities = ({skillsAndAbilities, id}) => {
 
 SkillsAndAbilities.propTypes = {
   skillsAndAbilities: PropTypes.object.isRequired,
+  subset: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired
 };
 

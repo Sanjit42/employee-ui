@@ -17,7 +17,8 @@ class Rating extends React.Component {
   }
 
   onStarClick(nextValue) {
-    this.props.actions.updateRatingValue(nextValue, this.props.ratingWithType, this.props.id, this.props.template);
+    let {props} = this;
+    this.props.actions.updateRatingValue(nextValue, props.topic, props.id, props.template);
     this.setState({rating: nextValue});
   }
 
@@ -38,18 +39,22 @@ class Rating extends React.Component {
 Rating.propTypes = {
   rating: PropTypes.number.isRequired,
   actions: PropTypes.func.isRequired,
-  ratingWithType: PropTypes.object.isRequired,
+  topic: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
   template: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-  let id = ownProps.id;
-  let {rating} = ownProps;
-  let noOfRating = Object.values(rating);
+  // let id = ownProps.id;
+  // let topic = ownProps.topic;
+  // let template = ownProps.template;
+  // let rating = ownProps.rating;
+  //
+  // // let noOfRating = Object.values(rating);
   return {
-    rating: noOfRating[0],
-    ratingWithType: rating,
+    id: ownProps.id,
+    rating: ownProps.rating,
+    topic: ownProps.topic,
     template: ownProps.template
   };
 }

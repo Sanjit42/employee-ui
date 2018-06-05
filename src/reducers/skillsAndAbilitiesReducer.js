@@ -6,6 +6,8 @@ export default function ratingReducer(state = initialState.skillsAndAbilities, a
   switch (action.type) {
     case types.SAVE_SKILLS_AND_ABILITIES_SUCCESS:
       return action.skillsAndAbilities;
+    case types.LOAD_SKILLS_AND_ABILITIES_SUCCESS:
+      return action.skillsAndAbilities;
     default:
       return state;
   }
