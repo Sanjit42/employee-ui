@@ -4,6 +4,7 @@ import axios from 'axios';
 import _ from 'lodash';
 
 import avatar from '../resources/images/avatar.svg';
+
 const employees = [
   {
     basicDetails:
@@ -15,7 +16,6 @@ const employees = [
         homeOffice: 'Hyderabad',
         role: 'Developer'
       },
-    avatar: '',
     skillsAndAbilities: [
       {technical: [{'AWS': 2}, {'Java': 3}]},
       {consulting: [{'communication': 4}, {'planning': 2}, {'questioning': 1}]},
@@ -35,7 +35,6 @@ const employees = [
         homeOffice: 'Hyderabad',
         role: 'Developer'
       },
-    avatar: '',
     skillsAndAbilities: [
       {technical: [{'AWS': 3}, {'Java': 4}]},
       {consulting: [{'communication': 4}, {'planning': 3}, {'questioning': 2}]},
@@ -93,8 +92,15 @@ class EmployeeApi {
   static saveSkillsAndAbilities(skillsAndAbilities, id) {
     let filterSkills = skillsAndAbilities.filter(skills => skills.employeeId === id);
     let splitSkillsValues = _.groupBy(filterSkills, 'subset');
-
     let subset = Object.keys(splitSkillsValues);
+    let skillsResult = {};
+
+    _.each(subset, (each) => {
+      let presubsetData = getSkillsRatingObjet(splitSkillsValues[each]);
+      skillsResult[each] = presubsetData;
+    });
+
+    let assignEmployeeId = Object.assign({}, skillsResult, {employeeId: id});
 
     function getSkillsRatingObjet(skills) {
       let result = {};
@@ -103,29 +109,28 @@ class EmployeeApi {
       });
       return result;
     }
+
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        _.each(subset, (eachSubset) => {
-          let presubsetData = getSkillsRatingObjet(splitSkillsValues[eachSubset]);
-          let subsetData = Object.assign(presubsetData, {employeeId: id});
-          axios.post('http://localhost:8080/employee/' + eachSubset, subsetData).then(res => {
-          });
+        axios.post('http://localhost:8080/skillsAndAbilities', assignEmployeeId).then(res => {
+          if (res.status == 200) {
+            resolve(assignEmployeeId);
+          }
         });
-        resolve(skillsAndAbilities);
       }, delay);
     });
   }
 
-  static updateRatingValue(rating, title, id, template) {
+  static updateRatingValue(rating, topic, id, template) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        let key = Object.keys(title)[0];
-        let obj = {};
-        obj[key] = rating;
-        obj['subset'] = template;
-        obj['employeeId'] = id;
-        title = Object.assign({}, title, obj);
-        resolve(title);
+        let topicWithRating = {};
+
+        topicWithRating[topic] = rating;
+        topicWithRating['subset'] = template;
+        topicWithRating['employeeId'] = id;
+
+        resolve(topicWithRating);
       }, delay);
     });
   }

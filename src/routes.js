@@ -13,7 +13,7 @@ export default (
     <IndexRoute component={HomePage}/>
     <Route path="employees" component={EmployeePage}/>
     <Route path="employee" component={ManageEmployeePage}/>
-    <Route path="employee/:id" component={ViewEmployee}/>
+    <Route path="employees/:id" component={ViewEmployee}/>
     <Route path="about" component={AboutApp}/>
   </Route>
 );

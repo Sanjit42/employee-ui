@@ -1,6 +1,8 @@
+/* eslint-disable import/namespace */
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
+import * as types from '../../../../constants/constant';
 
 import * as skillsAndAbilitiesActions from '../../../../actions/skillsAndAbilitiesActions';
 import SkillsAndAbilitiesTemplate from './SkillsAndAbilitiesTemplate';
@@ -28,13 +30,17 @@ class SkillsAndAbilities extends React.Component {
   }
 
   render() {
+    let {skillsAndAbilities} = this.state;
     return (
       <div className="col-md-12">
         <form>
           <div className="container-fluid">
-            {this.state.skillsAndAbilities.map(each =>
+            {types.subset.map(each =>
               <div className="col-md-6">
-                <SkillsAndAbilitiesTemplate skillsAndAbilities={each} id={this.props.id}/>
+                <SkillsAndAbilitiesTemplate
+                  skillsAndAbilities={skillsAndAbilities[each]}
+                  subset={each}
+                  id={this.props.id}/>
               </div>
             )}
           </div>
