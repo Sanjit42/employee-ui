@@ -112,7 +112,7 @@ class EmployeeApi {
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        axios.post('http://localhost:8080/skillsAndAbilities', assignEmployeeId).then(res => {
+        axios.post('http://localhost:8080/employee/skillsAndAbilities', assignEmployeeId).then(res => {
           if (res.status == 200) {
             resolve(assignEmployeeId);
           }

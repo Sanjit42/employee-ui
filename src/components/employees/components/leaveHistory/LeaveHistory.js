@@ -4,13 +4,11 @@ const LeaveHistory = ({leaveHistory}) => {
   return (
     <div>
       <h1>Leave History</h1>
-      {leaveHistory.map(leave =>
-        <div>
-          <h4>{leave.type}</h4>
-          <div>{leave.from}</div>
-          <div>{leave.to}</div>
-        </div>
-      )}
+      <div>
+        <h4>{leaveHistory.leaveType}</h4>
+        <div>{leaveHistory.leaveFrom}</div>
+        <div>{leaveHistory.leaveTo}</div>
+      </div>
     </div>
   );
 };

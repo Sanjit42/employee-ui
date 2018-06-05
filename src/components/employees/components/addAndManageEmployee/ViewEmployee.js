@@ -26,11 +26,9 @@ class ViewEmployee extends React.Component {
       <div>
         <Avatar id={this.state.id}/>
         <BasicDetails basicDetails={state.employee}/>
-        {/*{state.skillsAndAbilities.length > 0 &&*/}
         <SkillsAndAbilities skillsAndAbilities={state.skillsAndAbilities} id={state.id}/>
-        {/*}*/}
-        {/*<ProjectExperience projectExperience={employee.projectExperience}/>*/}
-        {/*<LeaveHistory leaveHistory={employee.leaveHistory}/>*/}
+        <ProjectExperience projectExperience={state.employee.projectExperience}/>
+        <LeaveHistory leaveHistory={state.employee.leaveHistory}/>
       </div>
     );
   }
@@ -59,10 +57,9 @@ function mapStateToProps(state, ownProps) {
   if (id && state.skillsAndAbilities.length > 0) {
     skillsAndAbilities = getEmployeeById(state.skillsAndAbilities, id);
   }
-  if (skillsAndAbilities == undefined) {
+  if (skillsAndAbilities == undefined || skillsAndAbilities.length==0) {
     skillsAndAbilities = defaultRating.skillsAndAbilities;
   }
-  console.log(skillsAndAbilities);
 
   return {
     employee: employee,
