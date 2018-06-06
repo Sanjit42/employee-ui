@@ -7,43 +7,58 @@ import avatar from '../resources/images/avatar.svg';
 
 const employees = [
   {
-    basicDetails:
-      {
-        name: 'Abhik Roy',
-        gender: 'Male',
-        employeeId: 21322,
-        currentProject: 'Beach',
-        homeOffice: 'Hyderabad',
-        role: 'Developer'
-      },
-    skillsAndAbilities: [
-      {technical: [{'AWS': 2}, {'Java': 3}]},
-      {consulting: [{'communication': 4}, {'planning': 2}, {'questioning': 1}]},
-      {domain: [{'government': 1}, {'education': 2}]},
-      {testing: [{'capybara': 2}, {'cucumber': 0}, {'fitnesse': 1}]}
-    ],
-    projectExperience: [{project: 'ThoughtWorks', subProject: 'step', from: "10-02-2017", to: '02-03-2018'}],
-    leaveHistory: [{type: 'Annual Leave', from: '1-03-2018', to: '14-03-2018'}]
+    name: 'Abhik Roy',
+    gender: 'Male',
+    employeeId: 21322,
+    currentProject: 'Beach',
+    homeOffice: 'Hyderabad',
+    role: 'Developer',
+
+    projectExperience: {
+      project: 'ThoughtWorks',
+      subProject: 'step',
+      projectStartDate: "10-02-2017",
+      projectToDate: '02-03-2018'
+    },
+    leaveHistory: {leaveType: 'Annual Leave', leaveFrom: '1-03-2018', leaveTo: '14-03-2018'}
   },
   {
-    basicDetails:
-      {
-        name: 'Ritesh D',
-        gender: 'Male',
-        employeeId: 21132,
-        currentProject: 'Bahmni',
-        homeOffice: 'Hyderabad',
-        role: 'Developer'
-      },
-    skillsAndAbilities: [
-      {technical: [{'AWS': 3}, {'Java': 4}]},
-      {consulting: [{'communication': 4}, {'planning': 3}, {'questioning': 2}]},
-      {domain: [{'government': 1}, {'education': 3}]},
-      {testing: [{'capybara': 2}, {'cucumber': 0}, {'fitnesse': 2}]}
-    ],
-    projectExperience: [{project: 'TrainLine', subProject: 'train', from: "10-12-2016", to: '22-03-2017'}],
-    leaveHistory: [{type: 'Annual Leave', from: '10-02-2018', to: '11-02-2018'}]
+    name: 'Ritesh D',
+    gender: 'Male',
+    employeeId: 21132,
+    currentProject: 'Bahmni',
+    homeOffice: 'Hyderabad',
+    role: 'Developer',
+
+    projectExperience: {
+      project: 'TrainLine',
+      subProject: 'train',
+      projectStartDate: "10-12-2016",
+      projectToDate: '22-03-2017'
+    },
+    leaveHistory: {
+      leaveType: 'Annual Leave',
+      leaveFrom: '10-02-2018',
+      leaveTo: '11-02-2018'
+    }
   }];
+
+const skillsAndAbilities = [
+  {
+    employeeId: 21322,
+    technical: {'AWS': 2, 'Java': 3},
+    consulting: {'communication': 4, 'planning': 2, 'questioning': 1},
+    domain: {'government': 1, 'education': 2},
+    testing: {'capybara': 2, 'cucumber': 0, 'fitnesse': 1}
+  },
+  {
+    employeeId: 21132,
+    technical: {'AWS': 3, 'Java': 3},
+    consulting: {'communication': 3, 'planning': 2, 'questioning': 5},
+    domain: {'government': 1, 'education': 2},
+    testing: {'capybara': 2, 'cucumber': 0, 'fitnesse': 1}
+  }
+];
 
 const technical = [{employeeId: 20132, skills: [{'AWS': 2}, {'java': 3}]}];
 const consulting = [{
@@ -72,6 +87,14 @@ class EmployeeApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], employees));
+      }, delay);
+    });
+  }
+
+  static getSkillsAndAbilities() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], skillsAndAbilities));
       }, delay);
     });
   }
