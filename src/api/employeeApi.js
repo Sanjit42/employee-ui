@@ -104,7 +104,7 @@ class EmployeeApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const minEmployeeTitleLength = 1;
-        if (employee.basicDetails.name.length < minEmployeeTitleLength) {
+        if (employee.name.length < minEmployeeTitleLength) {
           reject(`Title must be at least ${minEmployeeTitleLength} characters.`);
         }
         resolve(employee);

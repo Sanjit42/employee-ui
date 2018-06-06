@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import toaster from 'toastr';
+
 import EmployeeForm from './EmployeeForm';
 import * as employeeActions from '../../../../actions/employeeActions';
 
@@ -25,16 +27,21 @@ class ManageEmployeePage extends React.Component {
     return this.setState({employee: employee});
   }
 
-  redirect(){
+  redirect() {
     this.setState({saving: false});
+    toaster.success('Employee Saved!');
     this.context.router.push('/employees');
   }
 
   saveEmployee(event) {
     event.preventDefault();
     this.setState({saving: true});
-    this.props.actions.saveEmployee({basicDetails: this.state.employee})
-    .then(() => this.redirect());
+    this.props.actions.saveEmployee(this.state.employee)
+      .then(() => this.redirect())
+      .catch(error =>{
+        toaster.error(error);
+        this.setState({saving: false});
+      });
   }
 
   render() {

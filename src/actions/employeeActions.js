@@ -33,6 +33,7 @@ export function saveEmployee(employee) {
         dispatch(createEmployeeSuccess(employee));
       }
     }).catch(error => {
+      dispatch(ajaxCallError(error));
       throw (error);
     });
   };
