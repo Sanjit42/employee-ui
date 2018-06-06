@@ -3,7 +3,6 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import DefaultAvatar from '../../../../resources/images/avatar.svg';
 import * as avatarActions from "../../../../actions/avatarActions";
 
 
@@ -13,7 +12,7 @@ class Avatar extends React.Component {
 
     this.state = {
       file: '',
-      avatar: this.props.avatar != '' ? this.props.avatar : DefaultAvatar,
+      avatar: this.props.avatar,
       id: this.props.id
     };
     this.saveAvatar = this.saveAvatar.bind(this);
@@ -32,14 +31,16 @@ class Avatar extends React.Component {
     e.preventDefault();
 
     let reader = new FileReader();
-    reader.onloadend = () => {
-      this.setState({
-        avatar: reader.result
-      });
-    };
 
     reader.readAsDataURL(this.state.file);
-    this.props.actions.saveAvatar({employeeId: this.state.id, image: this.state.avatar});
+    this.props.actions.saveAvatar({employeeId: this.state.id, image: this.state.avatar})
+      .then(res => {
+        reader.onloadend = () => {
+          this.setState({
+            avatar: reader.result
+          });
+        };
+      });
   }
 
   render() {
@@ -51,16 +52,19 @@ class Avatar extends React.Component {
     return (
       <div className="previewComponent">
         <input className="fileInput"
+               style={{display: 'none'}}
                type="file"
                onChange={this.handleImageChange}
+               ref={fileInput => this.fileInput = fileInput}
         />
+        <div className="imgPreview">
+          {$imagePreview}
+        </div>
+        <button onClick={() => this.fileInput.click()}>Pick up</button>
         <button className="submitButton"
                 type="submit"
                 onClick={this.saveAvatar}>Upload Image
         </button>
-        <div className="imgPreview">
-          {$imagePreview}
-        </div>
       </div>
     );
   }
