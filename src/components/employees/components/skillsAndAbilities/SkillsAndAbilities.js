@@ -60,10 +60,9 @@ class SkillsAndAbilities extends React.Component {
 
 SkillsAndAbilities.propTypes = {
   rating: PropTypes.array.isRequired,
-  skillsAndAbilities: PropTypes.array.isRequired,
+  skillsAndAbilities: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired,
-  template: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired
 };
 
 
@@ -72,8 +71,7 @@ function mapStateToProps(state, ownProps) {
   return {
     skillsAndAbilities: ownProps.skillsAndAbilities,
     rating: state.rating,
-    id: id,
-    template: ownProps.template
+    id: id
   };
 }
 

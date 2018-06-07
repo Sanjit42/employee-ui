@@ -1,6 +1,8 @@
 /* eslint-disable import/default */
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import _ from 'lodash';
+import {bindActionCreators} from 'redux';
 
 import Avatar from '../avtar/Avatar';
 import ProjectExperience from '../projectExperience/ProjectExperience';
@@ -8,6 +10,7 @@ import BasicDetails from '../basic/BasicDetails';
 import LeaveHistory from '../leaveHistory/LeaveHistory';
 import SkillsAndAbilities from '../skillsAndAbilities/SkillsAndAbilities';
 import * as defaultRating from '../skillsAndAbilities/defaultRating/defaultRating';
+import * as employeeActions from '../../../../actions/employeeActions';
 
 class ViewEmployee extends React.Component {
   constructor(props, context) {
@@ -20,7 +23,13 @@ class ViewEmployee extends React.Component {
     };
   }
 
-  render() {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.employee.employeeId != nextProps.employee.employeeId){
+      this.setState({employee: nextProps.employee});
+    }
+  }
+
+    render() {
     let {state} = this;
     return (
       <div>
@@ -39,30 +48,24 @@ class ViewEmployee extends React.Component {
 }
 
 ViewEmployee.propTypes = {
-  employee: PropTypes.array.isRequired,
-  skillsAndAbilities: PropTypes.array.isRequired,
+  employee: PropTypes.object.isRequired,
+  skillsAndAbilities: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired
 };
 
-function getEmployeeById(element, id) {
-  let filterEmployees = element.filter(each => each.employeeId == id);
-  if (filterEmployees) return filterEmployees[0];
-  return null;
-}
-
 function mapStateToProps(state, ownProps) {
   let employee = {name: "", employeeId: "", role: "", currentProject: ""};
-  let skillsAndAbilities = [];
+  let skillsAndAbilities = null;
   let id = ownProps.params.id;
 
   if (id && state.employees.length > 0) {
-    employee = getEmployeeById(state.employees, id);
+    employee = _.find(state.employees, {employeeId: parseInt(id)});
   }
 
   if (id && state.skillsAndAbilities.length > 0) {
-    skillsAndAbilities = getEmployeeById(state.skillsAndAbilities, id);
+    skillsAndAbilities = _.find(state.skillsAndAbilities, {employeeId: parseInt(id)});
   }
-  if (skillsAndAbilities == undefined || skillsAndAbilities.length == 0) {
+  if (skillsAndAbilities == undefined ) {
     skillsAndAbilities = defaultRating.skillsAndAbilities;
   }
 
@@ -74,7 +77,9 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    actions: bindActionCreators(employeeActions, dispatch)
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewEmployee);

@@ -38,19 +38,13 @@ class Rating extends React.Component {
 
 Rating.propTypes = {
   rating: PropTypes.number.isRequired,
-  actions: PropTypes.func.isRequired,
-  topic: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
+  topic: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   template: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-  // let id = ownProps.id;
-  // let topic = ownProps.topic;
-  // let template = ownProps.template;
-  // let rating = ownProps.rating;
-  //
-  // // let noOfRating = Object.values(rating);
   return {
     id: ownProps.id,
     rating: ownProps.rating,
