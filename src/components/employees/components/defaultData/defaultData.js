@@ -1,3 +1,7 @@
+export const avatar = {
+  employeeId: "",
+  image: "http://pol.audio/media/user-avatar.png"
+};
 export const skillsAndAbilities = {
   employeeId: "",
   technical: {aws: 0, java: 0},

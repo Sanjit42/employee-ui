@@ -18,25 +18,29 @@ class ViewEmployee extends React.Component {
 
     this.state = {
       employee: Object.assign({}, this.props.employee),
+      avatar: Object.assign({}, this.props.avatar),
       skillsAndAbilities: Object.assign({}, this.props.skillsAndAbilities),
       id: this.props.id
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.employee.employeeId !== nextProps.employee.employeeId){
+    if (this.props.avatar.employeeId !== nextProps.avatar.employeeId) {
+      this.setState({avatar: nextProps.avatar});
+    }
+    if (this.props.employee.employeeId !== nextProps.employee.employeeId) {
       this.setState({employee: nextProps.employee});
     }
-    if (this.props.skillsAndAbilities.employeeId !== nextProps.skillsAndAbilities.employeeId){
+    if (this.props.skillsAndAbilities.employeeId !== nextProps.skillsAndAbilities.employeeId) {
       this.setState({skillsAndAbilities: nextProps.skillsAndAbilities});
     }
   }
 
-    render() {
+  render() {
     let {state} = this;
     return (
       <div>
-        <Avatar id={this.state.id}/>
+        <Avatar avatar={state.avatar} id={state.id}/>
         <BasicDetails basicDetails={state.employee}/>
         <SkillsAndAbilities skillsAndAbilities={state.skillsAndAbilities} id={state.id}/>
         {state.employee.projectExperience !== undefined &&
@@ -53,14 +57,19 @@ class ViewEmployee extends React.Component {
 ViewEmployee.propTypes = {
   employee: PropTypes.object.isRequired,
   skillsAndAbilities: PropTypes.object.isRequired,
+  avatar: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   let employee = defaultData.employee;
   let skillsAndAbilities = null;
+  let avatar = null;
   let id = ownProps.params.id;
 
+  if (id && state.avatar.length > 0) {
+    avatar = _.find(state.avatar, {employeeId: parseInt(id)});
+  }
   if (id && state.employees.length > 0) {
     employee = _.find(state.employees, {employeeId: parseInt(id)});
   }
@@ -68,12 +77,17 @@ function mapStateToProps(state, ownProps) {
   if (id && state.skillsAndAbilities.length > 0) {
     skillsAndAbilities = _.find(state.skillsAndAbilities, {employeeId: parseInt(id)});
   }
-  if (skillsAndAbilities == undefined ) {
+  if (skillsAndAbilities == undefined) {
     skillsAndAbilities = defaultData.skillsAndAbilities;
+  }
+
+  if (avatar == undefined) {
+    avatar = defaultData.avatar;
   }
 
   return {
     employee: employee,
+    avatar: avatar,
     skillsAndAbilities: skillsAndAbilities,
     id: id
   };
