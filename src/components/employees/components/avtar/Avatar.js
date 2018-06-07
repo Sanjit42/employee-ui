@@ -1,10 +1,10 @@
-/* eslint-disable import/namespace,import/default */
+/* eslint-disable import/no-unresolved */
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import toastr from 'toastr';
 
 import * as avatarActions from "../../../../actions/avatarActions";
-
 
 class Avatar extends React.Component {
   constructor(props, context) {
@@ -31,16 +31,19 @@ class Avatar extends React.Component {
     e.preventDefault();
 
     let reader = new FileReader();
-
     reader.readAsDataURL(this.state.file);
+
     this.props.actions.saveAvatar({employeeId: this.state.id, image: this.state.avatar})
       .then(res => {
+        toastr.success("Image Uploaded Successfully");
         reader.onloadend = () => {
           this.setState({
             avatar: reader.result
           });
         };
-      });
+      }).catch(error => {
+      toastr.error(error);
+    });
   }
 
   render() {
@@ -52,6 +55,7 @@ class Avatar extends React.Component {
     return (
       <div className="previewComponent">
         <input className="fileInput"
+               accept="image/jpeg"
                style={{display: 'none'}}
                type="file"
                onChange={this.handleImageChange}
