@@ -19,6 +19,10 @@ class Avatar extends React.Component {
     this.handleImageChange = this.handleImageChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({avatar: nextProps.avatar});
+  }
+
   handleImageChange(e) {
     e.preventDefault();
     let file = e.target.files[0];
@@ -80,20 +84,10 @@ Avatar.propTypes = {
   id: PropTypes.string
 };
 
-function findAvatarById(avatar, id) {
-  let avatarArray = avatar.filter(avatar => avatar.id == id);
-  if (avatarArray) return avatar[0].image;
-}
-
 function mapStateToProps(state, ownProps) {
-  let id = ownProps.id;
-  let avatar = '';
-  if (state.avatar.length > 0) {
-    avatar = findAvatarById(state.avatar, id);
-  }
   return {
     id: ownProps.id,
-    avatar: avatar
+    avatar: ownProps.avatar.image
   };
 }
 

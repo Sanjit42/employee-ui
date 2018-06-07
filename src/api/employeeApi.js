@@ -60,17 +60,6 @@ const skillsAndAbilities = [
   }
 ];
 
-const technical = [{employeeId: 20132, skills: [{'AWS': 2}, {'java': 3}]}];
-const consulting = [{
-  employeeId: 20322,
-  skills: [{'communication': 4}, {'planning': 2}, {'questioning': 1}]
-}];
-const domain = [{
-  employeeId: 20132,
-  skills: [{'government': 1}, {'education': 2}]
-}];
-const testing = [{employeeId: 20322, skills: [{'capybara': 2}, {'cucumber': 0}, {'fitnesse': 1}]}];
-
 const homeOffices = ["Hyderabad-India", "Bangalore-India", "Chennai-India", "Pune-India", "Gurgaon-India"];
 const gender = ['Male', 'Female'];
 
@@ -174,7 +163,7 @@ class EmployeeApi {
   static loadAvatar() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve([{employeeId: 20322, image: avatar}]);
+        resolve([{employeeId: 21322, image: avatar}]);
       }, delay);
     });
   }
@@ -191,49 +180,6 @@ class EmployeeApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], gender));
-      }, delay);
-    });
-  }
-
-  static loadTechnicalSkills() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(Object.assign([], technical));
-      }, delay);
-    });
-  }
-
-  static updateTechnicalSkills(newRating, technicalSkillsObj, id) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        let key = Object.keys(technicalSkillsObj)[0];
-        let obj = {};
-        obj[key] = newRating;
-        resolve(Object.assign([], [{employeeId: id, rating: obj}]));
-      }, delay);
-    });
-  }
-
-  static loadConsultingSkills() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(Object.assign([], consulting));
-      }, delay);
-    });
-  }
-
-  static loadTestingSkills() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(Object.assign([], testing));
-      }, delay);
-    });
-  }
-
-  static loadDomainSkills() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(Object.assign([], domain));
       }, delay);
     });
   }

@@ -21,7 +21,7 @@ class SkillsAndAbilities extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.skillsAndAbilities.employeeId != nextProps.skillsAndAbilities.employeeId){
+    if (this.props.skillsAndAbilities.employeeId !== nextProps.skillsAndAbilities.employeeId){
       this.setState({skillsAndAbilities: nextProps.skillsAndAbilities});
     }
   }
