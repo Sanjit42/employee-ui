@@ -135,11 +135,11 @@ class EmployeeApi {
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        axios.post('http://localhost:8080/employee/skillsAndAbilities', assignEmployeeId).then(res => {
-          if (res.status == 200) {
+        // axios.post('http://localhost:8080/employee/skillsAndAbilities', assignEmployeeId).then(res => {
+        //   if (res.status == 200) {
             resolve(assignEmployeeId);
-          }
-        });
+          // }
+        // });
       }, delay);
     });
   }
@@ -161,12 +161,12 @@ class EmployeeApi {
   static saveAvatar(avatar) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        axios.post('http://localhost:8080/employee/avatar/employeeId', avatar).then(res => {
+        // axios.post('http://localhost:8080/employee/avatar/employeeId', avatar).then(res => {
           resolve(avatar);
-        })
-          .catch(error => {
-            throws(error);
-          });
+        // })
+        //   .catch(error => {
+        //     throws(error);
+        //   });
       }, delay);
     });
   }

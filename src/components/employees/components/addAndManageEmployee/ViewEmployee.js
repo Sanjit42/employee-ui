@@ -44,9 +44,10 @@ ViewEmployee.propTypes = {
   id: PropTypes.string.isRequired
 };
 
-function getEmployeeById(employees, id) {
-  let filterEmployees = employees.filter(employee => employee.employeeId == id);
+function getEmployeeById(element, id) {
+  let filterEmployees = element.filter(each => each.employeeId == id);
   if (filterEmployees) return filterEmployees[0];
+  return null;
 }
 
 function mapStateToProps(state, ownProps) {

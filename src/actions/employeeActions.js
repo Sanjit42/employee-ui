@@ -14,9 +14,9 @@ export function loadEmployeesSuccess(employees) {
 export function loadEmployees() {
   return function (dispatch) {
     dispatch(beginAjaxCall());
-    // return employeeApi.getAllEmployees().then(employees => {
-      return axios.get("http://localhost:8080/employees").then(employees => {
-      dispatch(loadEmployeesSuccess( employees.data));
+    return employeeApi.getAllEmployees().then(employees => {
+      // return axios.get("http://localhost:8080/employees").then(employees => {
+      dispatch(loadEmployeesSuccess( employees));
     }).catch(error => {
       throw (error);
     });
@@ -27,14 +27,14 @@ export function loadEmployees() {
 export function saveEmployee(employee) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
-    // return employeeApi.saveEmployee(employee).then(saveEmployee => {
-    return axios.post("http://localhost:8080/employee", employee.basicDetails).then(res => {
-      if (res.status == 200) {
+    return employeeApi.saveEmployee(employee).then(saveEmployee => {
+    // return axios.post("http://localhost:8080/employee", employee.basicDetails).then(res => {
+    //   if (res.status == 200) {
         dispatch(createEmployeeSuccess(employee));
-      }
-    }).catch(error => {
-      dispatch(ajaxCallError(error));
-      throw (error);
+      // }
+    // }).catch(error => {
+    //   dispatch(ajaxCallError(error));
+    //   throw (error);
     });
   };
 }
