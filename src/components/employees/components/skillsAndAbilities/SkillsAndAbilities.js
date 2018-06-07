@@ -14,10 +14,16 @@ class SkillsAndAbilities extends React.Component {
 
     this.state = {
       saving: false,
-      skillsAndAbilities: Object.assign([], this.props.skillsAndAbilities)
+      skillsAndAbilities: Object.assign({}, this.props.skillsAndAbilities)
     };
 
     this.onSave = this.onSave.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.skillsAndAbilities.employeeId != nextProps.skillsAndAbilities.employeeId){
+      this.setState({skillsAndAbilities: nextProps.skillsAndAbilities});
+    }
   }
 
   upDate(event) {

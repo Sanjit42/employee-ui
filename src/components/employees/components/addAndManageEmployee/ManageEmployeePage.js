@@ -5,6 +5,7 @@ import toaster from 'toastr';
 
 import EmployeeForm from './EmployeeForm';
 import * as employeeActions from '../../../../actions/employeeActions';
+import * as defaultData from '../defaultData/defaultData';
 
 class ManageEmployeePage extends React.Component {
   constructor(props, context) {
@@ -73,7 +74,7 @@ ManageEmployeePage.contextTypes = {
 };
 
 function mapStateToProps(state, omeProps) {
-  let employee = {name: "", employeeId: "", role: "", currentProject: ""};
+  let employee = defaultData.employee;
   return {
     employee: employee,
     homeOffices: state.homeOffices,

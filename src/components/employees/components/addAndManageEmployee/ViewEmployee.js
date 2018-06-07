@@ -9,7 +9,7 @@ import ProjectExperience from '../projectExperience/ProjectExperience';
 import BasicDetails from '../basic/BasicDetails';
 import LeaveHistory from '../leaveHistory/LeaveHistory';
 import SkillsAndAbilities from '../skillsAndAbilities/SkillsAndAbilities';
-import * as defaultRating from '../skillsAndAbilities/defaultRating/defaultRating';
+import * as defaultData from '../defaultData/defaultData';
 import * as employeeActions from '../../../../actions/employeeActions';
 
 class ViewEmployee extends React.Component {
@@ -24,8 +24,11 @@ class ViewEmployee extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.employee.employeeId != nextProps.employee.employeeId){
+    if (this.props.employee.employeeId !== nextProps.employee.employeeId){
       this.setState({employee: nextProps.employee});
+    }
+    if (this.props.skillsAndAbilities.employeeId !== nextProps.skillsAndAbilities.employeeId){
+      this.setState({skillsAndAbilities: nextProps.skillsAndAbilities});
     }
   }
 
@@ -36,10 +39,10 @@ class ViewEmployee extends React.Component {
         <Avatar id={this.state.id}/>
         <BasicDetails basicDetails={state.employee}/>
         <SkillsAndAbilities skillsAndAbilities={state.skillsAndAbilities} id={state.id}/>
-        {this.state.projectExperience != undefined &&
+        {state.employee.projectExperience !== undefined &&
         <ProjectExperience projectExperience={state.employee.projectExperience}/>
         }
-        {this.state.leaveHistory != undefined &&
+        {state.employee.leaveHistory !== undefined &&
         <LeaveHistory leaveHistory={state.employee.leaveHistory}/>
         }
       </div>
@@ -54,7 +57,7 @@ ViewEmployee.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  let employee = {name: "", employeeId: "", role: "", currentProject: ""};
+  let employee = defaultData.employee;
   let skillsAndAbilities = null;
   let id = ownProps.params.id;
 
@@ -66,7 +69,7 @@ function mapStateToProps(state, ownProps) {
     skillsAndAbilities = _.find(state.skillsAndAbilities, {employeeId: parseInt(id)});
   }
   if (skillsAndAbilities == undefined ) {
-    skillsAndAbilities = defaultRating.skillsAndAbilities;
+    skillsAndAbilities = defaultData.skillsAndAbilities;
   }
 
   return {

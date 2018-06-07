@@ -6,3 +6,17 @@ export const skillsAndAbilities = {
   testing: {capybara: 0, cucumber: 0, fitnesse: 0}
 };
 
+export const employee = {
+  name: "",
+  employeeId: "",
+  role: "",
+  currentProject: "",
+  projectExperience: {
+    project: "",
+    subProject: ""
+  },
+  leaveHistory: {
+    leaveType: ""
+  }
+};
+

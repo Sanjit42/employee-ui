@@ -16,7 +16,7 @@ const ProjectExperience = ({projectExperience}) => {
 };
 
 ProjectExperience.propTypes = {
-  projectExperience: PropTypes.array
+  projectExperience: PropTypes.object
 };
 
 export default ProjectExperience;

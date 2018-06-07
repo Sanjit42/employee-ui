@@ -16,6 +16,10 @@ class Rating extends React.Component {
     this.onStarClick = this.onStarClick.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({rating: nextProps.rating});
+  }
+
   onStarClick(nextValue) {
     let {props} = this;
     this.props.actions.updateRatingValue(nextValue, props.topic, props.id, props.template);

@@ -119,8 +119,8 @@ class EmployeeApi {
     let skillsResult = {};
 
     _.each(subset, (each) => {
-      let presubsetData = getSkillsRatingObjet(splitSkillsValues[each]);
-      skillsResult[each] = presubsetData;
+      let preSubsetData = getSkillsRatingObjet(splitSkillsValues[each]);
+      skillsResult[each] = preSubsetData;
     });
 
     let assignEmployeeId = Object.assign({}, skillsResult, {employeeId: id});
