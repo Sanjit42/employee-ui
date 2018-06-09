@@ -1,7 +1,13 @@
 import {expect} from 'chai';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import nock from 'nock';
 
 import * as types from '../constants/constant';
 import * as homeOfficesActions from './homeOfficesActions';
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
 describe('Home Offices Actions', () => {
   describe('Load Home Offices', () => {
@@ -15,6 +21,28 @@ describe('Home Offices Actions', () => {
 
       let action = homeOfficesActions.loadHomeOfficeSuccess(homeOffices);
       expect(action).to.deep.equal(expected);
+    });
+  });
+
+  describe('Async Home office Action', () => {
+    afterEach(() => {
+      nock.cleanAll();
+    });
+    it('should create BEGIN_AJAX_CALL and LOAD_HOME_OFFICE_SUCCESS when loading homeOffices', (done) => {
+      const expectedAction = [
+        {type: types.BEGIN_AJAX_CALL},
+        {
+          type: types.LOAD_HOME_OFFICE_SUCCESS,
+          body: {homeOffices: ['Hyderabad', 'Chennai']}
+        }
+      ];
+      const store = mockStore({homeOffices: [{}]}, expectedAction);
+      store.dispatch(homeOfficesActions.loadHomeOffices()).then(() => {
+        const actions = store.getActions();
+        expect(actions[0].type).to.equal(types.BEGIN_AJAX_CALL);
+        expect(actions[1].type).to.equal(types.LOAD_HOME_OFFICE_SUCCESS);
+        done();
+      });
     });
   });
 });

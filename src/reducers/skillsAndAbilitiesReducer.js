@@ -4,7 +4,7 @@ import initialState from './initialState';
 
 export default function ratingReducer(state = initialState.skillsAndAbilities, action) {
   switch (action.type) {
-    case types.SAVE_SKILLS_AND_ABILITIES_SUCCESS:
+    case types.UPDATE_SKILLS_AND_ABILITIES_SUCCESS:
       return action.skillsAndAbilities;
     case types.LOAD_SKILLS_AND_ABILITIES_SUCCESS:
       return action.skillsAndAbilities;

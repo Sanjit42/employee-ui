@@ -60,19 +60,50 @@ describe('Employee Actions', () => {
       });
     });
 
-    it('should create BEGIN_AJAX_CALL and CREATE_EMPLOYEE_SUCCESS when loading employees', (done) => {
+    // it('should create BEGIN_AJAX_CALL and AJAX_CALL_ERROR when loading employees', (done) => {
+    //   const expectedAction = [
+    //     {type: types.BEGIN_AJAX_CALL},
+    //     {type: types.AJAX_CALL_ERROR}
+    //   ];
+    //   const store = mockStore({employees: [{}]}, expectedAction);
+    //   store.dispatch(employeeActions.loadEmployees()).then(() => {
+    //   }).catch(error => {
+    //     const actions = store.getActions();
+    //     expect(actions[0].type).to.equal(types.BEGIN_AJAX_CALL);
+    //     expect(actions[1].type).to.equal(types.LOAD_EMPLOYEES_SUCCESS);
+    //     done();
+    //
+    //   });
+    // });
+
+    it('should create BEGIN_AJAX_CALL and CREATE_EMPLOYEE_SUCCESS when save employee', (done) => {
       const expectedAction = [
         {type: types.BEGIN_AJAX_CALL},
         {
           type: types.CREATE_EMPLOYEE_SUCCESS,
-          body: {employees: {basicDetails: {name: 'Amit', employeeId: 305}}}
+          body: {employees: {name: 'Amit', employeeId: 305}}
         }
       ];
       const store = mockStore({}, expectedAction);
-      store.dispatch(employeeActions.saveEmployee({basicDetails: {name: 'Dipto', employeeId: 345}})).then(() => {
+      store.dispatch(employeeActions.saveEmployee({name: 'Amit', employeeId: 345})).then(() => {
         const actions = store.getActions();
         expect(actions[0].type).to.equal(types.BEGIN_AJAX_CALL);
         expect(actions[1].type).to.equal(types.CREATE_EMPLOYEE_SUCCESS);
+        done();
+      });
+    });
+
+    it('should create BEGIN_AJAX_CALL and AJAX_CALL_ERROR when something wrong to save employee', (done) => {
+      const expectedAction = [
+        {type: types.BEGIN_AJAX_CALL},
+        {type: types.AJAX_CALL_ERROR}
+      ];
+      const store = mockStore({}, expectedAction);
+      store.dispatch(employeeActions.saveEmployee({name: '', employeeId: 305})).then(() => {
+      }).catch(error => {
+        const actions = store.getActions();
+        expect(actions[0].type).to.eq(types.BEGIN_AJAX_CALL);
+        expect(actions[1].type).to.eq(types.AJAX_CALL_ERROR);
         done();
       });
     });

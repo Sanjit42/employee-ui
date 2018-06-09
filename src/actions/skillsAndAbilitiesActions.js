@@ -6,7 +6,7 @@ import {loadEmployeesSuccess} from "./employeeActions";
 import axios from "axios/index";
 
 export function saveSkillsAndAbilitiesSuccess(skillsAndAbilities) {
-  return {type: types.SAVE_SKILLS_AND_ABILITIES_SUCCESS, skillsAndAbilities};
+  return {type: types.UPDATE_SKILLS_AND_ABILITIES_SUCCESS, skillsAndAbilities};
 }
 
 export function loadSkillsAndAbilitiesSuccess(skillsAndAbilities) {

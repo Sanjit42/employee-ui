@@ -1,8 +1,13 @@
 import {expect} from 'chai';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import nock from 'nock';
 
 import * as types from '../constants/constant';
 import * as ratingActions from './ratingActions';
 
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
 describe('Rating Actions', () => {
   describe('Load Rating', () => {
@@ -18,4 +23,27 @@ describe('Rating Actions', () => {
       expect(action).to.deep.equal(expected);
     });
   });
+
+  describe('Async Rating Action', () => {
+    afterEach(() => {
+      nock.cleanAll();
+    });
+    it('should create BEGIN_AJAX_CALL and LOAD_RATING_SUCCESS when update rating', (done) => {
+      const expectedAction = [
+        {type: types.BEGIN_AJAX_CALL},
+        {
+          type: types.UPDATE_RATING_SUCCESS,
+          body: {rating: []}
+        }
+      ];
+      const rating = 2, title = "java", id = 12, template = "technical";
+      const store = mockStore({rating: [{}]}, expectedAction);
+      store.dispatch(ratingActions.updateRatingValue(rating, title, id, template)).then((rating) => {
+        const actions = store.getActions();
+        expect(actions[0].type).to.equal(types.BEGIN_AJAX_CALL);
+        expect(actions[1].type).to.equal(types.UPDATE_RATING_SUCCESS);
+        done();
+      });
+    });
+    });
 });

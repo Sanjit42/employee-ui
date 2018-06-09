@@ -32,9 +32,9 @@ export function saveEmployee(employee) {
     //   if (res.status == 200) {
         dispatch(createEmployeeSuccess(employee));
       // }
-    // }).catch(error => {
-    //   dispatch(ajaxCallError(error));
-    //   throw (error);
+    }).catch(error => {
+      dispatch(ajaxCallError(error));
+      throw (error);
     });
   };
 }

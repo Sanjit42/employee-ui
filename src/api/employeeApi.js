@@ -138,7 +138,7 @@ class EmployeeApi {
         topicWithRating['subset'] = template;
         topicWithRating['employeeId'] = id;
 
-        resolve(topicWithRating);
+        resolve([topicWithRating]);
       }, delay);
     });
   }
