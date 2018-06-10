@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 import React from 'react';
-import expect from 'expect';
 import {shallow} from 'enzyme';
 
 import EmployeeForm from './EmployeeForm';
@@ -10,8 +10,8 @@ describe('EmployeeForm', () => {
       employee: {},
       homeOffices: [],
       gender: [],
-      onChange: {},
-      onSave: {},
+      onChange: () => {},
+      onSave: () => {},
       saving: saving,
       errors: {}
     };
@@ -44,6 +44,6 @@ describe('EmployeeForm', () => {
   it('should render SelectInput', () => {
     let wrapper = setUp(true);
     expect(wrapper.find('SelectInput').length).toBe(2);
-    expect(wrapper.find('SelectInput').length).toNotBe(3);
+    expect(wrapper.find('SelectInput').length).not.toBe(3);
   });
 });

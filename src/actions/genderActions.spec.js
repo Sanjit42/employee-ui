@@ -1,4 +1,4 @@
-import {expect} from 'chai';
+/* eslint-disable no-undef */
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import nock from "nock";
@@ -20,7 +20,7 @@ describe('Gender Actions', () => {
       };
 
       let action = genderActions.loadGenderSuccess(gender);
-      expect(action).to.deep.equal(expected);
+      expect(action).toEqual(expected);
     });
   });
 
@@ -39,8 +39,8 @@ describe('Gender Actions', () => {
       const store = mockStore({gender: []}, expectedAction);
       store.dispatch(genderActions.loadGender()).then(() => {
         const actions = store.getActions();
-        expect(actions[0].type).to.equal(types.BEGIN_AJAX_CALL);
-        expect(actions[1].type).to.equal(types.LOAD_GENDER_SUCCESS);
+        expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
+        expect(actions[1].type).toEqual(types.LOAD_GENDER_SUCCESS);
         done();
       });
     });

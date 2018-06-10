@@ -1,4 +1,4 @@
-import {expect} from 'chai';
+/* eslint-disable no-undef */
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
@@ -19,7 +19,7 @@ describe('Skills And Abilities Actions', () => {
       };
 
       let action = skillsAndAbilitiesActions.saveSkillsAndAbilitiesSuccess(skillsAndAbilities);
-      expect(action).to.deep.equal(expected);
+      expect(action).toEqual(expected);
     });
   });
 
@@ -39,8 +39,8 @@ describe('Skills And Abilities Actions', () => {
         const store = mockStore({skillsAndAbilities: {}}, expectedAction);
         store.dispatch(skillsAndAbilitiesActions.loadSkillsAndAbilities()).then(() => {
           const actions = store.getActions();
-          expect(actions[0].type).to.equal(types.BEGIN_AJAX_CALL);
-          expect(actions[1].type).to.equal(types.LOAD_SKILLS_AND_ABILITIES_SUCCESS);
+          expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
+          expect(actions[1].type).toEqual(types.LOAD_SKILLS_AND_ABILITIES_SUCCESS);
           done();
         });
       });
@@ -65,8 +65,8 @@ describe('Skills And Abilities Actions', () => {
         const store = mockStore({skillsAndAbilities: {}}, expectedAction);
         store.dispatch(skillsAndAbilitiesActions.saveSkillsAndAbilities(skillsAndAbilities, 2)).then(() => {
           const actions = store.getActions();
-          expect(actions[0].type).to.equal(types.BEGIN_AJAX_CALL);
-          expect(actions[1].type).to.equal(types.UPDATE_SKILLS_AND_ABILITIES_SUCCESS);
+          expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
+          expect(actions[1].type).toEqual(types.UPDATE_SKILLS_AND_ABILITIES_SUCCESS);
           done();
         });
       });

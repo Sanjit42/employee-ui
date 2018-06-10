@@ -1,4 +1,4 @@
-import {expect} from 'chai';
+/* eslint-disable no-undef */
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
@@ -21,7 +21,7 @@ describe('Employee Actions', () => {
       };
 
       let action = employeeActions.createEmployeeSuccess(employee);
-      expect(action).to.deep.equal(expected);
+      expect(action).toEqual(expected);
     });
   });
 
@@ -35,7 +35,7 @@ describe('Employee Actions', () => {
       };
 
       let action = employeeActions.loadEmployeesSuccess(employees);
-      expect(action).to.deep.equal(expected);
+      expect(action).toEqual(expected);
     });
   });
 
@@ -54,8 +54,8 @@ describe('Employee Actions', () => {
       const store = mockStore({employees: [{}]}, expectedAction);
       store.dispatch(employeeActions.loadEmployees()).then(() => {
         const actions = store.getActions();
-        expect(actions[0].type).to.equal(types.BEGIN_AJAX_CALL);
-        expect(actions[1].type).to.equal(types.LOAD_EMPLOYEES_SUCCESS);
+        expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
+        expect(actions[1].type).toEqual(types.LOAD_EMPLOYEES_SUCCESS);
         done();
       });
     });
@@ -69,8 +69,8 @@ describe('Employee Actions', () => {
     //   store.dispatch(employeeActions.loadEmployees()).then(() => {
     //   }).catch(error => {
     //     const actions = store.getActions();
-    //     expect(actions[0].type).to.equal(types.BEGIN_AJAX_CALL);
-    //     expect(actions[1].type).to.equal(types.LOAD_EMPLOYEES_SUCCESS);
+    //     expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
+    //     expect(actions[1].type).toEqual(types.LOAD_EMPLOYEES_SUCCESS);
     //     done();
     //
     //   });
@@ -87,8 +87,8 @@ describe('Employee Actions', () => {
       const store = mockStore({}, expectedAction);
       store.dispatch(employeeActions.saveEmployee({name: 'Amit', employeeId: 345})).then(() => {
         const actions = store.getActions();
-        expect(actions[0].type).to.equal(types.BEGIN_AJAX_CALL);
-        expect(actions[1].type).to.equal(types.CREATE_EMPLOYEE_SUCCESS);
+        expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
+        expect(actions[1].type).toEqual(types.CREATE_EMPLOYEE_SUCCESS);
         done();
       });
     });
@@ -102,8 +102,8 @@ describe('Employee Actions', () => {
       store.dispatch(employeeActions.saveEmployee({name: '', employeeId: 305})).then(() => {
       }).catch(error => {
         const actions = store.getActions();
-        expect(actions[0].type).to.eq(types.BEGIN_AJAX_CALL);
-        expect(actions[1].type).to.eq(types.AJAX_CALL_ERROR);
+        expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
+        expect(actions[1].type).toEqual(types.AJAX_CALL_ERROR);
         done();
       });
     });

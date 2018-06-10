@@ -1,4 +1,4 @@
-import {expect} from 'chai';
+/* eslint-disable no-undef */
 import {createStore} from 'redux';
 
 import rootReducer from '../reducers';
@@ -21,7 +21,7 @@ describe('Store', () => {
     store.dispatch(action);
 
     const actual = store.getState().employees[0];
-    expect(actual).to.deep.equal(expected);
+    expect(actual).toEqual(expected);
   });
 
   it('should increase length of employees list after creating new employee', function () {
@@ -36,7 +36,7 @@ describe('Store', () => {
     store.dispatch(loadAction);
 
     const actualLoadedEmployees = store.getState();
-    expect(actualLoadedEmployees.employees.length).to.equal(2);
+    expect(actualLoadedEmployees.employees.length).toEqual(2);
 
     const employee = {
       name: 'DEF',
@@ -51,7 +51,7 @@ describe('Store', () => {
     };
 
     const actual = store.getState();
-    expect(actual.employees.length).to.equal(3);
-    expect(actual.employees[2]).to.deep.equal(expected);
+    expect(actual.employees.length).toEqual(3);
+    expect(actual.employees[2]).toEqual(expected);
   });
 });
