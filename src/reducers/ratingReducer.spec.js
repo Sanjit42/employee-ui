@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 import React from 'react';
-import {expect} from 'chai';
 
 import * as types from '../constants/constant';
 import ratingReducer from './ratingReducer';
@@ -12,7 +12,7 @@ describe('Rating Reducer', () => {
       rating: []
     };
     let wrapper = ratingReducer(initialState, action);
-    expect(wrapper).to.deep.equal([]);
+    expect(wrapper).toEqual([]);
   });
 
   it('should update rating', () => {
@@ -22,6 +22,6 @@ describe('Rating Reducer', () => {
       rating: {employeeId: 2, java: 2, subset: 'technical'}
     };
     let wrapper = ratingReducer(initialState, action);
-    expect(wrapper.length).to.equal(1);
+    expect(wrapper.length).toEqual(1);
   });
 });

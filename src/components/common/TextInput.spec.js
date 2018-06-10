@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 import React from 'react';
-import {expect} from 'chai';
 import {shallow} from 'enzyme';
 
 import TextInput from './TextInput';
@@ -12,19 +12,20 @@ describe('TextInput', () => {
       onChange: () => {},
       placeholder: "",
       value: "",
-      errors: {error}
+      error: error
     };
     return shallow(<TextInput {...props}/>);
   }
 
   it('should input have multi fields', () => {
     let wrapper = setUp();
-    expect(wrapper.find('input').props().type).to.equal("text");
-    expect(wrapper.find('input').props().className).to.equal("form-control");
+    expect(wrapper.find('input').props().type).toEqual("text");
+    expect(wrapper.find('input').props().className).toEqual("form-control");
   });
 
-  // it.only('should throw error if error is present', () => {
-  //   let wrapper = setUp("");
-  //   console.log(wrapper.find('div').node.props.children,'-------------------------');
-  // });
+  it('should throw error if error is present', () => {
+    let wrapper = setUp(["name length must be greater than 0"]);
+    // console.log(wrapper.find('div').node.props.children[1].props.children[1].props.children.props.className,'-------------------------');
+    // console.log(wrapper.find('div').node.props.children[1].props.children[1].props.children.props.children,'-------------------------');
+  });
 });

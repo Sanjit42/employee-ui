@@ -7,7 +7,7 @@ import EmployeeForm from './EmployeeForm';
 import * as employeeActions from '../../../../actions/employeeActions';
 import * as defaultData from '../defaultData/defaultData';
 
-class ManageEmployeePage extends React.Component {
+export class ManageEmployeePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 

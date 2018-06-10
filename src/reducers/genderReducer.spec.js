@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 import React from 'react';
-import {expect} from 'chai';
 
 import * as types from '../constants/constant';
 import initialState from './initialState';
@@ -12,7 +12,7 @@ describe('Gender Reducer', () => {
       type: 'LOAD_GENDER',
       gender: ['Male', 'Female']
     };
-    expect(gender(state, action)).to.deep.equal(['Male']);
+    expect(gender(state, action)).toEqual(['Male']);
   });
 
   it('should return gender list', function () {
@@ -21,6 +21,6 @@ describe('Gender Reducer', () => {
       type: types.LOAD_GENDER_SUCCESS,
       gender: ['Male', 'Female']
     };
-    expect(gender(state, action)).to.deep.equal(['Male', 'Female']);
+    expect(gender(state, action)).toEqual(['Male', 'Female']);
   });
 });
