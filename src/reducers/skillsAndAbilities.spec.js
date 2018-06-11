@@ -21,27 +21,52 @@ describe('SkillsAndAbilities Reducer', () => {
     const action = {
       type: types.LOAD_SKILLS_AND_ABILITIES_SUCCESS,
       skillsAndAbilities: [{
-          employeeId: 2,
-          technical: {'AWS': 2, 'Java': 3},
-          testing: {'capybara': 2}
-        }]
+        employeeId: 2,
+        technical: {'AWS': 2, 'Java': 3},
+        testing: {'capybara': 2}
+      }]
     };
 
     let wrapper = skillsAndAbilities(initialState, action);
     expect(wrapper.length).to.equal(1);
   });
 
-  it('should upload employee skills and abilities', () => {
-    let initialState = [];
+  it('should update employee skills and abilities', () => {
+    let initialState = [
+      {
+        employeeId: 1,
+        technical: {'AWS': 2, 'Java': 3},
+        testing: {'capybara': 2}
+      },
+      {
+        employeeId: 2,
+        technical: {'AWS': 2, 'Java': 3},
+        testing: {'capybara': 2}
+      }];
+
     const action = {
       type: types.UPDATE_SKILLS_AND_ABILITIES_SUCCESS,
-      skillsAndAbilities: [{
-          employeeId: 2,
-          technical: {'AWS': 2, 'Java': 3},
-          testing: {'capybara': 2}
-        }]
+      skillsAndAbilities: {
+        employeeId: 2,
+        technical: {'AWS': 4, 'Java': 4},
+        testing: {'capybara': 4}
+      }
     };
+
+    let expected = [
+      {
+        employeeId: 1,
+        technical: {'AWS': 2, 'Java': 3},
+        testing: {'capybara': 2}
+      }, {
+        employeeId: 2,
+        technical: {'AWS': 4, 'Java': 4},
+        testing: {'capybara': 4}
+      }
+    ];
+
     let wrapper = skillsAndAbilities(initialState, action);
-    expect(wrapper.length).to.deep.equal(1);
+    expect(wrapper.length).to.deep.equal(2);
+    expect(wrapper).to.deep.equal(expected);
   });
 });

@@ -2,11 +2,11 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
-import * as types from '../../../../constants/constant';
+import toastr from 'toastr';
+import _ from 'lodash';
 
 import * as skillsAndAbilitiesActions from '../../../../actions/skillsAndAbilitiesActions';
 import SkillsAndAbilitiesTemplate from './SkillsAndAbilitiesTemplate';
-import Rating from './Rating';
 
 class SkillsAndAbilities extends React.Component {
   constructor(props, context) {
@@ -21,7 +21,7 @@ class SkillsAndAbilities extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.skillsAndAbilities.employeeId !== nextProps.skillsAndAbilities.employeeId){
+    if (this.props.skillsAndAbilities.employeeId !== nextProps.skillsAndAbilities.employeeId) {
       this.setState({skillsAndAbilities: nextProps.skillsAndAbilities});
     }
   }
@@ -32,16 +32,23 @@ class SkillsAndAbilities extends React.Component {
 
   onSave(event) {
     event.preventDefault();
-    this.props.actions.saveSkillsAndAbilities(this.props.rating, this.props.id);
+    if (this.props.rating.length > 0) {
+      this.props.actions.saveSkillsAndAbilities(this.props.rating, this.props.id)
+        .then(() => {
+          toastr.success("Skills and Abilities updated");
+        });
+    }
   }
 
   render() {
     let {skillsAndAbilities} = this.state;
+    let kyes = Object.keys(skillsAndAbilities);
+    let currentSubset = _.pull(kyes, "employeeId");
     return (
       <div className="col-md-12">
         <form>
           <div className="container-fluid">
-            {types.subset.map(each =>
+            {currentSubset.map(each =>
               <div className="col-md-6">
                 <SkillsAndAbilitiesTemplate
                   skillsAndAbilities={skillsAndAbilities[each]}

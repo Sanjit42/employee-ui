@@ -122,7 +122,7 @@ class EmployeeApi {
       setTimeout(() => {
         // axios.post('http://localhost:8080/employee/skillsAndAbilities', assignEmployeeId).then(res => {
         //   if (res.status == 200) {
-            resolve(assignEmployeeId);
+        resolve(assignEmployeeId);
           // }
         // });
       }, delay);
@@ -138,7 +138,7 @@ class EmployeeApi {
         topicWithRating['subset'] = template;
         topicWithRating['employeeId'] = id;
 
-        resolve([topicWithRating]);
+        resolve(topicWithRating);
       }, delay);
     });
   }
