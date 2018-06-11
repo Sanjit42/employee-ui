@@ -34,19 +34,25 @@ describe('Avatar Reducer', () => {
   });
 
   it('should update avatar', () => {
-    let initialState = [{
-      employeeId: 1,
-      avatar: 'imageUrl'
-    }];
+    let initialState = [
+      {employeeId: 1, avatar: 'imageUrl'},
+      {employeeId: 2, avatar: 'imageUrl'}
+      ];
     const action = {
       type: types.UPDATE_AVATAR_SUCCESS,
-      avatar: [{
+      avatar: {
         employeeId: 2,
-        avatar: 'imageUrl'
-      }]
+        avatar: 'updateUrl'
+      }
     };
 
+    let expected = [
+      {employeeId: 1, avatar: 'imageUrl'},
+      {employeeId: 2, avatar: 'updateUrl'}
+    ];
+
     let wrapper = avatarReducer(initialState, action);
-    expect(wrapper.length).to.equal(1);
+    expect(wrapper.length).to.equal(2);
+    expect(wrapper).to.deep.equal(expected);
   });
 });

@@ -37,17 +37,17 @@ class ViewEmployee extends React.Component {
   }
 
   render() {
-    let {state} = this;
+    let {props} = this;
     return (
       <div>
-        <Avatar avatar={state.avatar} id={state.id}/>
-        <BasicDetails basicDetails={state.employee}/>
-        <SkillsAndAbilities skillsAndAbilities={state.skillsAndAbilities} id={state.id}/>
-        {state.employee.projectExperience !== undefined &&
-        <ProjectExperience projectExperience={state.employee.projectExperience}/>
+        <Avatar avatar={props.avatar} id={props.id}/>
+        <BasicDetails basicDetails={props.employee}/>
+        <SkillsAndAbilities skillsAndAbilities={props.skillsAndAbilities} id={props.id}/>
+        {props.employee.projectExperience !== undefined &&
+        <ProjectExperience projectExperience={props.employee.projectExperience}/>
         }
-        {state.employee.leaveHistory !== undefined &&
-        <LeaveHistory leaveHistory={state.employee.leaveHistory}/>
+        {props.employee.leaveHistory !== undefined &&
+        <LeaveHistory leaveHistory={props.employee.leaveHistory}/>
         }
       </div>
     );
@@ -65,7 +65,7 @@ function mapStateToProps(state, ownProps) {
   let employee = defaultData.employee;
   let skillsAndAbilities = null;
   let avatar = null;
-  let id = ownProps.params.id;
+  let id = parseInt(ownProps.params.id);
 
   if (id && state.avatar.length > 0) {
     avatar = _.find(state.avatar, {employeeId: parseInt(id)});

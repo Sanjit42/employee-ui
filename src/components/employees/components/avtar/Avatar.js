@@ -11,9 +11,7 @@ class Avatar extends React.Component {
     super(props, context);
 
     this.state = {
-      file: '',
-      avatar: this.props.avatar,
-      id: this.props.id
+      file: ''
     };
     this.saveAvatar = this.saveAvatar.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
@@ -37,24 +35,21 @@ class Avatar extends React.Component {
     let reader = new FileReader();
     reader.readAsDataURL(this.state.file);
 
-    this.props.actions.saveAvatar({employeeId: this.state.id, image: this.state.avatar})
-      .then(res => {
-        toastr.success("Image Uploaded Successfully");
-        reader.onloadend = () => {
-          this.setState({
-            avatar: reader.result
-          });
-        };
-      }).catch(error => {
-      toastr.error(error);
-    });
+    reader.onloadend = () => {
+      this.props.actions.saveAvatar({employeeId: this.props.id, image: reader.result})
+        .then(() => {
+          toastr.success("Image Uploaded Successfully");
+        }).catch(error => {
+        toastr.error(error);
+      });
+    };
   }
 
   render() {
-    let {avatar} = this.state;
-    let $imagePreview = null;
+    let {avatar} = this.props;
+    let imagePreview = null;
     if (avatar) {
-      $imagePreview = (<img src={avatar}/>);
+      imagePreview = (<img src={avatar.image}/>);
     }
     return (
       <div className="previewComponent">
@@ -66,12 +61,12 @@ class Avatar extends React.Component {
                ref={fileInput => this.fileInput = fileInput}
         />
         <div className="imgPreview">
-          {$imagePreview}
+          {imagePreview}
         </div>
         <button onClick={() => this.fileInput.click()}>Pick up</button>
         <button className="submitButton"
                 type="submit"
-                onClick={this.saveAvatar}>Upload Image
+                onClick={this.saveAvatar}>Change Image
         </button>
       </div>
     );
@@ -80,14 +75,14 @@ class Avatar extends React.Component {
 
 Avatar.propTypes = {
   actions: PropTypes.object.isRequired,
-  avatar: PropTypes.string,
-  id: PropTypes.string
+  avatar: PropTypes.object.isRequired,
+  id: PropTypes.number.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    id: ownProps.id,
-    avatar: ownProps.avatar.image
+    avatar: ownProps.avatar,
+    id: ownProps.id
   };
 }
 
