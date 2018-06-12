@@ -67,7 +67,7 @@ describe('EmployeeApi', () => {
         });
     });
 
-    it('should save employee when employee name field is empty', (done) => {
+    it('should save employee when employee name field is not empty', (done) => {
       let employee = {
         name: "Jon",
         role: "dev",
