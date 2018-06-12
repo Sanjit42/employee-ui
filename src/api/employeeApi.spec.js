@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 import React from 'react';
-import {expect} from 'chai';
 
 import employeeApi from './employeeApi';
 
@@ -46,7 +46,7 @@ describe('EmployeeApi', () => {
 
       employeeApi.getAllEmployees()
         .then(employees => {
-          expect(employees).to.deep.equal(expected);
+          expect(employees).toEqual(expected);
           done();
         });
     });
@@ -62,7 +62,7 @@ describe('EmployeeApi', () => {
       employeeApi.saveEmployee(employee)
         .then()
         .catch(error => {
-          expect(error).to.eq('Name must be at least 1 characters.');
+          expect(error).toEqual('Name must be at least 1 characters.');
           done();
         });
     });
@@ -77,7 +77,7 @@ describe('EmployeeApi', () => {
 
       employeeApi.saveEmployee(employee)
         .then(res => {
-          expect(res).to.deep.eq(employee);
+          expect(res).toEqual(employee);
           done();
         })
         .catch(error => {
@@ -91,7 +91,7 @@ describe('EmployeeApi', () => {
 
       employeeApi.getAllHomeOffices()
         .then(res => {
-          expect(res).to.deep.eq(expected);
+          expect(res).toEqual(expected);
           done();
         });
     });
@@ -103,7 +103,7 @@ describe('EmployeeApi', () => {
 
       employeeApi.getGenderList()
         .then(res => {
-          expect(res).to.deep.eq(expected);
+          expect(res).toEqual(expected);
           done();
         });
     });
@@ -120,7 +120,7 @@ describe('EmployeeApi', () => {
 
       employeeApi.updateRatingValue(rating, topic, id, template)
         .then(res => {
-          expect(res).to.deep.eq(expected);
+          expect(res).toEqual(expected);
           done();
         });
     });
@@ -148,7 +148,7 @@ describe('EmployeeApi', () => {
 
       employeeApi.getSkillsAndAbilities()
         .then(updatedSkillsRes => {
-          expect(updatedSkillsRes).to.deep.equal(expected);
+          expect(updatedSkillsRes).toEqual(expected);
           done();
         });
     });
@@ -170,7 +170,7 @@ describe('EmployeeApi', () => {
 
       employeeApi.saveSkillsAndAbilities(updatedSkills, id)
         .then((updatedSkillsRes) => {
-          expect(updatedSkillsRes).to.deep.equal(expected);
+          expect(updatedSkillsRes).toEqual(expected);
           done();
         });
     });
@@ -182,7 +182,7 @@ describe('EmployeeApi', () => {
       const expected = [{employeeId: 21322, image: image}];
       employeeApi.loadAvatar()
         .then(res => {
-          expect(res).to.deep.equal(expected);
+          expect(res).toEqual(expected);
           done();
         });
     });
@@ -192,7 +192,7 @@ describe('EmployeeApi', () => {
 
       employeeApi.saveAvatar(avatar)
         .then(res => {
-          expect(res).to.deep.equal({employeeId: 2, image: 'imageUrl'});
+          expect(res).toEqual({employeeId: 2, image: 'imageUrl'});
           done();
         });
     });

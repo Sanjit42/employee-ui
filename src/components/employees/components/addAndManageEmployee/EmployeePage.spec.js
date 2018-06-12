@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 import React from 'react';
-import expect from 'expect';
 import {mount} from 'enzyme';
 
 import {EmployeePage} from './EmployeePage';

@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 import React from 'react';
-import {expect} from 'chai';
 
 import * as types from '../constants/constant';
 import skillsAndAbilities from './skillsAndAbilitiesReducer';
@@ -12,7 +12,7 @@ describe('SkillsAndAbilities Reducer', () => {
     };
     let initialState = [];
     let wrapper = skillsAndAbilities(initialState, action);
-    expect(wrapper).to.deep.equal([]);
+    expect(wrapper).toEqual([]);
   });
 
   it('should load employee skills and abilities', () => {
@@ -27,7 +27,7 @@ describe('SkillsAndAbilities Reducer', () => {
     };
 
     let wrapper = skillsAndAbilities(initialState, action);
-    expect(wrapper.length).to.equal(1);
+    expect(wrapper.length).toEqual(1);
   });
 
   it('should update employee skills and abilities', () => {
@@ -65,8 +65,8 @@ describe('SkillsAndAbilities Reducer', () => {
     ];
 
     let wrapper = skillsAndAbilities(initialState, action);
-    expect(wrapper.length).to.deep.equal(2);
-    expect(wrapper).to.deep.equal(expected);
+    expect(wrapper.length).toEqual(2);
+    expect(wrapper).toEqual(expected);
   });
 
 
@@ -116,7 +116,7 @@ describe('SkillsAndAbilities Reducer', () => {
     ];
 
     let wrapper = skillsAndAbilities(initialState, action);
-    expect(wrapper).to.deep.equal(expected);
-
+    expect(wrapper).toEqual(expected);
+    expect(wrapper.length).toEqual(2);
   });
 });

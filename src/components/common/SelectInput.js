@@ -25,11 +25,11 @@ const SelectInput = ({name, lavel, value, defaultOption, options, onChange, erro
 SelectInput.propTypes = {
   name: PropTypes.string.isRequired,
   lavel: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.array,
   defaultOption: PropTypes.string,
   error: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(PropTypes.object)
+  options: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default SelectInput;

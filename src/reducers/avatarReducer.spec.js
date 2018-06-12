@@ -1,6 +1,5 @@
-/* eslint-disable import/namespace */
+/* eslint-disable no-undef */
 import React from 'react';
-import {expect} from 'chai';
 
 import * as types from '../constants/constant';
 import avatarReducer from './avatarReducer';
@@ -16,7 +15,7 @@ describe('Avatar Reducer', () => {
     };
     let initialState = [];
     let wrapper = avatarReducer(initialState, action);
-    expect(wrapper).to.deep.equal([]);
+    expect(wrapper).toEqual([]);
   });
 
   it('should load avatar', () => {
@@ -30,7 +29,7 @@ describe('Avatar Reducer', () => {
     };
 
     let wrapper = avatarReducer(initialState, action);
-    expect(wrapper.length).to.equal(1);
+    expect(wrapper.length).toEqual(1);
   });
 
   it('should update avatar', () => {
@@ -52,7 +51,7 @@ describe('Avatar Reducer', () => {
     ];
 
     let wrapper = avatarReducer(initialState, action);
-    expect(wrapper.length).to.equal(2);
-    expect(wrapper).to.deep.equal(expected);
+    expect(wrapper.length).toEqual(2);
+    expect(wrapper).toEqual(expected);
   });
 });

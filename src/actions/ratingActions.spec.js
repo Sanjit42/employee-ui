@@ -1,4 +1,4 @@
-import {expect} from 'chai';
+/* eslint-disable no-undef */
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
@@ -20,7 +20,7 @@ describe('Rating Actions', () => {
       };
 
       let action = ratingActions.updateRatingSuccess(rating);
-      expect(action).to.deep.equal(expected);
+      expect(action).toEqual(expected);
     });
   });
 
@@ -40,8 +40,8 @@ describe('Rating Actions', () => {
       const store = mockStore({rating: [{}]}, expectedAction);
       store.dispatch(ratingActions.updateRatingValue(rating, title, id, template)).then((rating) => {
         const actions = store.getActions();
-        expect(actions[0].type).to.equal(types.BEGIN_AJAX_CALL);
-        expect(actions[1].type).to.equal(types.UPDATE_RATING_SUCCESS);
+        expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
+        expect(actions[1].type).toEqual(types.UPDATE_RATING_SUCCESS);
         done();
       });
     });

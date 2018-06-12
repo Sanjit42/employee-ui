@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
 import {bindActionCreators} from 'redux';
+
 import * as employeeActions from '../../../../actions/employeeActions';
 import EmployeeList from './EmployeeList';
 

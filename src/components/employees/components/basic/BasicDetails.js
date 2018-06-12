@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 
 const BasicDetails = ({basicDetails}) => {
   return (
-    <div>
+    <div className="basic-details">
       <div>{basicDetails.name}</div>
       <div>{basicDetails.gender}</div>
       <span>ID: {basicDetails.employeeId}</span>

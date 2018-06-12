@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 import React from 'react';
-import {expect} from 'chai';
 
 import * as types from '../constants/constant';
 import homeOffices from './homeOfficesReducer';
@@ -11,7 +11,7 @@ describe('Home Office Reducer', () => {
       type: 'LOAD_HOME_OFFICE',
       homeOffices: []
     };
-    expect(homeOffices(state, action)).to.deep.equal(['Hyderabad']);
+    expect(homeOffices(state, action)).toEqual(['Hyderabad']);
   });
 
   it('should return homeOffices list', function () {
@@ -20,6 +20,6 @@ describe('Home Office Reducer', () => {
       type: types.LOAD_HOME_OFFICE_SUCCESS,
       homeOffices: ['Bangalore', 'Kolkata']
     };
-    expect(homeOffices(state, action)).to.deep.equal(['Bangalore', 'Kolkata']);
+    expect(homeOffices(state, action)).toEqual(['Bangalore', 'Kolkata']);
   });
 });
