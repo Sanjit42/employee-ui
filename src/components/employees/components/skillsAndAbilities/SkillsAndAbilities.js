@@ -26,17 +26,22 @@ class SkillsAndAbilities extends React.Component {
     }
   }
 
-  upDate(event) {
-    let data = event.target;
-  }
-
   onSave(event) {
     event.preventDefault();
+    this.setState({saving: true});
     if (this.props.rating.length > 0) {
       this.props.actions.saveSkillsAndAbilities(this.props.rating, this.props.id)
         .then(() => {
+          this.setState({saving: false});
           toastr.success("Skills and Abilities updated");
+        })
+        .catch(error => {
+          toastr.error(error);
+          this.setState({saving: false});
         });
+    }
+    else {
+      this.setState({saving: false});
     }
   }
 
@@ -61,7 +66,6 @@ class SkillsAndAbilities extends React.Component {
             name="submit"
             disabled={this.state.saving}
             value={this.state.saving ? 'Saving...' : 'Save'}
-            onChange={this.upDate}
             className="btn btn-primary"
             onClick={this.onSave}
           />

@@ -12,7 +12,7 @@ function updateSkills(state, action) {
 
   subsets.map(each => {
     let subset = {};
-    let updateSubset = Object.assign({}, toChange[0][each], action.skillsAndAbilities[each]);
+    let updateSubset = Object.assign({}, updatedSkills[each], action.skillsAndAbilities[each]);
     subset[each] = updateSubset;
     updatedSkills = Object.assign({}, updatedSkills, subset);
   });
