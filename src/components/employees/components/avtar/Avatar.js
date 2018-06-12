@@ -1,17 +1,19 @@
-/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-unresolved,no-constant-condition,import/namespace,import/default */
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
 
 import * as avatarActions from "../../../../actions/avatarActions";
+import Spinner from '../../../../resources/images/puff.svg';
 
 class Avatar extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      file: ''
+      file: '',
+      uploading: false
     };
     this.saveAvatar = this.saveAvatar.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
@@ -30,6 +32,7 @@ class Avatar extends React.Component {
   }
 
   saveAvatar(e) {
+    this.setState({uploading: true});
     e.preventDefault();
 
     let reader = new FileReader();
@@ -38,38 +41,48 @@ class Avatar extends React.Component {
     reader.onloadend = () => {
       this.props.actions.saveAvatar({employeeId: this.props.id, image: reader.result})
         .then(() => {
+          this.setState({uploading: false});
           toastr.success("Image Uploaded Successfully");
         }).catch(error => {
+        this.setState({uploading: false});
         toastr.error(error);
       });
     };
   }
 
   render() {
-    let {avatar} = this.props;
-    let imagePreview = null;
-    if (avatar) {
-      imagePreview = (<img src={avatar.image}/>);
-    }
-    return (
-      <div className="previewComponent">
-        <input className="fileInput"
-               accept="image/jpeg"
-               style={{display: 'none'}}
-               type="file"
-               onChange={this.handleImageChange}
-               ref={fileInput => this.fileInput = fileInput}
-        />
-        <div className="imgPreview">
-          {imagePreview}
+    if (this.state.uploading) {
+      return (
+        <div>
+          <img src={Spinner}/>
         </div>
-        <button onClick={() => this.fileInput.click()}>Pick up</button>
-        <button className="submitButton"
-                type="submit"
-                onClick={this.saveAvatar}>Change Image
-        </button>
-      </div>
-    );
+      );
+    } else {
+      let {avatar} = this.props;
+      let imagePreview = null;
+      if (avatar) {
+        imagePreview = (<img src={avatar.image}/>);
+      }
+      return (
+        <div className="previewComponent">
+          <input className="fileInput"
+                 accept="image/jpeg"
+                 style={{display: 'none'}}
+                 type="file"
+                 onChange={this.handleImageChange}
+                 ref={fileInput => this.fileInput = fileInput}
+          />
+          <div className="imgPreview">
+            {imagePreview}
+          </div>
+          <button onClick={() => this.fileInput.click()}>Pick up</button>
+          <button className="submitButton"
+                  type="submit"
+                  onClick={this.saveAvatar}>Change Image
+          </button>
+        </div>
+      );
+    }
   }
 }
 
