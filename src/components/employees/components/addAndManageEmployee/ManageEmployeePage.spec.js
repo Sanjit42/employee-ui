@@ -13,8 +13,11 @@ describe('EmployeePage', () => {
       onSave: () =>{},
       employee: {},
       errors: [],
-      saving: true
-
+      saving: true,
+      actions: {}
     };
+
+    const wraper = mount(<ManageEmployeePage {...props} />);
+    expect(wraper.find('EmployeeForm').length).toEqual(1);
   });
 });

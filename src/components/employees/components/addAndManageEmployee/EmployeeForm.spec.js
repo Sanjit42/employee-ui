@@ -46,4 +46,12 @@ describe('EmployeeForm', () => {
     expect(wrapper.find('SelectInput').length).toBe(2);
     expect(wrapper.find('SelectInput').length).not.toBe(3);
   });
+
+  it('should handle onClick event', () => {
+    let mockCall = jest.fn();
+
+    let wrapper = shallow(<EmployeeForm homeOffices={['Pune']} employee={{}} onChange={mockCall} gender={['']} onSave={mockCall}/>);
+    wrapper.find('input').simulate('click');
+    expect(mockCall).toHaveBeenCalled();
+  });
 });
