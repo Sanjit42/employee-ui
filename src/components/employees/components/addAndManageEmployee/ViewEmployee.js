@@ -65,17 +65,17 @@ function mapStateToProps(state, ownProps) {
   let employee = defaultData.employee;
   let skillsAndAbilities = null;
   let avatar = null;
-  let id = parseInt(ownProps.params.id);
+  let id = ownProps.params.id;
 
   if (id && state.avatar.length > 0) {
-    avatar = _.find(state.avatar, {employeeId: parseInt(id)});
+    avatar = _.find(state.avatar, {employeeId: id});
   }
   if (id && state.employees.length > 0) {
-    employee = _.find(state.employees, {employeeId: parseInt(id)});
+    employee = _.find(state.employees, {employeeId: id});
   }
 
   if (id && state.skillsAndAbilities.length > 0) {
-    skillsAndAbilities = _.find(state.skillsAndAbilities, {employeeId: parseInt(id)});
+    skillsAndAbilities = _.find(state.skillsAndAbilities, {employeeId: id});
   }
   if (skillsAndAbilities == undefined) {
     skillsAndAbilities = defaultData.skillsAndAbilities;

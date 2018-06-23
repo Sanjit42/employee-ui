@@ -2,6 +2,8 @@ export const avatar = {
   employeeId: "",
   image: "http://pol.audio/media/user-avatar.png"
 };
+
+export const just = ['Rate me', 'WANT TO LEARN', 'PRACTICED SOME', 'CAN DO IT', 'STRETCHING LEADERSHIP', 'PRACTICED LEADER'];
 export const skillsAndAbilities = {
   employeeId: "",
   technical: {aws: 0, java: 0},

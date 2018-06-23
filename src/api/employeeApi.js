@@ -8,7 +8,7 @@ const employees = [
   {
     name: 'Abhik Roy',
     gender: 'Male',
-    employeeId: 21322,
+    employeeId: "21322",
     currentProject: 'Beach',
     homeOffice: 'Hyderabad',
     role: 'Developer',
@@ -24,7 +24,7 @@ const employees = [
   {
     name: 'Ritesh D',
     gender: 'Male',
-    employeeId: 21132,
+    employeeId: "21132",
     currentProject: 'Bahmni',
     homeOffice: 'Hyderabad',
     role: 'Developer',
@@ -44,14 +44,14 @@ const employees = [
 
 const skillsAndAbilities = [
   {
-    employeeId: 21322,
+    employeeId: "21322",
     technical: {'AWS': 2, 'Java': 3},
     consulting: {'communication': 4, 'planning': 2, 'questioning': 1},
     domain: {'government': 1, 'education': 2},
     testing: {'capybara': 2, 'cucumber': 0, 'fitness': 1}
   },
   {
-    employeeId: 21132,
+    employeeId: "21132",
     technical: {'AWS': 3, 'Java': 3},
     consulting: {'communication': 3, 'planning': 2, 'questioning': 5},
     domain: {'government': 1, 'education': 2},
@@ -62,7 +62,7 @@ const skillsAndAbilities = [
 const homeOffices = ["Hyderabad-India", "Bangalore-India", "Chennai-India", "Pune-India", "Gurgaon-India"];
 const gender = ['Male', 'Female'];
 
-const avatar = [{employeeId: 21322, image: image}];
+const avatar = [{employeeId: "21322", image: image}];
 
 class EmployeeApi {
   static getAllEmployees() {

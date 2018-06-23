@@ -61,7 +61,7 @@ class Avatar extends React.Component {
       let {avatar} = this.props;
       let imagePreview = null;
       if (avatar) {
-        imagePreview = (<img src={avatar.image}/>);
+        imagePreview = (<img style={{width: '25%', height: '30%'}} src={avatar.image}/>);
       }
       return (
         <div className="previewComponent">

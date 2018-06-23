@@ -1,10 +1,11 @@
-/* eslint-disable import/default */
+/* eslint-disable import/default,import/namespace */
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import StarRatingComponent from 'react-star-rating-component';
 import * as ratingActions from '../../../../actions/ratingActions';
+import * as defaultValues from '../defaultData/defaultData';
 
 class Rating extends React.Component {
   constructor(props) {
@@ -30,11 +31,12 @@ class Rating extends React.Component {
     return (
       <div>
         <StarRatingComponent
-          name="rate1"
+          name="rate"
           starCount={5}
           value={this.state.rating}
           onStarClick={this.onStarClick}
         />
+        {defaultValues.just[this.state.rating]}
       </div>
     );
   }
