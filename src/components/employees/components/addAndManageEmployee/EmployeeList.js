@@ -9,7 +9,6 @@ const EmployeeList = ({employees}) => {
         <tr>
           <th>Name</th>
           <th>Gender</th>
-          <th>Employee Id</th>
           <th>Role</th>
           <th>Current Project</th>
           <th>Home Office</th>

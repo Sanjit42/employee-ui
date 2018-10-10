@@ -14,9 +14,9 @@ export function loadEmployeesSuccess(employees) {
 export function loadEmployees() {
   return function (dispatch) {
     dispatch(beginAjaxCall());
-    return employeeApi.getAllEmployees().then(employees => {
-      // return axios.get("http://localhost:8080/employees").then(employees => {
-      dispatch(loadEmployeesSuccess( employees));
+    // return employeeApi.getAllEmployees().then(employees => {
+      return axios.get("http://localhost:8080/employees").then(res => {
+      dispatch(loadEmployeesSuccess( res.data));
     }).catch(error => {
       throw (error);
     });

@@ -38,7 +38,7 @@ describe('EmployeeForm', () => {
 
   it('should render TextInput', () => {
     let wrapper = setUp(false);
-    expect(wrapper.find('TextInput').length).toBe(4);
+    expect(wrapper.find('TextInput').length).toBe(3);
   });
 
   it('should render SelectInput', () => {

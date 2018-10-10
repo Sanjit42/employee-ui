@@ -14,13 +14,6 @@ const EmployeeForm = ({employee, homeOffices, gender, errors, onChange, saving, 
       />
 
       <TextInput
-        name="employeeId"
-        lavel="Employee ID"
-        value={employee.employeeId}
-        onChange={onChange}
-        errors={errors}
-      />
-      <TextInput
         name="role"
         lavel="Role"
         value={employee.role}
