@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, IndexRoute} from 'react-router';
+import {Route, IndexRoute} from 'react-router-dom';
 import App from './components/App';
 import AboutApp from './components/aboutApp/AboutPage';
 import HomePage from './components/homePage/HomePage';
@@ -8,12 +8,16 @@ import EmployeePage from './components/employees/components/addAndManageEmployee
 import ViewEmployee from './components/employees/components/addAndManageEmployee/ViewEmployee';
 
 
-export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={HomePage}/>
-    <Route path="employees" component={EmployeePage}/>
-    <Route path="employee" component={ManageEmployeePage}/>
-    <Route path="employees/:id" component={ViewEmployee}/>
-    <Route path="about" component={AboutApp}/>
-  </Route>
-);
+const Routes = () => {
+  return (
+    <Route path="/" component={App}>
+      <IndexRoute component={HomePage}/>
+      <Route path="employees" component={EmployeePage}/>
+      <Route path="employee" component={ManageEmployeePage}/>
+      <Route path="employees/:id" component={ViewEmployee}/>
+      <Route path="about" component={AboutApp}/>
+    </Route>
+  )
+}
+
+export default Routes;

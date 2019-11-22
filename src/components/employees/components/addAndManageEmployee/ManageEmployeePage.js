@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import toaster from 'toastr';
@@ -31,7 +32,7 @@ export class ManageEmployeePage extends React.Component {
   redirect() {
     this.setState({saving: false});
     toaster.success('Employee Saved!');
-    this.context.router.push('/employees');
+    this.props.history.push('/employee-list');
   }
 
   saveEmployee(event) {
@@ -66,7 +67,8 @@ ManageEmployeePage.propTypes = {
   actions: PropTypes.object.isRequired,
   employee: PropTypes.object.isRequired,
   homeOffices: PropTypes.array.isRequired,
-  gender: PropTypes.array.isRequired
+  gender: PropTypes.array.isRequired,
+  history: PropTypes.object
 };
 
 ManageEmployeePage.contextTypes = {

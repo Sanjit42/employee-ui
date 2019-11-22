@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import EmployeeListRow from './EmployeeListRow';
 
 const EmployeeList = ({employees}) => {
@@ -9,6 +10,7 @@ const EmployeeList = ({employees}) => {
         <tr>
           <th>Name</th>
           <th>Gender</th>
+          <th>Employ Id</th>
           <th>Role</th>
           <th>Current Project</th>
           <th>Home Office</th>

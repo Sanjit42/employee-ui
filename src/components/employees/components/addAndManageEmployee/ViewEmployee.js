@@ -1,5 +1,6 @@
 /* eslint-disable import/default */
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import _ from 'lodash';
 import {bindActionCreators} from 'redux';
@@ -65,7 +66,7 @@ function mapStateToProps(state, ownProps) {
   let employee = defaultData.employee;
   let skillsAndAbilities = null;
   let avatar = null;
-  let id = parseInt(ownProps.params.id);
+  let id = parseInt(ownProps.match.params.id);
 
   if (id && state.avatar.length > 0) {
     avatar = _.find(state.avatar, {employeeId: id});

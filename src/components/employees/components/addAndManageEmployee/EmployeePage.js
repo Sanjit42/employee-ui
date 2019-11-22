@@ -1,6 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {browserHistory} from 'react-router';
 import {bindActionCreators} from 'redux';
 
 import * as employeeActions from '../../../../actions/employeeActions';
@@ -16,10 +16,11 @@ export class EmployeePage extends React.Component {
 
     this.onClickSave = this.onClickSave.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
+    this.redirectToAddEmployeePage = this.redirectToAddEmployeePage.bind(this);
   }
 
   redirectToAddEmployeePage() {
-    browserHistory.push('/employee');
+    this.props.history.push('/employee');
   }
 
   onTitleChange(event) {
@@ -51,7 +52,8 @@ export class EmployeePage extends React.Component {
 
 EmployeePage.propTypes = {
   actions: PropTypes.object.isRequired,
-  employees: PropTypes.array.isRequired
+  employees: PropTypes.array.isRequired,
+  history: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

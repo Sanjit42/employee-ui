@@ -1,7 +1,8 @@
 import webpack from 'webpack';
 import path from 'path';
 
-export default {
+module.exports = {
+    mode: 'development',
     devtool: 'inline-source-map',
     entry: [
         'eventsource-polyfill',

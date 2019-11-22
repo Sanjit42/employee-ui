@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
-import {Link, IndexLink} from 'react-router';
+import React from 'react';
+import PropTypes from 'prop-types'
+import {Link, IndexLink} from 'react-router-dom';
 
 import LoadingDots from './LoadingDots';
 
