@@ -16,9 +16,9 @@ export function loadSkillsAndAbilitiesSuccess(skillsAndAbilities) {
 export function loadSkillsAndAbilities() {
   return function (dispatch) {
     dispatch(beginAjaxCall());
-    // return employeeApi.getSkillsAndAbilities().then(skillsAndAbilities => {
-    return axios.get("http://localhost:8080/employees/skills").then(res => {
-      dispatch(loadSkillsAndAbilitiesSuccess( res.data));
+    return employeeApi.getSkillsAndAbilities().then(skillsAndAbilities => {
+    // return axios.get("http://localhost:8080/employees/skills").then(res => {
+      dispatch(loadSkillsAndAbilitiesSuccess( skillsAndAbilities));
     }).catch(error => {
       throw (error);
     });

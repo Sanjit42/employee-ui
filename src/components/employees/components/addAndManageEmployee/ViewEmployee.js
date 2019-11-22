@@ -24,7 +24,7 @@ class ViewEmployee extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.avatar.employeeId !== nextProps.avatar.employeeId) {
       this.setState({avatar: nextProps.avatar});
     }

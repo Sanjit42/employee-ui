@@ -17,7 +17,7 @@ class Rating extends React.Component {
     this.onStarClick = this.onStarClick.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({rating: nextProps.rating});
   }
 

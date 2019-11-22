@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
 
 import * as avatarActions from "../../../../actions/avatarActions";
-import Spinner from '../../../../resources/images/puff.svg';
+// import Spinner from '../../../';
 
 class Avatar extends React.Component {
   constructor(props, context) {
@@ -19,7 +19,7 @@ class Avatar extends React.Component {
     this.handleImageChange = this.handleImageChange.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({avatar: nextProps.avatar});
   }
 
@@ -54,7 +54,7 @@ class Avatar extends React.Component {
     if (this.state.uploading) {
       return (
         <div>
-          <img src={Spinner}/>
+          {/*<img src={Spinner}/>*/}
         </div>
       );
     } else {

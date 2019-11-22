@@ -20,7 +20,7 @@ class SkillsAndAbilities extends React.Component {
     this.onSave = this.onSave.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.skillsAndAbilities.employeeId !== nextProps.skillsAndAbilities.employeeId) {
       this.setState({skillsAndAbilities: nextProps.skillsAndAbilities});
     }
