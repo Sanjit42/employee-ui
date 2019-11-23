@@ -15,8 +15,8 @@ import {loadSkillsAndAbilities} from "./actions/skillsAndAbilitiesActions";
 import App from "./App";
 
 import './styles/styles.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/toastr/build/toastr.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'toastr/build/toastr.min.css';
 
 
 const store = configureStore();

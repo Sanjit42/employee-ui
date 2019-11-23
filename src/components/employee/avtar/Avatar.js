@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
 
 import * as avatarActions from "../../../actions/avatarActions";
+
 // import Spinner from '../../../';
 
 class Avatar extends React.Component {
@@ -62,25 +63,29 @@ class Avatar extends React.Component {
       let {avatar} = this.props;
       let imagePreview = null;
       if (avatar) {
-        imagePreview = (<img style={{width: '25%', height: '30%'}} src={avatar.image}/>);
+        imagePreview = (<img src={avatar.image}/>);
       }
       return (
-        <div className="previewComponent">
-          <input className="fileInput"
-                 accept="image/jpeg"
-                 style={{display: 'none'}}
-                 type="file"
-                 onChange={this.handleImageChange}
-                 ref={fileInput => this.fileInput = fileInput}
-          />
-          <div className="imgPreview">
-            {imagePreview}
+        <div className="row">
+          <div className="col">
+            <div className="avatar">
+              <input className="fileInput"
+                     accept="image/jpeg"
+                     style={{display: 'none'}}
+                     type="file"
+                     onChange={this.handleImageChange}
+                     ref={fileInput => this.fileInput = fileInput}
+              />
+              <div className="imgPreview">
+                {imagePreview}
+              </div>
+              <button onClick={() => this.fileInput.click()}>Pick up</button>
+              <button className="submitButton"
+                      type="submit"
+                      onClick={this.saveAvatar}>Change Image
+              </button>
+            </div>
           </div>
-          <button onClick={() => this.fileInput.click()}>Pick up</button>
-          <button className="submitButton"
-                  type="submit"
-                  onClick={this.saveAvatar}>Change Image
-          </button>
         </div>
       );
     }

@@ -1,9 +1,24 @@
 #app {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #4d4d4d;
-  min-width: 550px;
-  max-width: 850px;
   margin: 0px;
+}
+
+.app {
+  display: flex;
+  padding: 15px 0 15px 0;
+  min-width: 90%;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0 0 0 0;
+  font-family: sans-serif
+}
+
+.navbar {
+  margin-bottom: 20px;
 }
 
 a.active {
@@ -12,4 +27,111 @@ a.active {
 
 nav {
   padding-top: 20px;
+}
+
+.profile {
+  display: flex;
+  margin-left: 10rem;
+}
+
+.avatar {
+  padding: 50px;
+}
+
+.padding-around {
+  padding: 5px;
+}
+
+.basic-details {
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+}
+
+.name-section {
+ flex: 1;
+  margin: 10px 0 10px 0;
+}
+
+.gender {
+  flex: 1;
+  color: #848181;
+}
+
+.primary-role {
+  flex: 1;
+  margin: 10px 0 10px 0;
+}
+
+.experience {
+  flex: 1;
+  margin: 10px 0 10px 0;
+  color: #848181;
+}
+
+.assign-summary {
+  flex: 1;
+  margin: 10px 0 10px 0;
+}
+
+.offices-summary {
+  flex: 1;
+  margin: 10px 0 10px 0;
+  color: #848181;
+}
+
+.current-project {
+  color: #848181;
+}
+
+.imgPreview {
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*width: 80%;*/
+  /*height: 92%;*/
+  padding: 10px;
+}
+
+.preferred-name {
+  color: #555;
+  font-size: 3.0em;
+}
+
+.department-name {
+  background: #805f7e;
+  color: #fff;
+  margin-left: 5px;
+  position: relative;
+  font-size: 1.3rem;
+}
+
+.employee-id {
+  font-size: 16px;
+  color: #848181;
+}
+.role {
+  padding: 1px 6px;
+  position: relative;
+  color: #fff;
+  border-radius: 2px;
+  font-size: 20px;
+  display: inline-block;
+  text-transform: uppercase;
+  margin-right: 7px;
+  background: #0CB0C6;
+}
+
+.grade {
+  font-size: 26px;
+}
+
+.profile-assignable {
+  background: #4bb07b;
+  border-radius: 2px;
+  color: #ffffff;
+  padding: 1px 6px;
+  position: relative;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-right: 7px;
 }

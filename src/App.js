@@ -10,9 +10,9 @@ import ManageEmployeePage from "./components/employee/employeeForm";
 class App extends React.Component {
   render(){
     return (
-      <div>
+      <React.Fragment>
         <NavBar/>
-        <main className="container">
+        <main className="container-fluid app">
           <Switch>
             <Route exact path="/" component={AboutApp}/>
             <Route path="/employee" component={ManageEmployeePage}/>
@@ -20,7 +20,7 @@ class App extends React.Component {
             <Route path="/employees/:id" component={EmployeeDetails}/>
           </Switch>
         </main>
-      </div>
+      </React.Fragment>
     );
   }
 }
