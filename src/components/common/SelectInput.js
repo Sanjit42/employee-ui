@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-const SelectInput = ({name, lavel, value, defaultOption, options, onChange, error}) => {
+const SelectInput = ({name, label, value, defaultOption, options, onChange, error}) => {
   return (
     <div className="form-group">
-      <lavel htmlFor={name}>{lavel}</lavel>
+      <label htmlFor={name}>{label}</label>
       <div className="field">
         <select
         name={name}
@@ -25,7 +25,7 @@ const SelectInput = ({name, lavel, value, defaultOption, options, onChange, erro
 
 SelectInput.propTypes = {
   name: PropTypes.string.isRequired,
-  lavel: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   value: PropTypes.array,
   defaultOption: PropTypes.string,
   error: PropTypes.string,

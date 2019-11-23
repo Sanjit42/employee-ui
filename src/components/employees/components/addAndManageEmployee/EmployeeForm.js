@@ -8,7 +8,7 @@ const EmployeeForm = ({employee, homeOffices, gender, errors, onChange, saving, 
     <form>
       <TextInput
         name="name"
-        lavel="Full Name"
+        label="Full Name"
         value={employee.name}
         onChange={onChange}
         errors={errors}
@@ -16,7 +16,7 @@ const EmployeeForm = ({employee, homeOffices, gender, errors, onChange, saving, 
 
       <TextInput
         name="role"
-        lavel="Role"
+        label="Role"
         value={employee.role}
         onChange={onChange}
         errors={errors}
@@ -24,7 +24,7 @@ const EmployeeForm = ({employee, homeOffices, gender, errors, onChange, saving, 
 
       <TextInput
         name="currentProject"
-        lavel="Current Project"
+        label="Current Project"
         value={employee.currentProject}
         onChange={onChange}
         errors={errors}
@@ -32,7 +32,7 @@ const EmployeeForm = ({employee, homeOffices, gender, errors, onChange, saving, 
 
       <SelectInput
         name="homeOffice"
-        lavel="Home Office"
+        label="Home Office"
         value={employee.homeOffice}
         defaultOption="Select Home Office"
         options={homeOffices}
@@ -42,7 +42,7 @@ const EmployeeForm = ({employee, homeOffices, gender, errors, onChange, saving, 
 
       <SelectInput
         name="gender"
-        lavel="Gender"
+        label="Gender"
         value={employee.gender}
         defaultOption="Select Gender"
         options={gender}

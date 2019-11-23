@@ -1,8 +1,11 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import {shallow} from 'enzyme';
+import {configure, shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
 import EmployeeList from './EmployeeList';
+
+configure({ adapter: new Adapter() });
 
 describe('EmployeeList', () => {
   it('should render table',() => {

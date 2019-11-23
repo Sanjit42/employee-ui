@@ -40,7 +40,7 @@ export class ManageEmployeePage extends React.Component {
     this.setState({saving: true});
     this.props.actions.saveEmployee(this.state.employee)
       .then(() => this.redirect())
-      .catch(error =>{
+      .catch(error => {
         toaster.error(error);
         this.setState({saving: false});
       });
@@ -48,17 +48,15 @@ export class ManageEmployeePage extends React.Component {
 
   render() {
     return (
-      <div>
-        <EmployeeForm
-          homeOffices={this.props.homeOffices}
-          gender={this.props.gender}
-          onChange={this.updateEmployeeState}
-          onSave={this.saveEmployee}
-          employee={this.state.employee}
-          errors={this.state.errors}
-          saving={this.state.saving}
-        />
-      </div>
+      <EmployeeForm
+        homeOffices={this.props.homeOffices}
+        gender={this.props.gender}
+        onChange={this.updateEmployeeState}
+        onSave={this.saveEmployee}
+        employee={this.state.employee}
+        errors={this.state.errors}
+        saving={this.state.saving}
+      />
     );
   }
 }

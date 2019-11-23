@@ -1,14 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-const TextInput = ({name, lavel, onChange, placeholder, value, error}) => {
+const TextInput = ({name, label, onChange, placeholder, value, error}) => {
   let wrapperClass = 'form-group';
   if (error && error.length > 0) {
     wrapperClass += '' + 'has error';
   }
   return (
     <div className={wrapperClass}>
-      <lavel htmlForm={name}>{lavel}</lavel>
+      <label htmlForm={name}>{label}</label>
       <div className="field">
         <input
           type="text"
@@ -26,7 +26,7 @@ const TextInput = ({name, lavel, onChange, placeholder, value, error}) => {
 
 TextInput.propTypes = {
   name: PropTypes.string.isRequired,
-  lavel: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string,

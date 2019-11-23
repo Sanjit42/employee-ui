@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved,no-constant-condition,import/namespace,import/default */
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import toastr from 'toastr';

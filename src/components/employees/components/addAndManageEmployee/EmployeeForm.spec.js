@@ -1,13 +1,22 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import {shallow} from 'enzyme';
+import {configure, shallow} from 'enzyme';
 
 import EmployeeForm from './EmployeeForm';
+import Adapter from "enzyme-adapter-react-16";
+
+configure({ adapter: new Adapter() });
 
 describe('EmployeeForm', () => {
   function setUp(saving) {
     const props = {
-      employee: {},
+      employee: {
+        name: 'A',
+        role: 'B.A',
+        homeOffice: ['Kolkata'],
+        gender: ['Male'],
+        currentProject: 'Beach'
+      },
       homeOffices: [],
       gender: [],
       onChange: () => {},

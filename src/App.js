@@ -5,8 +5,7 @@ import NavBar from './components/common/navBar';
 import EmployeePage from "./components/employees/components/addAndManageEmployee/EmployeePage";
 import ViewEmployee from "./components/employees/components/addAndManageEmployee/ViewEmployee";
 import AboutApp from "./components/aboutApp/AboutPage";
-import ManageEmployeePage
-  from "./components/employees/components/addAndManageEmployee/ManageEmployeePage";
+import ManageEmployeePage from "./components/employees/components/addAndManageEmployee/ManageEmployeePage";
 
 class App extends React.Component {
   render(){
