@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import * as employeeActions from '../../../actions/employeeActions';
-import EmployeeList from './EmployeeList';
+import * as employeeActions from '../../actions/employeeActions';
+import EmployeeList from './employeeTable';
 
 export class EmployeePage extends React.Component {
   constructor(props, context) {

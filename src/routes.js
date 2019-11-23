@@ -4,7 +4,7 @@ import App from './components/App';
 import AboutApp from './components/aboutApp/AboutPage';
 import HomePage from './components/homePage/HomePage';
 import ManageEmployeePage from './components/employee/manageEmployee/ManageEmployeePage';
-import EmployeePage from './components/employee/manageEmployee/EmployeePage';
+import EmployeePage from './components/employee';
 import ViewEmployee from './components/employee/manageEmployee/ViewEmployee';
 
 
