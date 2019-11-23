@@ -6,10 +6,10 @@ import _ from 'lodash';
 import {bindActionCreators} from 'redux';
 
 import Avatar from '../avtar/Avatar';
-import ProjectExperience from '../projectExperience/ProjectExperience';
+import ProjectExperience from '../experience/ProjectExperience';
 import BasicDetails from '../basic/BasicDetails';
 import LeaveHistory from '../leaveHistory/LeaveHistory';
-import SkillsAndAbilities from '../skillsAndAbilities/SkillsAndAbilities';
+import SkillsAndAbilities from '../capability/SkillsAndAbilities';
 import * as defaultData from '../defaultData/defaultData';
 import * as employeeActions from '../../../actions/employeeActions';
 
