@@ -2,10 +2,10 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import NavBar from './components/common/navBar';
-import EmployeePage from "./components/employees/components/addAndManageEmployee/EmployeePage";
-import ViewEmployee from "./components/employees/components/addAndManageEmployee/ViewEmployee";
+import EmployeePage from "./components/employees/addAndManageEmployee/EmployeePage";
+import ViewEmployee from "./components/employees/addAndManageEmployee/ViewEmployee";
 import AboutApp from "./components/aboutApp/AboutPage";
-import ManageEmployeePage from "./components/employees/components/addAndManageEmployee/ManageEmployeePage";
+import ManageEmployeePage from "./components/employees/addAndManageEmployee/ManageEmployeePage";
 
 class App extends React.Component {
   render(){

@@ -109,7 +109,7 @@ class EmployeeApi {
 
     function getSkillsRatingObjet(skills) {
       let result = {};
-      _.each(skills, function (each) {
+      _.each(skills, each => {
         result = Object.assign({}, result, _.omit(each, 'subset', 'employeeId'));
       });
       return result;
