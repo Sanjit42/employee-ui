@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import {configure, shallow} from 'enzyme';
-
-import EmployeeForm from '../EmployeeForm';
 import Adapter from "enzyme-adapter-react-16";
+
+import EmployeeForm from '../Form';
 
 configure({ adapter: new Adapter() });
 

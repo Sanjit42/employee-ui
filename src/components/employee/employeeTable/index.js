@@ -7,7 +7,7 @@ import TableHeader from '../../common/TableHeader';
 // eslint-disable-next-line import/default
 import TableBody from '../../common/TableBody';
 
-const EmployeeList = ({employees}) => {
+const EmployeeTable = ({employees}) => {
   const columns = [
     {path: 'name', label: 'Name', content: employee => <Link to={`/employees/${employee.employeeId}`} > {employee.name} </Link>},
     {path: 'employeeId', label: 'Employee Id'},
@@ -31,8 +31,8 @@ const EmployeeList = ({employees}) => {
   );
 };
 
-EmployeeList.propTypes = {
+EmployeeTable.propTypes = {
   employees: PropTypes.array.isRequired
 };
 
-export default EmployeeList;
+export default EmployeeTable;

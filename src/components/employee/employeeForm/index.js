@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import toaster from 'toastr';
 
-import EmployeeForm from './EmployeeForm';
+import Form from '../../common/Form';
 import * as employeeActions from '../../../actions/employeeActions';
 import * as defaultData from '../defaultData/defaultData';
 
-export class ManageEmployeePage extends React.Component {
+export class EmployeeForm extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -47,21 +47,24 @@ export class ManageEmployeePage extends React.Component {
   }
 
   render() {
+    const {homeOffices, gender} = this.props;
+    const {employee, errors, saving} = this.state;
+
     return (
-      <EmployeeForm
-        homeOffices={this.props.homeOffices}
-        gender={this.props.gender}
+      <Form
+        homeOffices={homeOffices}
+        gender={gender}
         onChange={this.updateEmployeeState}
         onSave={this.saveEmployee}
-        employee={this.state.employee}
-        errors={this.state.errors}
-        saving={this.state.saving}
+        employee={employee}
+        errors={errors}
+        saving={saving}
       />
     );
   }
 }
 
-ManageEmployeePage.propTypes = {
+EmployeeForm.propTypes = {
   actions: PropTypes.object.isRequired,
   employee: PropTypes.object.isRequired,
   homeOffices: PropTypes.array.isRequired,
@@ -69,7 +72,7 @@ ManageEmployeePage.propTypes = {
   history: PropTypes.object
 };
 
-ManageEmployeePage.contextTypes = {
+EmployeeForm.contextTypes = {
   router: PropTypes.object
 };
 
@@ -87,4 +90,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageEmployeePage);
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeForm);

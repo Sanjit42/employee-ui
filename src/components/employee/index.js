@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import * as employeeActions from '../../actions/employeeActions';
-import EmployeeList from './employeeTable';
+import EmployeeTable from './employeeTable';
 
 export class EmployeePage extends React.Component {
   constructor(props, context) {
@@ -44,7 +44,7 @@ export class EmployeePage extends React.Component {
           className="btn btn-primary"
           onClick={this.redirectToAddEmployeePage}
         />
-        {employees.length > 0 && <EmployeeList employees={employees}/>}
+        {employees.length > 0 && <EmployeeTable employees={employees}/>}
       </div>
     );
   }

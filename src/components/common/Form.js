@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextInput from '../../common/TextInput';
-import SelectInput from '../../common/SelectInput';
+import TextInput from './TextInput';
+import SelectInput from './SelectInput';
 
-const EmployeeForm = ({employee, homeOffices, gender, errors, onChange, saving, onSave}) => {
+const Form = ({employee, homeOffices, gender, errors, onChange, saving, onSave}) => {
   return (
     <form>
       <TextInput
@@ -61,7 +61,7 @@ const EmployeeForm = ({employee, homeOffices, gender, errors, onChange, saving, 
   );
 };
 
-EmployeeForm.propTypes = {
+Form.propTypes = {
   homeOffices: PropTypes.array.isRequired,
   employee: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
@@ -71,4 +71,4 @@ EmployeeForm.propTypes = {
   saving: PropTypes.bool
 };
 
-export default EmployeeForm;
+export default Form;
