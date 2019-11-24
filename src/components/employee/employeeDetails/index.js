@@ -19,9 +19,9 @@ class ViewEmployee extends React.Component {
       <React.Fragment>
         <div className="profile">
           <Avatar avatar={avatar} id={id}/>
-          <BasicDetails basicDetails={employee}/>
+          <BasicDetails employee={employee}/>
         </div>
-        <Capability skills={skills} id={id}/>
+        {/*<Capability skills={skills} id={id}/>*/}
       </React.Fragment>
     );
   }

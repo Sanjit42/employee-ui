@@ -12,7 +12,8 @@ let EMPLOYEES = [
     currentProject: 'Beach',
     homeOffice: 'Hyderabad',
     role: 'Developer',
-
+    totalExperience: '2017-10-10',
+    hiredOn: '2018-10-15',
     projectExperience: {
       project: 'ThoughtWorks',
       subProject: 'step',
@@ -28,7 +29,8 @@ let EMPLOYEES = [
     currentProject: 'Bahmni',
     homeOffice: 'Hyderabad',
     role: 'Developer',
-
+    totalExperience: '2017-10-10',
+    hiredOn: '2018-10-15',
     projectExperience: {
       project: 'TrainLine',
       subProject: 'train',

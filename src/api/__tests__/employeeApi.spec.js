@@ -5,7 +5,7 @@ import employeeApi from '../employeeApi';
 
 describe('EmployeeApi', () => {
   describe('Employee', () => {
-    it('should load all employees', (done) => {
+    it('should load all employees', done => {
       const expected = [
         {
           name: 'Abhik Roy',
@@ -14,7 +14,8 @@ describe('EmployeeApi', () => {
           currentProject: 'Beach',
           homeOffice: 'Hyderabad',
           role: 'Developer',
-
+          hiredOn: "2018-10-15",
+          totalExperience: "2017-10-10",
           projectExperience: {
             project: 'ThoughtWorks',
             subProject: 'step',
@@ -30,7 +31,8 @@ describe('EmployeeApi', () => {
           currentProject: 'Bahmni',
           homeOffice: 'Hyderabad',
           role: 'Developer',
-
+          hiredOn: "2018-10-15",
+          totalExperience: "2017-10-10",
           projectExperience: {
             project: 'TrainLine',
             subProject: 'train',
