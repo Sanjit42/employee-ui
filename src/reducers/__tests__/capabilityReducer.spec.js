@@ -2,35 +2,35 @@
 import React from 'react';
 
 import * as types from '../../constants/constant';
-import skillsAndAbilities from '../skillsAndAbilitiesReducer';
+import skills from '../capabilityReducer';
 
 describe('SkillsAndAbilities Reducer', () => {
   it('should return default state when action type does not match', () => {
     let action = {
-      type: 'UPDATE_SKILLS_AND_ABILITIES',
+      type: 'UPDATE_SKILLS',
       employee: {}
     };
     let initialState = [];
-    let wrapper = skillsAndAbilities(initialState, action);
+    let wrapper = skills(initialState, action);
     expect(wrapper).toEqual([]);
   });
 
-  it('should load employee skills and abilities', () => {
+  it('should load employee skills', () => {
     let initialState = [];
     const action = {
-      type: types.LOAD_SKILLS_AND_ABILITIES_SUCCESS,
-      skillsAndAbilities: [{
+      type: types.LOAD_SKILLS_SUCCESS,
+      skills: [{
         employeeId: 2,
         technical: {'AWS': 2, 'Java': 3},
         testing: {'capybara': 2}
       }]
     };
 
-    let wrapper = skillsAndAbilities(initialState, action);
+    let wrapper = skills(initialState, action);
     expect(wrapper.length).toEqual(1);
   });
 
-  it('should update employee skills and abilities', () => {
+  it('should update employee skills', () => {
     let initialState = [
       {
         employeeId: 1,
@@ -44,8 +44,8 @@ describe('SkillsAndAbilities Reducer', () => {
       }];
 
     const action = {
-      type: types.UPDATE_SKILLS_AND_ABILITIES_SUCCESS,
-      skillsAndAbilities: {
+      type: types.UPDATE_SKILLS_SUCCESS,
+      skills: {
         employeeId: 2,
         technical: {'AWS': 4, 'Java': 4},
         testing: {'capybara': 4}
@@ -64,7 +64,7 @@ describe('SkillsAndAbilities Reducer', () => {
       }
     ];
 
-    let wrapper = skillsAndAbilities(initialState, action);
+    let wrapper = skills(initialState, action);
     expect(wrapper.length).toEqual(2);
     expect(wrapper).toEqual(expected);
   });
@@ -88,8 +88,8 @@ describe('SkillsAndAbilities Reducer', () => {
       }];
 
     const action = {
-      type: types.UPDATE_SKILLS_AND_ABILITIES_SUCCESS,
-      skillsAndAbilities: {
+      type: types.UPDATE_SKILLS_SUCCESS,
+      skills: {
         employeeId: 2,
         technical: {Java: 4},
         domain: {government: 3},
@@ -115,7 +115,7 @@ describe('SkillsAndAbilities Reducer', () => {
       }
     ];
 
-    let wrapper = skillsAndAbilities(initialState, action);
+    let wrapper = skills(initialState, action);
     expect(wrapper).toEqual(expected);
     expect(wrapper.length).toEqual(2);
   });

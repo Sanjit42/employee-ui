@@ -4,6 +4,6 @@ export default {
   gender: [],
   ajaxCallsInProgress: 0,
   rating: [],
-  skillsAndAbilities: [],
+  skills: [],
   avatar: []
 };

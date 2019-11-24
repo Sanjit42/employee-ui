@@ -4,7 +4,7 @@ export const avatar = {
 };
 
 export const just = ['Rate me', 'WANT TO LEARN', 'PRACTICED SOME', 'CAN DO IT', 'STRETCHING LEADERSHIP', 'PRACTICED LEADER'];
-export const skillsAndAbilities = {
+export const skills = {
   employeeId: "",
   technical: {aws: 0, java: 0},
   consulting: {communication: 0, planning: 0, questioning: 0},

@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 
 import StarRatingComponent from 'react-star-rating-component';
 import * as ratingActions from '../../../actions/ratingActions';
-import * as defaultValues from '../defaultData/defaultData';
+import * as defaultValues from '../defaultData';
 
 class Rating extends React.Component {
   constructor(props) {

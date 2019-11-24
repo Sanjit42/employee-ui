@@ -127,7 +127,7 @@ describe('EmployeeApi', () => {
   });
 
   describe('Skills And Abilities', () => {
-    it('should load employee skills and abilities', (done) => {
+    it('should load employee skills', (done) => {
 
       let expected = [
         {
@@ -146,7 +146,7 @@ describe('EmployeeApi', () => {
         }
       ];
 
-      employeeApi.getSkillsAndAbilities()
+      employeeApi.getSkills()
         .then(updatedSkillsRes => {
           expect(updatedSkillsRes).toEqual(expected);
           done();
@@ -168,7 +168,7 @@ describe('EmployeeApi', () => {
         testing: {mocha: 2, chai: 3}
       };
 
-      employeeApi.saveSkillsAndAbilities(updatedSkills, id)
+      employeeApi.saveSkills(updatedSkills, id)
         .then((updatedSkillsRes) => {
           expect(updatedSkillsRes).toEqual(expected);
           done();

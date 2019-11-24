@@ -8,7 +8,7 @@ import BasicDetails from '../BasicDetails';
 configure({ adapter: new Adapter() });
 
 describe('EmployeeForm', () => {
-  it('should render form', () => {
+  it.skip('should render form', () => {
     const props = {
       name: "Jon",
       gender: 'Male',

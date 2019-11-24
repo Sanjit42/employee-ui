@@ -6,7 +6,7 @@ import toaster from 'toastr';
 
 import Form from '../../common/Form';
 import * as employeeActions from '../../../actions/employeeActions';
-import * as defaultData from '../defaultData/defaultData';
+import * as defaultData from '../defaultData';
 
 export class EmployeeForm extends React.Component {
   constructor(props, context) {

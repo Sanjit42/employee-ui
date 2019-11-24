@@ -2,7 +2,7 @@
 import {combineReducers} from 'redux';
 
 import ajaxCallsInProgress from './ajaxStatusReducer';
-import skillsAndAbilities from './skillsAndAbilitiesReducer';
+import skillsAndAbilities from './capabilityReducer';
 import employees from './employeeReducer';
 import homeOffices from './homeOfficesReducer';
 import gender from './genderReducer';

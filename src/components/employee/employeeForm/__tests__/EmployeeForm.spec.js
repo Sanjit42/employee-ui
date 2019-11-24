@@ -3,7 +3,7 @@ import React from 'react';
 import {configure, shallow} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
 
-import {ManageEmployeePage} from '../index';
+import {EmployeeForm} from '../index';
 
 configure({ adapter: new Adapter() });
 
@@ -20,7 +20,7 @@ describe('EmployeePage', () => {
       actions: {}
     };
 
-    const wrapper = shallow(<ManageEmployeePage {...props} />);
-    expect(wrapper.find('EmployeeForm').length).toEqual(1);
+    const wrapper = shallow(<EmployeeForm {...props} />);
+    expect(wrapper.find('Form').length).toEqual(1);
   });
 });

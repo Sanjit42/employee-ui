@@ -27,7 +27,7 @@ describe('EmployeePage', () => {
     let employees = [{basicDetails: {}}];
     let wrapper = shallow(<EmployeePage employees={employees} actions={{}}/>);
 
-    expect(wrapper.find('EmployeeList').length).toBe(1);
+    expect(wrapper.find('EmployeeTable').length).toBe(1);
   });
 
   it('should get response when click on save button', () => {

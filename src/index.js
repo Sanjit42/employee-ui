@@ -11,7 +11,7 @@ import {loadHomeOffices} from "./actions/homeOfficesActions";
 import {loadEmployees} from "./actions/employeeActions";
 import {loadGender} from "./actions/genderActions";
 import {loadAvatar} from "./actions/avatarActions";
-import {loadSkillsAndAbilities} from "./actions/skillsAndAbilitiesActions";
+import {loadSkills} from "./actions/capabilityActions";
 import App from "./App";
 
 import './styles/styles.css';
@@ -24,7 +24,7 @@ store.dispatch(loadHomeOffices());
 store.dispatch(loadEmployees());
 store.dispatch(loadGender());
 store.dispatch(loadAvatar());
-store.dispatch(loadSkillsAndAbilities());
+store.dispatch(loadSkills());
 
 render(
   <Provider store={store}>

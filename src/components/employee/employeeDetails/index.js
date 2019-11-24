@@ -9,8 +9,8 @@ import Avatar from '../avtar/Avatar';
 import ProjectExperience from '../experience/ProjectExperience';
 import BasicDetails from '../basic/BasicDetails';
 import LeaveHistory from '../leaveHistory/LeaveHistory';
-import SkillsAndAbilities from '../capability/SkillsAndAbilities';
-import * as defaultData from '../defaultData/defaultData';
+import Capability from '../capability';
+import * as defaultData from '../defaultData';
 import * as employeeActions from '../../../actions/employeeActions';
 
 class ViewEmployee extends React.Component {
@@ -45,7 +45,7 @@ class ViewEmployee extends React.Component {
           <Avatar avatar={props.avatar} id={props.id}/>
           <BasicDetails basicDetails={props.employee}/>
         </div>
-        {/*<SkillsAndAbilities skillsAndAbilities={props.skillsAndAbilities} id={props.id}/>*/}
+        <Capability skillsAndAbilities={props.skillsAndAbilities} id={props.id}/>
         {/*{props.employee.projectExperience !== undefined &&*/}
         {/*<ProjectExperience projectExperience={props.employee.projectExperience}/>*/}
         {/*}*/}
@@ -81,7 +81,7 @@ function mapStateToProps(state, ownProps) {
     skillsAndAbilities = _.find(state.skillsAndAbilities, {employeeId: id});
   }
   if (skillsAndAbilities == undefined) {
-    skillsAndAbilities = defaultData.skillsAndAbilities;
+    skillsAndAbilities = defaultData.skills;
   }
 
   if (avatar == undefined) {

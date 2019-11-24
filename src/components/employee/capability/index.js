@@ -6,10 +6,10 @@ import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
 import _ from 'lodash';
 
-import * as skillsAndAbilitiesActions from '../../../actions/skillsAndAbilitiesActions';
-import SkillsAndAbilitiesTemplate from './SkillsAndAbilitiesTemplate';
+import * as capabilityActions from '../../../actions/capabilityActions';
+import CapabilityTemplate from './CapabilityTemplate';
 
-class SkillsAndAbilities extends React.Component {
+class Capability extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -31,7 +31,7 @@ class SkillsAndAbilities extends React.Component {
     event.preventDefault();
     this.setState({saving: true});
     if (this.props.rating.length > 0) {
-      this.props.actions.saveSkillsAndAbilities(this.props.rating, this.props.id)
+      this.props.actions.saveSkills(this.props.rating, this.props.id)
         .then(() => {
           this.setState({saving: false});
           toastr.success("Skills and Abilities updated");
@@ -54,9 +54,9 @@ class SkillsAndAbilities extends React.Component {
         <form>
           <div className="container-fluid">
             {currentSubset.map((each, i) =>
-              <SkillsAndAbilitiesTemplate
+              <CapabilityTemplate
                 key={i}
-                skillsAndAbilities={skillsAndAbilities[each]}
+                skills={skillsAndAbilities[each]}
                 subset={each}
                 id={this.props.id}/>
             )}
@@ -74,7 +74,7 @@ class SkillsAndAbilities extends React.Component {
   }
 }
 
-SkillsAndAbilities.propTypes = {
+Capability.propTypes = {
   rating: PropTypes.array.isRequired,
   skillsAndAbilities: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
@@ -93,8 +93,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(skillsAndAbilitiesActions, dispatch)
+    actions: bindActionCreators(capabilityActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SkillsAndAbilities);
+export default connect(mapStateToProps, mapDispatchToProps)(Capability);

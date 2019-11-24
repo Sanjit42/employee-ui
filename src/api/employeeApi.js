@@ -42,7 +42,7 @@ const employees = [
     }
   }];
 
-const skillsAndAbilities = [
+const skills = [
   {
     employeeId: 21322,
     technical: {'AWS': 2, 'Java': 3},
@@ -86,16 +86,16 @@ class EmployeeApi {
     });
   }
 
-  static getSkillsAndAbilities() {
+  static getSkills() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(Object.assign([], skillsAndAbilities));
+        resolve(Object.assign([], skills));
       }, delay);
     });
   }
 
-  static saveSkillsAndAbilities(skillsAndAbilities, id) {
-    let filterSkills = skillsAndAbilities.filter(skills => skills.employeeId === id);
+  static saveSkills(skills, id) {
+    let filterSkills = skills.filter(skills => skills.employeeId === id);
     let splitSkillsValues = _.groupBy(filterSkills, 'subset');
     let subset = Object.keys(splitSkillsValues);
     let skillsResult = {};
@@ -117,7 +117,7 @@ class EmployeeApi {
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        // axios.post('http://localhost:8080/employee/skillsAndAbilities', assignEmployeeId).then(res => {
+        // axios.post('http://localhost:8080/employee/skills', assignEmployeeId).then(res => {
         //   if (res.status == 200) {
         resolve(assignEmployeeId);
         // }
