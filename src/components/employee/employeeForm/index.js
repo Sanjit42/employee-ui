@@ -13,7 +13,7 @@ export class EmployeeForm extends React.Component {
     super(props, context);
 
     this.state = {
-      employee: Object.assign({}, this.props.employee),
+      employee: {},
       errors: {},
       saving: false
     };

@@ -126,7 +126,7 @@ describe('EmployeeApi', () => {
     });
   });
 
-  describe('Skills And Abilities', () => {
+  describe('Skills', () => {
     it('should load employee skills', (done) => {
 
       let expected = [

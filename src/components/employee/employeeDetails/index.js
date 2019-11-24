@@ -6,52 +6,22 @@ import _ from 'lodash';
 import {bindActionCreators} from 'redux';
 
 import Avatar from '../avtar/Avatar';
-import ProjectExperience from '../experience/ProjectExperience';
-import BasicDetails from '../basic/BasicDetails';
-import LeaveHistory from '../leaveHistory/LeaveHistory';
+import BasicDetails from '../basicDetails';
 import Capability from '../capability';
 import * as defaultData from '../defaultData';
 import * as employeeActions from '../../../actions/employeeActions';
 
 class ViewEmployee extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      employee: Object.assign({}, this.props.employee),
-      avatar: Object.assign({}, this.props.avatar),
-      skillsAndAbilities: Object.assign({}, this.props.skillsAndAbilities),
-      id: this.props.id
-    };
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.avatar.employeeId !== nextProps.avatar.employeeId) {
-      this.setState({avatar: nextProps.avatar});
-    }
-    if (this.props.employee.employeeId !== nextProps.employee.employeeId) {
-      this.setState({employee: nextProps.employee});
-    }
-    if (this.props.skillsAndAbilities.employeeId !== nextProps.skillsAndAbilities.employeeId) {
-      this.setState({skillsAndAbilities: nextProps.skillsAndAbilities});
-    }
-  }
 
   render() {
-    let {props} = this;
+    let {avatar, employee, skills, id} = this.props;
     return (
       <React.Fragment>
         <div className="profile">
-          <Avatar avatar={props.avatar} id={props.id}/>
-          <BasicDetails basicDetails={props.employee}/>
+          <Avatar avatar={avatar} id={id}/>
+          <BasicDetails basicDetails={employee}/>
         </div>
-        <Capability skillsAndAbilities={props.skillsAndAbilities} id={props.id}/>
-        {/*{props.employee.projectExperience !== undefined &&*/}
-        {/*<ProjectExperience projectExperience={props.employee.projectExperience}/>*/}
-        {/*}*/}
-        {/*{props.employee.leaveHistory !== undefined &&*/}
-        {/*<LeaveHistory leaveHistory={props.employee.leaveHistory}/>*/}
-        {/*}*/}
+        <Capability skills={skills} id={id}/>
       </React.Fragment>
     );
   }
@@ -59,14 +29,14 @@ class ViewEmployee extends React.Component {
 
 ViewEmployee.propTypes = {
   employee: PropTypes.object.isRequired,
-  skillsAndAbilities: PropTypes.object.isRequired,
+  skills: PropTypes.object.isRequired,
   avatar: PropTypes.object.isRequired,
   id: PropTypes.number.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   let employee = defaultData.employee;
-  let skillsAndAbilities = null;
+  let skills = null;
   let avatar = null;
   let id = parseInt(ownProps.match.params.id);
 
@@ -77,11 +47,11 @@ function mapStateToProps(state, ownProps) {
     employee = _.find(state.employees, {employeeId: id});
   }
 
-  if (id && state.skillsAndAbilities.length > 0) {
-    skillsAndAbilities = _.find(state.skillsAndAbilities, {employeeId: id});
+  if (id && state.skills.length > 0) {
+    skills = _.find(state.skills, {employeeId: id});
   }
-  if (skillsAndAbilities == undefined) {
-    skillsAndAbilities = defaultData.skills;
+  if (skills == undefined) {
+    skills = defaultData.skills;
   }
 
   if (avatar == undefined) {
@@ -89,10 +59,10 @@ function mapStateToProps(state, ownProps) {
   }
 
   return {
-    employee: employee,
-    avatar: avatar,
-    skillsAndAbilities: skillsAndAbilities,
-    id: id
+    employee,
+    avatar,
+    skills,
+    id
   };
 }
 

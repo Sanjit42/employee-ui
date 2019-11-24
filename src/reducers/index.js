@@ -2,7 +2,7 @@
 import {combineReducers} from 'redux';
 
 import ajaxCallsInProgress from './ajaxStatusReducer';
-import skillsAndAbilities from './capabilityReducer';
+import skills from './capabilityReducer';
 import employees from './employeeReducer';
 import homeOffices from './homeOfficesReducer';
 import gender from './genderReducer';
@@ -11,7 +11,7 @@ import rating from './ratingReducer';
 
 const rootReducer = combineReducers({
   ajaxCallsInProgress,
-  skillsAndAbilities,
+  skills,
   employees,
   homeOffices,
   gender,

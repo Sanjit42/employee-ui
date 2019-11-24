@@ -4,7 +4,7 @@ import React from 'react';
 import * as types from '../../constants/constant';
 import skills from '../capabilityReducer';
 
-describe('SkillsAndAbilities Reducer', () => {
+describe('Skills Reducer', () => {
   it('should return default state when action type does not match', () => {
     let action = {
       type: 'UPDATE_SKILLS',

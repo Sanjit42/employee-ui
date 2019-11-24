@@ -15,15 +15,15 @@ class Capability extends React.Component {
 
     this.state = {
       saving: false,
-      skillsAndAbilities: Object.assign({}, this.props.skillsAndAbilities)
+      skills: {...this.props.skills}
     };
 
     this.onSave = this.onSave.bind(this);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.skillsAndAbilities.employeeId !== nextProps.skillsAndAbilities.employeeId) {
-      this.setState({skillsAndAbilities: nextProps.skillsAndAbilities});
+    if (this.props.skills.employeeId !== nextProps.skills.employeeId) {
+      this.setState({skills: nextProps.skills});
     }
   }
 
@@ -34,7 +34,7 @@ class Capability extends React.Component {
       this.props.actions.saveSkills(this.props.rating, this.props.id)
         .then(() => {
           this.setState({saving: false});
-          toastr.success("Skills and Abilities updated");
+          toastr.success("Skills updated");
         })
         .catch(error => {
           toastr.error(error);
@@ -46,8 +46,8 @@ class Capability extends React.Component {
   }
 
   render() {
-    let {skillsAndAbilities} = this.state;
-    let keys = Object.keys(skillsAndAbilities);
+    let {skills} = this.state;
+    let keys = Object.keys(skills);
     let currentSubset = _.pull(keys, "employeeId");
     return (
       <div className="col-md-12">
@@ -56,7 +56,7 @@ class Capability extends React.Component {
             {currentSubset.map((each, i) =>
               <CapabilityTemplate
                 key={i}
-                skills={skillsAndAbilities[each]}
+                skills={skills[each]}
                 subset={each}
                 id={this.props.id}/>
             )}
@@ -76,18 +76,17 @@ class Capability extends React.Component {
 
 Capability.propTypes = {
   rating: PropTypes.array.isRequired,
-  skillsAndAbilities: PropTypes.object.isRequired,
+  skills: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
   id: PropTypes.number.isRequired
 };
 
 
 function mapStateToProps(state, ownProps) {
-  let id = ownProps.id;
   return {
-    skillsAndAbilities: ownProps.skillsAndAbilities,
+    skills: ownProps.skills,
     rating: state.rating,
-    id: id
+    id: ownProps.id
   };
 }
 

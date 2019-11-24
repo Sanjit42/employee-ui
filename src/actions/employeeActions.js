@@ -27,10 +27,11 @@ export function loadEmployees() {
 export function saveEmployee(employee) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
-    return employeeApi.saveEmployee(employee).then(saveEmployee => {
-    // return axios.post("http://localhost:8080/employee", employee.basicDetails).then(res => {
+    return employeeApi.saveEmployee(employee).then(emp => {
+      // return axios.post("http://localhost:8080/employee", employee.basicDetails).then(res => {
     //   if (res.status == 200) {
-        dispatch(createEmployeeSuccess(employee));
+
+        dispatch(createEmployeeSuccess(emp));
       // }
     }).catch(error => {
       dispatch(ajaxCallError(error));

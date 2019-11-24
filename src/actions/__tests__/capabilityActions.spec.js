@@ -4,12 +4,12 @@ import thunk from 'redux-thunk';
 import nock from 'nock';
 
 import * as types from '../../constants/constant';
-import * as skillsAndAbilitiesActions from '../capabilityActions';
+import * as capabilityActions from '../capabilityActions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-describe('Skills And Abilities Actions', () => {
-  describe('Load Skills And Abilities', () => {
+describe('Skills Actions', () => {
+  describe('Load Skills', () => {
     it('should create a UPDATE_SKILLS_SUCCESS action', () => {
       const skills = [{technical: []}, {testing: []}];
 
@@ -19,16 +19,16 @@ describe('Skills And Abilities Actions', () => {
         skills: skills
       };
 
-      let action = skillsAndAbilitiesActions.saveSkillsSuccess(skills);
+      let action = capabilityActions.saveSkillsSuccess(skills);
       expect(action).toEqual(expected);
     });
   });
 
-  describe('Async Skills and Abilities Action', () => {
+  describe('Async Skills Action', () => {
     afterEach(() => {
       nock.cleanAll();
     });
-    describe('Load Skills and Abilities', () => {
+    describe('Load Skills', () => {
       it('should create BEGIN_AJAX_CALL and LOAD_SKILLS_SUCCESS when loading skills', (done) => {
         const expectedAction = [
           {type: types.BEGIN_AJAX_CALL},
@@ -39,7 +39,7 @@ describe('Skills And Abilities Actions', () => {
           }
         ];
         const store = mockStore({skills: {}}, expectedAction);
-        store.dispatch(skillsAndAbilitiesActions.loadSkills()).then(() => {
+        store.dispatch(capabilityActions.loadSkills()).then(() => {
           const actions = store.getActions();
           expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
           // eslint-disable-next-line import/namespace
@@ -49,7 +49,7 @@ describe('Skills And Abilities Actions', () => {
       });
     });
 
-    describe('Save Skills and Abilities', () => {
+    describe('Save Skills', () => {
       it('should create BEGIN_AJAX_CALL and UPDATE_SKILLS_SUCCESS when save skills', (done) => {
         const expectedAction = [
           {type: types.BEGIN_AJAX_CALL},
@@ -67,7 +67,7 @@ describe('Skills And Abilities Actions', () => {
 
         const id = 2;
         const store = mockStore({skills: {}}, expectedAction);
-        store.dispatch(skillsAndAbilitiesActions.saveSkills(skills, 2)).then(() => {
+        store.dispatch(capabilityActions.saveSkills(skills, 2)).then(() => {
           const actions = store.getActions();
           expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
           // eslint-disable-next-line import/namespace
