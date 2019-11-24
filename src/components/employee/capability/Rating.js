@@ -30,14 +30,14 @@ class Rating extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="row ml-0">
         <StarRatingComponent
           name="rate"
           starCount={5}
           value={this.state.rating}
           onStarClick={this.onStarClick}
         />
-        {defaultValues.just[this.state.rating]}
+        <div className="ml-2 mt-1">{defaultValues.just[this.state.rating]}</div>
       </div>
     );
   }

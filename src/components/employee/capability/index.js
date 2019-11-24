@@ -15,15 +15,25 @@ class Capability extends React.Component {
 
     this.state = {
       saving: false,
-      skills: {...this.props.skills}
+      skills: {...this.props.skills},
+      collapse: 'hide'
     };
 
     this.onSave = this.onSave.bind(this);
+    this.handleCollapse = this.handleCollapse.bind(this);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.skills.employeeId !== nextProps.skills.employeeId) {
       this.setState({skills: nextProps.skills});
+    }
+  }
+
+  handleCollapse() {
+    if (this.state.collapse === 'hide') {
+      this.setState({collapse: 'show'});
+    } else {
+      this.setState({collapse: 'hide'});
     }
   }
 
@@ -48,27 +58,43 @@ class Capability extends React.Component {
   render() {
     let {skills} = this.state;
     let keys = Object.keys(skills);
-    let currentSubset = _.pull(keys, "employeeId");
+    let subsets = _.pull(keys, "employeeId");
+
     return (
-      <div className="col-md-12">
-        <form>
-          <div className="container-fluid">
-            {currentSubset.map((each, i) =>
-              <CapabilityTemplate
-                key={i}
-                skills={skills[each]}
-                subset={each}
-                id={this.props.id}/>
-            )}
+      <div className="skill-container">
+        <div id="accordion">
+          <div className="card">
+            <div className="card-header" id="headingOne">
+              <h5 style={{height: "70px"}}>
+                <h2 className="d-inline mr-5">SKILLS & ABILITIES</h2>
+                <button className="d-inline edit-skills" data-toggle="collapse"
+                        data-target="#collapseOne"
+                        aria-expanded="true" onClick={this.handleCollapse}
+                        aria-controls="collapseOne">
+                  Edit Skills & Abilities
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapseOne" className={`collapse ${this.state.collapse}`}
+                 aria-labelledby="headingOne"
+                 data-parent="#accordion">
+              <ul className="rating">
+                {
+                  subsets.map((subnet, i) => {
+                    return (
+                      <CapabilityTemplate
+                        key={i}
+                        skills={skills[subnet]}
+                        subset={subnet}
+                        id={this.props.id}/>
+                    );
+                  })
+                }
+              </ul>
+            </div>
           </div>
-          <input
-            name="submit"
-            disabled={this.state.saving}
-            value={this.state.saving ? 'Saving...' : 'Save'}
-            className="btn btn-primary"
-            onClick={this.onSave}
-          />
-        </form>
+        </div>
       </div>
     );
   }

@@ -50,6 +50,8 @@ let SKILLS = [
     technical: {'AWS': 2, 'Java': 3},
     consulting: {'communication': 4, 'planning': 2, 'questioning': 1},
     domain: {'government': 1, 'education': 2},
+    baAndXd: {'analytics': 4},
+    language: {'hindi': 4},
     testing: {'capybara': 2, 'cucumber': 0, 'fitness': 1}
   },
   {
@@ -57,6 +59,8 @@ let SKILLS = [
     technical: {'AWS': 3, 'Java': 3},
     consulting: {'communication': 3, 'planning': 2, 'questioning': 5},
     domain: {'government': 1, 'education': 2},
+    baAndXd: {'analytics': 4},
+    language: {'english': 4},
     testing: {'capybara': 2, 'cucumber': 0, 'fitness': 1}
   }
 ];
