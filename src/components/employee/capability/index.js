@@ -7,7 +7,8 @@ import toastr from 'toastr';
 import _ from 'lodash';
 
 import * as capabilityActions from '../../../actions/capabilityActions';
-import CapabilityTemplate from './CapabilityTemplate';
+import Collapse from './Collapse';
+import ExpandSkillSet from './ExpandSkillSet';
 
 class Capability extends React.Component {
   constructor(props, context) {
@@ -56,7 +57,7 @@ class Capability extends React.Component {
   }
 
   render() {
-    let {skills} = this.state;
+    let {skills, collapse} = this.state;
     let keys = Object.keys(skills);
     let subsets = _.pull(keys, "employeeId");
 
@@ -64,35 +65,21 @@ class Capability extends React.Component {
       <div className="skill-container">
         <div id="accordion">
           <div className="card">
-            <div className="card-header" id="headingOne">
-              <h5 style={{height: "70px"}}>
-                <h2 className="d-inline mr-5">SKILLS & ABILITIES</h2>
-                <button className="d-inline edit-skills" data-toggle="collapse"
-                        data-target="#collapseOne"
-                        aria-expanded="true" onClick={this.handleCollapse}
-                        aria-controls="collapseOne">
-                  Edit Skills & Abilities
-                </button>
-              </h5>
-            </div>
 
-            <div id="collapseOne" className={`collapse ${this.state.collapse}`}
-                 aria-labelledby="headingOne"
-                 data-parent="#accordion">
-              <ul className="rating">
-                {
-                  subsets.map((subnet, i) => {
-                    return (
-                      <CapabilityTemplate
-                        key={i}
-                        skills={skills[subnet]}
-                        subset={subnet}
-                        id={this.props.id}/>
-                    );
-                  })
-                }
-              </ul>
-            </div>
+            {collapse === 'hide' ?
+              <Collapse
+                handleCollapse={this.handleCollapse}
+                label="Edit Skills & Abilities"
+              /> :
+              <ExpandSkillSet
+                id={this.props.id}
+                label="Cancel"
+                skills={skills}
+                subsets={subsets}
+                onSave={this.onSave}
+                handleCollapse={this.handleCollapse}
+              />
+            }
           </div>
         </div>
       </div>

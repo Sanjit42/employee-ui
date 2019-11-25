@@ -10,7 +10,7 @@ let EMPLOYEES = [
     gender: 'Male',
     employeeId: 21322,
     currentProject: 'Beach',
-    homeOffice: 'Hyderabad',
+    homeOffice: 'Bangalore',
     role: 'Developer',
     totalExperience: '2017-10-10',
     hiredOn: '2018-10-15',
