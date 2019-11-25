@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {getCustomDate} from "../../utills";
 
@@ -19,7 +20,7 @@ const BasicDetails = ({employee}) => {
           <div className="d-inline grade">Consultant</div>
         </div>
         <div className="experience">
-          <div className="mb-2"> {`${getCustomDate(employee.totalExperience)} of total experience ${getCustomDate(employee.hiredOn)} at TW`}</div>
+          <div className="mb-2"> <FontAwesomeIcon icon="pencil-alt"/> {`${getCustomDate(employee.totalExperience)} of total experience ${getCustomDate(employee.hiredOn)} at TW`}</div>
           <div>Hired on {moment(employee.hiredOn).format('ll') }</div>
         </div>
         <div className="assign-summary">
@@ -29,9 +30,9 @@ const BasicDetails = ({employee}) => {
           </div>
         </div>
         <div className="offices-summary">
-          <div className="mb-2">Employed by {employee.homeOffice} (Home Office)</div>
-          <div className="mb-2">Staffed by {employee.homeOffice} (Staffing Office)</div>
-          <div>Working for {employee.homeOffice} (Working Office)</div>
+          <div className="mb-2"><FontAwesomeIcon icon="home"/> Employed by {employee.homeOffice} (Home Office)</div>
+          <div className="mb-2"><FontAwesomeIcon icon="puzzle-piece"/> Staffed by {employee.homeOffice} (Staffing Office)</div>
+          <div><FontAwesomeIcon icon="coffee"/> Working for {employee.homeOffice} (Working Office)</div>
         </div>
       </div>
     </div>
