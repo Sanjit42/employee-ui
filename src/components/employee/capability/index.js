@@ -7,8 +7,8 @@ import toastr from 'toastr';
 import _ from 'lodash';
 
 import * as capabilityActions from '../../../actions/capabilityActions';
-import Collapse from './Collapse';
-import ExpandSkillSet from './ExpandSkillSet';
+import Skills from './Skills';
+import SkillGroup from './SkillGroup';
 
 class Capability extends React.Component {
   constructor(props, context) {
@@ -63,25 +63,20 @@ class Capability extends React.Component {
 
     return (
       <div className="skill-container">
-        <div id="accordion">
-          <div className="card">
-
-            {collapse === 'hide' ?
-              <Collapse
-                handleCollapse={this.handleCollapse}
-                label="Edit Skills & Abilities"
-              /> :
-              <ExpandSkillSet
-                id={this.props.id}
-                label="Cancel"
-                skills={skills}
-                subsets={subsets}
-                onSave={this.onSave}
-                handleCollapse={this.handleCollapse}
-              />
-            }
-          </div>
-        </div>
+        {collapse === 'hide' ?
+          <Skills
+            handleCollapse={this.handleCollapse}
+            label="Edit Skills & Abilities"
+          /> :
+          <SkillGroup
+            id={this.props.id}
+            label="Cancel"
+            skills={skills}
+            subsets={subsets}
+            onSave={this.onSave}
+            handleCollapse={this.handleCollapse}
+          />
+        }
       </div>
     );
   }

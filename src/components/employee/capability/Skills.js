@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Collapse = ({handleCollapse, label}) => (
-  <div className="card-header" id="headingOne">
+const Skills = ({handleCollapse, label}) => (
+  <div className="user-abilities">
     <div className="skill">
       <h2>SKILLS & ABILITIES</h2>
       <button
-        className="edit-skills"
+        className="edit-skill"
         onClick={handleCollapse}
       >
         {label}
@@ -14,4 +14,4 @@ const Collapse = ({handleCollapse, label}) => (
   </div>
 );
 
-export default Collapse;
+export default Skills;
