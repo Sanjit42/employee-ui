@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import StarRatingComponent from 'react-star-rating-component';
 import * as ratingActions from '../../../actions/ratingActions';
@@ -16,6 +17,11 @@ class Rating extends React.Component {
       rating: this.props.rating
     };
     this.onStarClick = this.onStarClick.bind(this);
+    this.handleRating = this.handleRating.bind(this);
+  }
+
+  handleRating() {
+    this.setState({rating: 0})
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -31,6 +37,9 @@ class Rating extends React.Component {
   render() {
     return (
       <div className="row ml-0">
+        <a onClick={this.handleRating}>
+          <FontAwesomeIcon className="mr-2 mt-1" icon="minus-circle"/>
+        </a>
         <StarRatingComponent
           name="rate"
           starCount={5}
