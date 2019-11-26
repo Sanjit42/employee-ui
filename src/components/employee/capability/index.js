@@ -39,10 +39,11 @@ class Capability extends React.Component {
   }
 
   onSave(event) {
+    const {actions, id, rating} = this.props;
     event.preventDefault();
     this.setState({saving: true});
-    if (this.props.rating.length > 0) {
-      this.props.actions.saveSkills(this.props.rating, this.props.id)
+    if (rating.length > 0) {
+      actions.saveSkills(rating, id)
         .then(() => {
           this.setState({saving: false});
           toastr.success("Skills updated");
@@ -62,22 +63,24 @@ class Capability extends React.Component {
     let subsets = _.pull(keys, "employeeId");
 
     return (
-      <div className="skill-container">
-        {collapse === 'hide' ?
-          <Skills
-            handleCollapse={this.handleCollapse}
-            label="Edit Skills & Abilities"
-          /> :
-          <SkillGroup
-            id={this.props.id}
-            label="Cancel"
-            skills={skills}
-            subsets={subsets}
-            onSave={this.onSave}
-            handleCollapse={this.handleCollapse}
-          />
-        }
-      </div>
+      <form>
+        <div className="skill-container">
+          {collapse === 'hide' ?
+            <Skills
+              handleCollapse={this.handleCollapse}
+              label="Edit Skills & Abilities"
+            /> :
+            <SkillGroup
+              id={this.props.id}
+              label="Cancel"
+              skills={skills}
+              subsets={subsets}
+              onSave={this.onSave}
+              handleCollapse={this.handleCollapse}
+            />
+          }
+        </div>
+      </form>
     );
   }
 }
