@@ -189,6 +189,8 @@ nav {
 
   .body {
     padding: 20px;
+    height: 300px;
+    overflow-y: auto;
   }
 
   .rating-item, .rating-group {
