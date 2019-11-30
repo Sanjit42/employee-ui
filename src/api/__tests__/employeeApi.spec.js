@@ -112,15 +112,14 @@ describe('EmployeeApi', () => {
   });
 
   describe('Rating', () => {
-    it('should update rating', (done) => {
+    it('should update rating', done => {
       const topic = 'java';
       const rating = 4;
-      const id = 2;
       const template = 'technical';
 
-      const expected = {employeeId: 2, subset: 'technical', java: 4};
+      const expected = {technical: {java: 4}};
 
-      employeeApi.updateRatingValue(rating, topic, id, template)
+      employeeApi.updateRatingValue(rating, topic, template)
         .then(res => {
           expect(res).toEqual(expected);
           done();
@@ -160,21 +159,30 @@ describe('EmployeeApi', () => {
     });
 
     it('should prepare new updated skills', (done) => {
-      let id = 2;
-      let updatedSkills = [
-        {java: 3, subset: 'technical', employeeId: 2},
-        {aws: 4, subset: 'technical', employeeId: 1},
-        {mocha: 2, subset: 'testing', employeeId: 2},
-        {chai: 3, subset: 'testing', employeeId: 2}
+      const id = 2;
+      const skills = [
+        { technical: {java: 3}},
+        { technical: {aws: 4}},
+        { testing: {cucumber: 2}},
+        { testing: {chai: 3}}
       ];
 
-      let expected = {
-        employeeId: 2,
-        technical: {java: 3},
-        testing: {mocha: 2, chai: 3}
+      const rating =   {
+        technical: {'aws': 3},
+        consulting: {'communication': 3},
+        domain: {'government': 1, 'education': 2},
+        testing: {'capybara': 2, 'cucumber': 0, 'fitness': 1}
       };
 
-      employeeApi.saveSkills(updatedSkills, id)
+      const expected = {
+        employeeId: 2,
+        technical: {'aws': 4, java: 3},
+        consulting: {'communication': 3},
+        domain: {'government': 1, 'education': 2},
+        testing: {'capybara': 2, 'cucumber': 2, 'fitness': 1, chai: 3}
+      };
+
+      employeeApi.saveSkills(skills, rating,  id)
         .then((updatedSkillsRes) => {
           expect(updatedSkillsRes).toEqual(expected);
           done();

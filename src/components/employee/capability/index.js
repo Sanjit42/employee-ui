@@ -39,11 +39,11 @@ class Capability extends React.Component {
   }
 
   onSave(event) {
-    const {actions, id, rating} = this.props;
+    const {actions, id, rating, skills} = this.props;
     event.preventDefault();
     this.setState({saving: true});
     if (rating.length > 0) {
-      actions.saveSkills(rating, id)
+      actions.saveSkills(rating, skills, id)
         .then(() => {
           this.setState({saving: false});
           toastr.success("Skills updated");

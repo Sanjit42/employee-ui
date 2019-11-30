@@ -8,13 +8,13 @@ import * as capabilityActions from '../capabilityActions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
+
 describe('Skills Actions', () => {
   describe('Load Skills', () => {
     it('should create a UPDATE_SKILLS_SUCCESS action', () => {
       const skills = [{technical: []}, {testing: []}];
 
       const expected = {
-        // eslint-disable-next-line import/namespace
         type: types.UPDATE_SKILLS_SUCCESS,
         skills: skills
       };
@@ -54,7 +54,6 @@ describe('Skills Actions', () => {
         const expectedAction = [
           {type: types.BEGIN_AJAX_CALL},
           {
-            // eslint-disable-next-line import/namespace
             type: types.UPDATE_SKILLS_SUCCESS,
             body: {skills: {employeeId: 32, technical: {}, domain: {}}}
           }
@@ -70,7 +69,6 @@ describe('Skills Actions', () => {
         store.dispatch(capabilityActions.saveSkills(skills, 2)).then(() => {
           const actions = store.getActions();
           expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
-          // eslint-disable-next-line import/namespace
           expect(actions[1].type).toEqual(types.UPDATE_SKILLS_SUCCESS);
           done();
         });

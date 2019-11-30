@@ -36,9 +36,9 @@ describe('Rating Actions', () => {
           body: {rating: []}
         }
       ];
-      const rating = 2, title = "java", id = 12, template = "technical";
+      const rating = 2, title = "java", template = "technical";
       const store = mockStore({rating: [{}]}, expectedAction);
-      store.dispatch(ratingActions.updateRatingValue(rating, title, id, template)).then((rating) => {
+      store.dispatch(ratingActions.updateRatingValue(rating, title, template)).then(rating => {
         const actions = store.getActions();
         expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
         expect(actions[1].type).toEqual(types.UPDATE_RATING_SUCCESS);
