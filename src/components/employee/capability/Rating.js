@@ -21,7 +21,7 @@ class Rating extends React.Component {
   }
 
   handleRating() {
-    this.setState({rating: 0})
+    this.setState({rating: 0});
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {

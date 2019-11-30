@@ -14,5 +14,5 @@ export const getCustomDate = date => {
 };
 
 const suffix = (value, text) => {
-  return value > 1 ? `${value} ${text}s` : `${value} ${text}`
+  return value > 1 ? `${value} ${text}s` : `${value} ${text}`;
 };

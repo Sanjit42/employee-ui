@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment'
+import moment from 'moment';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {getCustomDate} from "../../utills";
@@ -21,7 +21,7 @@ const BasicDetails = ({employee}) => {
         </div>
         <div className="experience">
           <div className="mb-2"> <FontAwesomeIcon icon="pencil-alt"/> {`${getCustomDate(employee.totalExperience)} of total experience ${getCustomDate(employee.hiredOn)} at TW`}</div>
-          <div>Hired on {moment(employee.hiredOn).format('ll') }</div>
+          <div>Hired on {moment(employee.hiredOn).format('ll')}</div>
         </div>
         <div className="assign-summary">
           <div className="d-inline profile-assignable">ASSIGNABLE</div>

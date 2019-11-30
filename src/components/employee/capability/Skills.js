@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Skills = ({handleCollapse, label}) => (
   <div className="user-abilities">
@@ -13,5 +14,10 @@ const Skills = ({handleCollapse, label}) => (
     </div>
   </div>
 );
+
+Skills.propTypes = {
+  handleCollapse: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired
+};
 
 export default Skills;

@@ -16,7 +16,7 @@ class Capability extends React.Component {
 
     this.state = {
       saving: false,
-      skills: {...this.props.skills},
+      skills: this.props.skills,
       collapse: 'hide'
     };
 

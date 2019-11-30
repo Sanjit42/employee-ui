@@ -17,7 +17,7 @@ import App from "./App";
 import './styles/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'toastr/build/toastr.min.css';
-import './fontawesome'
+import './fontawesome';
 
 
 const store = configureStore();

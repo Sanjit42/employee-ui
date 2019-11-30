@@ -2,7 +2,6 @@ import employeeApi from '../api/employeeApi';
 import * as types from '../constants/constant';
 import {beginAjaxCall} from "./ajaxStatueActions";
 
-
 export function loadGenderSuccess(gender) {
   return {type: types.LOAD_GENDER_SUCCESS, gender};
 }

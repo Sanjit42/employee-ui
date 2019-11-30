@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CapabilityTemplate from "./CapabilityTemplate";
 
 const SkillGroup = ({id, handleCollapse, label, onSave, skills, subsets}) => (
@@ -35,5 +36,14 @@ const SkillGroup = ({id, handleCollapse, label, onSave, skills, subsets}) => (
     </div>
   </div>
 );
+
+SkillGroup.propTypes = {
+  id: PropTypes.string.isRequired,
+  handleCollapse: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+  onSave: PropTypes.func.isRequired,
+  skills: PropTypes.object.isRequired,
+  subsets: PropTypes.array.isRequired
+};
 
 export default SkillGroup;
