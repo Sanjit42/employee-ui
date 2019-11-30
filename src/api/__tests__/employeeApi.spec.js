@@ -12,7 +12,7 @@ describe('EmployeeApi', () => {
           gender: 'Male',
           employeeId: 21322,
           currentProject: 'Beach',
-          homeOffice: 'Hyderabad',
+          homeOffice: 'Bangalore',
           role: 'Developer',
           hiredOn: "2018-10-15",
           totalExperience: "2017-10-10",
@@ -134,9 +134,11 @@ describe('EmployeeApi', () => {
       let expected = [
         {
           employeeId: 21322,
-          technical: {'AWS': 2, 'Java': 3},
+          technical: {'AWS': 2, 'Java': 3, react: 4, redux: 3, vue: 2, angular: 2, php: 0, python: 1},
           consulting: {'communication': 4, 'planning': 2, 'questioning': 1},
           domain: {'government': 1, 'education': 2},
+          baAndXd: {'analytics': 4},
+          language: {'hindi': 4},
           testing: {'capybara': 2, 'cucumber': 0, 'fitness': 1}
         },
         {
@@ -144,6 +146,8 @@ describe('EmployeeApi', () => {
           technical: {'AWS': 3, 'Java': 3},
           consulting: {'communication': 3, 'planning': 2, 'questioning': 5},
           domain: {'government': 1, 'education': 2},
+          baAndXd: {'analytics': 4},
+          language: {'english': 4},
           testing: {'capybara': 2, 'cucumber': 0, 'fitness': 1}
         }
       ];
